@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eaabc0f4589a4cea923447426ffa054b" Name="Diagram1">
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModelo.Alumnos" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModelo.Departamentos" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModelo.DetalleNominas" Width="1.5" PointX="15" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModelo.EstadoAlumnos" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModelo.EstadoSesiones" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModelo.EstadoTrabajadores" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModelo.Facturas" Width="1.5" PointX="10.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModelo.Modalidades" Width="1.5" PointX="8.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModelo.Municipios" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModelo.Nominas" Width="1.5" PointX="12.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModelo.Profesiones" Width="1.5" PointX="6" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModelo.Servicios" Width="1.5" PointX="8.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModelo.Sesiones" Width="1.5" PointX="12.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModelo.Trabajadores" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModelo.Usuario" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="SistemaPsicoaprendeModelo.FK__Alumnos__Departa__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModelo.FK__Alumnos__EstadoA__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModelo.FK__Alumnos__Municip__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModelo.FK__Facturas__Alumno__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModelo.FK__Municipio__Depar__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModelo.FK__Trabajado__Depar__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModelo.FK__DetalleNo__Nomin__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModelo.FK__DetalleNo__Sesio__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModelo.FK__Facturas__Estado__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModelo.FK__Trabajado__Estad__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModelo.FK__Facturas__Modali__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModelo.FK__Facturas__Servic__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModelo.FK__Sesiones__Factur__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModelo.FK__Trabajado__Munic__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModelo.FK__Trabajado__Profe__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModelo.FK__Sesiones__Trabaj__68487DD7" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
