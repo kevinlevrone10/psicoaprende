@@ -1,6 +1,6 @@
 ﻿namespace SistemaPsicoaprende.UI
 {
-    partial class FrmMaestro
+    partial class FrmMaestros
     {
         /// <summary>
         /// Required designer variable.

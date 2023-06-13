@@ -28,12 +28,12 @@ namespace SistemaPsicoaprende.UI
 
         private void btnEstudiantes_Click(object sender, EventArgs e)
         {
-            this.LoadForm(new FrmEstudiante());
+            this.LoadForm(new FrmEstudiantes());
         }
 
         private void btnMaestros_Click(object sender, EventArgs e)
         {
-            this.LoadForm(new FrmMaestro());
+            this.LoadForm(new FrmMaestros());
         }
 
         private void btnSesiones_Click(object sender, EventArgs e)
