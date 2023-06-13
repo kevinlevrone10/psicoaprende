@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SistemaPsicoaprende.UI
 {
-    public partial class FrmMaestro : Form
+    public partial class FrmMaestros : Form
     {
-        public FrmMaestro()
+        public FrmMaestros()
         {
             InitializeComponent();
         }

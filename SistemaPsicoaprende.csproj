@@ -122,11 +122,11 @@
     <Compile Include="Controlador\CtrlLogin.cs" />
     <Compile Include="Negocio\Estudiante.cs" />
     <Compile Include="Negocio\Login.cs" />
-    <Compile Include="UI\FrmEstudiante.cs">
+    <Compile Include="UI\FrmEstudiantes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmEstudiante.Designer.cs">
-      <DependentUpon>FrmEstudiante.cs</DependentUpon>
+    <Compile Include="UI\FrmEstudiantes.Designer.cs">
+      <DependentUpon>FrmEstudiantes.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmInicio.cs">
       <SubType>Form</SubType>
@@ -148,11 +148,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\FrmMaestro.cs">
+    <Compile Include="UI\FrmMaestros.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmMaestro.Designer.cs">
-      <DependentUpon>FrmMaestro.cs</DependentUpon>
+    <Compile Include="UI\FrmMaestros.Designer.cs">
+      <DependentUpon>FrmMaestros.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmSesiones.cs">
       <SubType>Form</SubType>
@@ -169,8 +169,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\FrmEstudiante.resx">
-      <DependentUpon>FrmEstudiante.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmEstudiantes.resx">
+      <DependentUpon>FrmEstudiantes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmInicio.resx">
       <DependentUpon>FrmInicio.cs</DependentUpon>
@@ -181,8 +181,8 @@
     <EmbeddedResource Include="UI\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmMaestro.resx">
-      <DependentUpon>FrmMaestro.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmMaestros.resx">
+      <DependentUpon>FrmMaestros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmSesiones.resx">
       <DependentUpon>FrmSesiones.cs</DependentUpon>

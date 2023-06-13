@@ -9,14 +9,14 @@ using System.Windows.Forms;
 
 namespace SistemaPsicoaprende.UI
 {
-    public partial class FrmEstudiante : Form
+    public partial class FrmEstudiantes : Form
     {
         private Form FormularioActual;
-        public FrmEstudiante()
+        public FrmEstudiantes()
         {
             InitializeComponent();
         }
-        public FrmEstudiante(string codigo, string nombre, string apellido, DateTime fecha_nac, string telefono, string colegio, string responsable, string domicilio, string grado, string evaluacion, int municipioId, int departamentoId)
+        public FrmEstudiantes(string codigo, string nombre, string apellido, DateTime fecha_nac, string telefono, string colegio, string responsable, string domicilio, string grado, string evaluacion, int municipioId, int departamentoId)
         {
             InitializeComponent();
 
