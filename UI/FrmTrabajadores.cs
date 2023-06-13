@@ -15,8 +15,9 @@ using System.Xml.Linq;
 
 namespace SistemaPsicoaprende.UI
 {
-    public partial class FrmTrabajador : Form
+    public partial class FrmTrabajadores : Form
     {
+        private Form FormularioActual;
         private enum ModoEdicion
         {
             NuevoRegistro,
@@ -25,12 +26,28 @@ namespace SistemaPsicoaprende.UI
 
         private ModoEdicion modoEdicion = ModoEdicion.NuevoRegistro;
 
-        public FrmTrabajador()
+        public FrmTrabajadores()
         {
             InitializeComponent();
         }
 
-        public FrmTrabajador(string codigo, string nombre, string apellido, string domicilio, string telefono, int profesionId, int DepartamentoId, int MunicipioId)
+        private void LoadForm(Form NuevoFormulario)
+        {
+            //Verifica si existe un formulario activo
+            if (FormularioActual != null)
+
+                //Configurar vuevo formulario
+                FormularioActual.Close();
+            FormularioActual = NuevoFormulario;
+            NuevoFormulario.TopLevel = false;
+            NuevoFormulario.FormBorderStyle = FormBorderStyle.None;
+            NuevoFormulario.Dock = DockStyle.Fill;
+            pnlContenedor.Controls.Add(NuevoFormulario);
+            pnlContenedor.Tag = NuevoFormulario;
+            NuevoFormulario.BringToFront();
+            NuevoFormulario.Show();
+        }
+        public FrmTrabajadores(string codigo, string nombre, string apellido, string domicilio, string telefono, int profesionId, int DepartamentoId, int MunicipioId)
         {
             InitializeComponent();
 
@@ -48,8 +65,6 @@ namespace SistemaPsicoaprende.UI
                 cmbprofesion.SelectedValue = profesionId;
                 modoEdicion = ModoEdicion.Actualizacion;
             };
-
-
         }
 
         private void FrmTrabajador_Load(object sender, EventArgs e)
@@ -96,7 +111,6 @@ namespace SistemaPsicoaprende.UI
                     municipioIdSeleccionado = trabajador.MunicipioId;
                 }
             }
-
             // Establecer el municipio seleccionado en el ComboBox
             cmbmunicipio.SelectedValue = municipioIdSeleccionado;
         }
@@ -115,7 +129,7 @@ namespace SistemaPsicoaprende.UI
         private void LimpiarCampos()
         {
             // Recorrer todos los controles del formulario
-            foreach (Control control in Controls)
+            foreach (Control control in grbRegistrarTraba.Controls)
             {
                 if (control is TextBox textBox)
                 {
@@ -133,12 +147,21 @@ namespace SistemaPsicoaprende.UI
                     maskedTextBox.Text = string.Empty;
                 }
             }
-        }
+            foreach (Control control in pnlMenu.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Excluir el campo txtBuscar al limpiar los TextBox
 
+                    textBox.Text = string.Empty;
+
+                }
+            }
+        }
 
         private bool CamposVacios()
         {
-            foreach (Control control in Controls)
+            foreach (Control control in grbRegistrarTraba.Controls)
             {
                 if (control is TextBox textBox && textBox != txtBuscar)
                 {
@@ -155,15 +178,20 @@ namespace SistemaPsicoaprende.UI
                     }
                 }
             }
-
+            foreach (Control control in pnlMenu.Controls)
+            {
+                if (control is TextBox textBox && textBox != txtBuscar)
+                {
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        return true;
+                    }
+                }
+            }
             return false;
         }
 
-
-
-
-
-        private void btnBuscar_Click_1(object sender, EventArgs e)
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
             Trabajadores trabajador = Ctrltrabajador.buscar(txtBuscar.Text);
 
@@ -248,6 +276,15 @@ namespace SistemaPsicoaprende.UI
             }
         }
 
+        private void btnListarTraba_Click(object sender, EventArgs e)
+        {
+            this.LoadForm(new FrmListadoTrabajadores());
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 
 }

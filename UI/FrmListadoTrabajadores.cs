@@ -13,23 +13,19 @@ using System.Windows.Forms;
 
 namespace SistemaPsicoaprende.UI
 {
-    public partial class ListadoTrabajador : Form
+    public partial class FrmListadoTrabajadores : Form
     {
-        public ListadoTrabajador()
+        private Form FormularioActual;
+        public FrmListadoTrabajadores()
         {
             InitializeComponent();
         }
 
         private void ListadoTrabajador_Load(object sender, EventArgs e)
         {
-
             Listado();
             dataGridView1.CellClick += dataGridView1_CellClick;
         }
-
-
-
-
 
         public void Listado()
         {
@@ -38,25 +34,6 @@ namespace SistemaPsicoaprende.UI
             {
                 dataGridView1.Rows.Add(est.cod_Trabajador, est.nom_Trabajador, est.ape_Trabajador, est.telefono_Trabajador, "Edit");
             }
-        }
-        private void Buscar_Click(object sender, EventArgs e)
-        {
-            string busqueda = textBusqueda.Text.Trim();
-            if (string.IsNullOrEmpty(busqueda))
-            {
-                MessageBox.Show("Por favor, ingrese un valor de búsqueda válido.", "Búsqueda",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            Trabajadores trabajador = Ctrltrabajador.buscar(busqueda);
-            if (trabajador == null)
-            {
-                MessageBox.Show("No se encontró ningún estudiante con el código especificado.", "Búsqueda",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            MostrarEstudianteEnDataGridView(trabajador);
         }
 
 
@@ -88,16 +65,50 @@ namespace SistemaPsicoaprende.UI
                     int municipioId = trabajador.MunicipioId;
                     int departamentoId = trabajador.DepartamentoId;
 
-                    // Abrir el formulario de FrmEstudiante y pasar los datos como argumentos
-                    FrmTrabajador frmtra = new FrmTrabajador(codigo, nombre, apellido, domicilio, telefono, profesionId, municipioId, departamentoId);
-                    frmtra.ShowDialog();
+                    // Abrir el formulario de FrmTrabajadores y pasar los datos como argumentos
+                    this.LoadForm(new FrmTrabajadores(codigo, nombre, apellido, domicilio, telefono, profesionId, municipioId, departamentoId));
                 }
             }
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void LoadForm(Form NuevoFormulario)
         {
+            //Verifica si existe un formulario activo
+            if (FormularioActual != null)
 
+                //Configurar vuevo formulario
+                FormularioActual.Close();
+            FormularioActual = NuevoFormulario;
+            NuevoFormulario.TopLevel = false;
+            NuevoFormulario.FormBorderStyle = FormBorderStyle.None;
+            NuevoFormulario.Dock = DockStyle.Fill;
+            pnlContenedor.Controls.Add(NuevoFormulario);
+            pnlContenedor.Tag = NuevoFormulario;
+            NuevoFormulario.BringToFront();
+            NuevoFormulario.Show();
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string busqueda = txtBuscar.Text.Trim();
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                MessageBox.Show("Por favor, ingrese un valor de búsqueda válido.", "Búsqueda",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            Trabajadores trabajador = Ctrltrabajador.buscar(busqueda);
+            if (trabajador == null)
+            {
+                MessageBox.Show("No se encontró ningún estudiante con el código especificado.", "Búsqueda",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            MostrarEstudianteEnDataGridView(trabajador);
         }
     }
 }

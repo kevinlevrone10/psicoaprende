@@ -93,14 +93,9 @@ namespace SistemaPsicoaprende.UI
             dataGridView1.CellClick += dataGridView1_CellClick;
         }
 
-        private void btnCerra_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string busqueda = textBusqueda.Text.Trim();
+            string busqueda = txtBuscar.Text.Trim();
 
             if (string.IsNullOrEmpty(busqueda))
             {
@@ -119,6 +114,11 @@ namespace SistemaPsicoaprende.UI
             }
 
             MostrarEstudianteEnDataGridView(estudiante);
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

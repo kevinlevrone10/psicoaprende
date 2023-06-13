@@ -37,7 +37,7 @@
             this.pnlMenuLateral = new System.Windows.Forms.Panel();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnSesiones = new System.Windows.Forms.Button();
-            this.btnMaestros = new System.Windows.Forms.Button();
+            this.btnTrabajadores = new System.Windows.Forms.Button();
             this.btnEstudiantes = new System.Windows.Forms.Button();
             this.pnlSuperior = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -101,7 +101,7 @@
             this.pnlMenuLateral.BackColor = System.Drawing.Color.White;
             this.pnlMenuLateral.Controls.Add(this.btnSalir);
             this.pnlMenuLateral.Controls.Add(this.btnSesiones);
-            this.pnlMenuLateral.Controls.Add(this.btnMaestros);
+            this.pnlMenuLateral.Controls.Add(this.btnTrabajadores);
             this.pnlMenuLateral.Controls.Add(this.btnEstudiantes);
             this.pnlMenuLateral.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenuLateral.Location = new System.Drawing.Point(0, 60);
@@ -143,22 +143,22 @@
             this.btnSesiones.UseVisualStyleBackColor = false;
             this.btnSesiones.Click += new System.EventHandler(this.btnSesiones_Click);
             // 
-            // btnMaestros
+            // btnTrabajadores
             // 
-            this.btnMaestros.BackColor = System.Drawing.Color.DarkBlue;
-            this.btnMaestros.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMaestros.FlatAppearance.BorderSize = 0;
-            this.btnMaestros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.btnMaestros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMaestros.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMaestros.ForeColor = System.Drawing.Color.White;
-            this.btnMaestros.Location = new System.Drawing.Point(0, 34);
-            this.btnMaestros.Name = "btnMaestros";
-            this.btnMaestros.Size = new System.Drawing.Size(225, 41);
-            this.btnMaestros.TabIndex = 31;
-            this.btnMaestros.Text = "Maestros";
-            this.btnMaestros.UseVisualStyleBackColor = false;
-            this.btnMaestros.Click += new System.EventHandler(this.btnMaestros_Click);
+            this.btnTrabajadores.BackColor = System.Drawing.Color.DarkBlue;
+            this.btnTrabajadores.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTrabajadores.FlatAppearance.BorderSize = 0;
+            this.btnTrabajadores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnTrabajadores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTrabajadores.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrabajadores.ForeColor = System.Drawing.Color.White;
+            this.btnTrabajadores.Location = new System.Drawing.Point(0, 34);
+            this.btnTrabajadores.Name = "btnTrabajadores";
+            this.btnTrabajadores.Size = new System.Drawing.Size(225, 41);
+            this.btnTrabajadores.TabIndex = 31;
+            this.btnTrabajadores.Text = "Trabajadores";
+            this.btnTrabajadores.UseVisualStyleBackColor = false;
+            this.btnTrabajadores.Click += new System.EventHandler(this.btnTrabajadores_Click);
             // 
             // btnEstudiantes
             // 
@@ -266,7 +266,7 @@
         private System.Windows.Forms.Panel pnlMenuLateral;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnSesiones;
-        private System.Windows.Forms.Button btnMaestros;
+        private System.Windows.Forms.Button btnTrabajadores;
         private System.Windows.Forms.Button btnEstudiantes;
         private System.Windows.Forms.Panel pnlSuperior;
         private System.Windows.Forms.PictureBox pictureBox1;
