@@ -38,7 +38,7 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnSesiones = new System.Windows.Forms.Button();
             this.btnMaestros = new System.Windows.Forms.Button();
-            this.btnAlumnos = new System.Windows.Forms.Button();
+            this.btnEstudiantes = new System.Windows.Forms.Button();
             this.pnlSuperior = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnSalir2 = new System.Windows.Forms.Button();
@@ -102,7 +102,7 @@
             this.pnlMenuLateral.Controls.Add(this.btnSalir);
             this.pnlMenuLateral.Controls.Add(this.btnSesiones);
             this.pnlMenuLateral.Controls.Add(this.btnMaestros);
-            this.pnlMenuLateral.Controls.Add(this.btnAlumnos);
+            this.pnlMenuLateral.Controls.Add(this.btnEstudiantes);
             this.pnlMenuLateral.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenuLateral.Location = new System.Drawing.Point(0, 60);
             this.pnlMenuLateral.Name = "pnlMenuLateral";
@@ -160,22 +160,22 @@
             this.btnMaestros.UseVisualStyleBackColor = false;
             this.btnMaestros.Click += new System.EventHandler(this.btnMaestros_Click);
             // 
-            // btnAlumnos
+            // btnEstudiantes
             // 
-            this.btnAlumnos.BackColor = System.Drawing.Color.Red;
-            this.btnAlumnos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAlumnos.FlatAppearance.BorderSize = 0;
-            this.btnAlumnos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.btnAlumnos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAlumnos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlumnos.ForeColor = System.Drawing.Color.White;
-            this.btnAlumnos.Location = new System.Drawing.Point(0, 0);
-            this.btnAlumnos.Name = "btnAlumnos";
-            this.btnAlumnos.Size = new System.Drawing.Size(225, 34);
-            this.btnAlumnos.TabIndex = 29;
-            this.btnAlumnos.Text = "Alumnos";
-            this.btnAlumnos.UseVisualStyleBackColor = false;
-            this.btnAlumnos.Click += new System.EventHandler(this.btnAlumnos_Click);
+            this.btnEstudiantes.BackColor = System.Drawing.Color.Red;
+            this.btnEstudiantes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEstudiantes.FlatAppearance.BorderSize = 0;
+            this.btnEstudiantes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnEstudiantes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEstudiantes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEstudiantes.ForeColor = System.Drawing.Color.White;
+            this.btnEstudiantes.Location = new System.Drawing.Point(0, 0);
+            this.btnEstudiantes.Name = "btnEstudiantes";
+            this.btnEstudiantes.Size = new System.Drawing.Size(225, 34);
+            this.btnEstudiantes.TabIndex = 29;
+            this.btnEstudiantes.Text = "Estudiantes";
+            this.btnEstudiantes.UseVisualStyleBackColor = false;
+            this.btnEstudiantes.Click += new System.EventHandler(this.btnEstudiantes_Click);
             // 
             // pnlSuperior
             // 
@@ -267,7 +267,7 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnSesiones;
         private System.Windows.Forms.Button btnMaestros;
-        private System.Windows.Forms.Button btnAlumnos;
+        private System.Windows.Forms.Button btnEstudiantes;
         private System.Windows.Forms.Panel pnlSuperior;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnSalir2;

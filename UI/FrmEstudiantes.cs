@@ -11,6 +11,7 @@ namespace SistemaPsicoaprende.UI
 {
     public partial class FrmEstudiante : Form
     {
+        private Form FormularioActual;
         public FrmEstudiante()
         {
             InitializeComponent();
@@ -37,6 +38,22 @@ namespace SistemaPsicoaprende.UI
                 cmbDepartamento.SelectedValue = departamentoId;
                 modoEdicion = ModoEdicion.Actualizacion;
             };
+        }
+        private void LoadForm(Form NuevoFormulario)
+        {
+            //Verifica si existe un formulario activo
+            if (FormularioActual != null)
+
+                //Configurar vuevo formulario
+                FormularioActual.Close();
+            FormularioActual = NuevoFormulario;
+            NuevoFormulario.TopLevel = false;
+            NuevoFormulario.FormBorderStyle = FormBorderStyle.None;
+            NuevoFormulario.Dock = DockStyle.Fill;
+            pnlContenedor.Controls.Add(NuevoFormulario);
+            pnlContenedor.Tag = NuevoFormulario;
+            NuevoFormulario.BringToFront();
+            NuevoFormulario.Show();
         }
 
         private void FrmEstudiante_Load(object sender, EventArgs e)
@@ -84,7 +101,6 @@ namespace SistemaPsicoaprende.UI
                     municipioIdSeleccionado = estudiante.MunicipioId;
                 }
             }
-
             // Establecer el municipio seleccionado en el ComboBox
             cmbMunicipio.SelectedItem = municipios.FirstOrDefault(m => m.Id == municipioIdSeleccionado);
         }
@@ -107,7 +123,7 @@ namespace SistemaPsicoaprende.UI
 
         private bool CamposVacios()
         {
-            foreach (Control control in Controls)
+            foreach (Control control in grpBoxEstu.Controls)
             {
                 if (control is TextBox textBox && textBox != txtBuscar)
                 {
@@ -124,17 +140,25 @@ namespace SistemaPsicoaprende.UI
                     }
                 }
             }
+            foreach (Control control in pnlContenedor.Controls)
+            {
+                if (control is TextBox textBox && textBox != txtBuscar)
+                {
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        return true;
+                    }
+                }
 
+                return false;
+            }
             return false;
         }
-
-
-
 
         private void LimpiarTextBoxes()
         {
             // Recorrer todos los controles del formulario
-            foreach (Control control in Controls)
+            foreach (Control control in grpBoxEstu.Controls)
             {
                 if (control is TextBox textBox)
                 {
@@ -147,6 +171,15 @@ namespace SistemaPsicoaprende.UI
                     comboBox.SelectedIndex = -1;
                 }
             }
+            foreach (Control control in pnlContenedor.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Si el control es un TextBox, se limpia su texto estableciéndolo como vacío
+                    textBox.Text = string.Empty;
+                }
+            }
+
         }
 
         private enum ModoEdicion
@@ -157,7 +190,18 @@ namespace SistemaPsicoaprende.UI
 
         private ModoEdicion modoEdicion = ModoEdicion.NuevoRegistro;
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void btnListarEstu_Click_1(object sender, EventArgs e)
+        {
+            this.LoadForm(new FrmListadoEstudiantes());
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
             DateTime fecha = dateTimeFechaAL.Value;
             Departamentos departamentoSeleccionado = cmbDepartamento.SelectedItem as Departamentos;
@@ -248,10 +292,6 @@ namespace SistemaPsicoaprende.UI
                 // Mostrar mensaje de error si no se encuentra el estudiante
                 MessageBox.Show("Registro: " + txtBuscar.Text + " no encontrado. Verifique que el valor es correcto", "Buscar Estudiante", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-        }
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
