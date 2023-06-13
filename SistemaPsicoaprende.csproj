@@ -120,6 +120,12 @@
     </Compile>
     <Compile Include="Controlador\CtrlLogin.cs" />
     <Compile Include="Negocio\Login.cs" />
+    <Compile Include="UI\FrmInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmInicio.Designer.cs">
+      <DependentUpon>FrmInicio.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="AppDatos\ModeloBD.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModeloBD.Designer.cs</LastGenOutput>
@@ -158,9 +167,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resource\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="AppDatos\ModeloBD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -172,6 +179,12 @@
       <DependentUpon>ModeloBD.edmx</DependentUpon>
       <LastGenOutput>ModeloBD.cs</LastGenOutput>
     </Content>
+    <Content Include="Resource\Fondo3.jpeg" />
+    <Content Include="Resource\Fondo4.png" />
+    <Content Include="Resource\FondoLogin1.png" />
+    <Content Include="Resource\Logo.ico" />
+    <Content Include="Resource\Logo.jpg" />
+    <Content Include="Resource\LogoFondo.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
