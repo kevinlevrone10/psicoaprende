@@ -32,11 +32,12 @@ namespace SistemaPsicoaprende
             {
                 // Inicio de sesión exitoso
                 MessageBox.Show("Inicio de sesión exitoso");
+                //Oculta el formulario de login
+                this.Hide();
                 // Aquí puedes realizar la navegación a la siguiente ventana o realizar otras acciones necesarias
                 txtNomUsuario.Clear(); txtContra.Clear();
                 FrmInicio ventanaMenu = new FrmInicio();
                 ventanaMenu.Show();
-                this.Hide();
             }
             else
             {
