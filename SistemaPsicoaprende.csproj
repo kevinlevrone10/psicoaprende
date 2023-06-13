@@ -134,11 +134,11 @@
     <Compile Include="UI\FrmInicio.Designer.cs">
       <DependentUpon>FrmInicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmListado.cs">
+    <Compile Include="UI\FrmListadoEstudiantes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmListado.Designer.cs">
-      <DependentUpon>FrmListado.cs</DependentUpon>
+    <Compile Include="UI\FrmListadoEstudiantes.Designer.cs">
+      <DependentUpon>FrmListadoEstudiantes.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmLogin.cs">
       <SubType>Form</SubType>
@@ -175,8 +175,8 @@
     <EmbeddedResource Include="UI\FrmInicio.resx">
       <DependentUpon>FrmInicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmListado.resx">
-      <DependentUpon>FrmListado.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmListadoEstudiantes.resx">
+      <DependentUpon>FrmListadoEstudiantes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

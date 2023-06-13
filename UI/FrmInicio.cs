@@ -21,14 +21,14 @@ namespace SistemaPsicoaprende.UI
 
         private void btnSalir2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
             FrmLogin login = new FrmLogin();
             login.Show();
         }
 
-        private void btnAlumnos_Click(object sender, EventArgs e)
+        private void btnEstudiantes_Click(object sender, EventArgs e)
         {
-            //this.LoadForm(new FrmEstudiante());
+            this.LoadForm(new FrmEstudiante());
         }
 
         private void btnMaestros_Click(object sender, EventArgs e)
@@ -38,29 +38,16 @@ namespace SistemaPsicoaprende.UI
 
         private void btnSesiones_Click(object sender, EventArgs e)
         {
-            //this.LoadForm(new FrmSesiones());
+            this.LoadForm(new FrmSesiones());
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
             FrmLogin login = new FrmLogin();
             login.Show();
         }
 
-        //private void LoadForm(Form child)
-        //{
-        //    //Asignar el nuevo formulario a desplegar
-        //    if (FrmActivo == null)
-        //    {
-        //        FrmActivo = (Form)child;
-        //        FrmActivo.TopLevel = false;
-        //        FrmActivo.Dock = DockStyle.Fill;
-        //        pnlContenedor.Controls.Add(FrmActivo);
-        //        pnlContenedor.Tag = FrmActivo;
-        //        FrmActivo.Show();
-        //    }
-        //}
         private void LoadForm(Form NuevoFormulario)
         {
             //Verifica si existe un formulario activo
@@ -81,11 +68,6 @@ namespace SistemaPsicoaprende.UI
         {
             lblHora.Text = DateTime.Now.ToString("hh:mm:ss");
             lblFecha.Text = DateTime.Now.ToLongDateString(); ;
-        }
-
-        private void btnInicio_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void pnlSuperior_Paint(object sender, PaintEventArgs e)

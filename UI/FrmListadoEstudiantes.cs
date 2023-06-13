@@ -13,9 +13,10 @@ using System.Windows.Forms;
 
 namespace SistemaPsicoaprende.UI
 {
-    public partial class FrmListado : Form
+    public partial class FrmListadoEstudiantes : Form
     {
-        public FrmListado()
+        private Form FormularioActual;
+        public FrmListadoEstudiantes()
         {
             InitializeComponent();
         }
@@ -27,37 +28,6 @@ namespace SistemaPsicoaprende.UI
             {
                 dataGridView1.Rows.Add(est.cod_Alumno, est.nom_Alumno, est.ape_Alumno, est.fechaNac_Alumno, est.telfResp_Alumno, est.nomResp_Alumno, est.domicilio_Alumno, "Edit");
             }
-        }
-
-        private void FrmListado_Load(object sender, EventArgs e)
-        {
-            Listado();
-            dataGridView1.CellClick += dataGridView1_CellClick;
-
-
-        }
-
-        private void Buscar_Click(object sender, EventArgs e)
-        {
-            string busqueda = textBusqueda.Text.Trim();
-
-            if (string.IsNullOrEmpty(busqueda))
-            {
-                MessageBox.Show("Por favor, ingrese un valor de búsqueda válido.", "Búsqueda",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            Alumnos estudiante = CtrlEstudiante.buscar(busqueda);
-
-            if (estudiante == null)
-            {
-                MessageBox.Show("No se encontró ningún estudiante con el código especificado.", "Búsqueda",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            MostrarEstudianteEnDataGridView(estudiante);
         }
 
         private void MostrarEstudianteEnDataGridView(Alumnos estudiante)
@@ -96,17 +66,59 @@ namespace SistemaPsicoaprende.UI
                     int departamentoId = estudiante.DepartamentoId;
 
                     // Abrir el formulario de FrmEstudiante y pasar los datos como argumentos
-                    FrmEstudiante frmEstudiante = new FrmEstudiante(codigo, nombre, apellido, fechaNacimiento, telefono, colegio, responsable, domicilio, grado, evaluacion, municipioId, departamentoId);
-                    frmEstudiante.ShowDialog();
+                    this.LoadForm(new FrmEstudiante(codigo, nombre, apellido, fechaNacimiento, telefono, colegio, responsable, domicilio, grado, evaluacion, municipioId, departamentoId));
                 }
             }
         }
-
-
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void LoadForm(Form NuevoFormulario)
         {
+            //Verifica si existe un formulario activo
+            if (FormularioActual != null)
 
+                //Configurar vuevo formulario
+                FormularioActual.Close();
+            FormularioActual = NuevoFormulario;
+            NuevoFormulario.TopLevel = false;
+            NuevoFormulario.FormBorderStyle = FormBorderStyle.None;
+            NuevoFormulario.Dock = DockStyle.Fill;
+            pnlContenedor.Controls.Add(NuevoFormulario);
+            pnlContenedor.Tag = NuevoFormulario;
+            NuevoFormulario.BringToFront();
+            NuevoFormulario.Show();
+        }
+
+        private void FrmListadoEstudiantes_Load(object sender, EventArgs e)
+        {
+            Listado();
+            dataGridView1.CellClick += dataGridView1_CellClick;
+        }
+
+        private void btnCerra_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string busqueda = textBusqueda.Text.Trim();
+
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                MessageBox.Show("Por favor, ingrese un valor de búsqueda válido.", "Búsqueda",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            Alumnos estudiante = CtrlEstudiante.buscar(busqueda);
+
+            if (estudiante == null)
+            {
+                MessageBox.Show("No se encontró ningún estudiante con el código especificado.", "Búsqueda",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            MostrarEstudianteEnDataGridView(estudiante);
         }
     }
 }
