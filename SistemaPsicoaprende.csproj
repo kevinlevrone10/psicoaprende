@@ -118,7 +118,9 @@
     <Compile Include="AppDatos\Usuario.cs">
       <DependentUpon>ModeloBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controlador\CtrlEstudiante.cs" />
     <Compile Include="Controlador\CtrlLogin.cs" />
+    <Compile Include="Negocio\Estudiante.cs" />
     <Compile Include="Negocio\Login.cs" />
     <Compile Include="UI\FrmInicio.cs">
       <SubType>Form</SubType>
