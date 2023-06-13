@@ -184,7 +184,6 @@
     <Content Include="Resource\FondoLogin1.png" />
     <Content Include="Resource\Logo.ico" />
     <Content Include="Resource\Logo.jpg" />
-    <Content Include="Resource\LogoFondo.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
