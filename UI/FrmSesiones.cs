@@ -17,6 +17,7 @@ namespace SistemaPsicoaprende.UI
 {
     public partial class FrmSesiones : Form
     {
+        private Form FormularioActual;
         public FrmSesiones()
         {
             InitializeComponent();
@@ -46,6 +47,22 @@ namespace SistemaPsicoaprende.UI
             CargarFacturas();
             LimpiarTextBoxes();
 
+        }
+        private void LoadForm(Form NuevoFormulario)
+        {
+            //Verifica si existe un formulario activo
+            if (FormularioActual != null)
+
+                //Configurar vuevo formulario
+                FormularioActual.Close();
+            FormularioActual = NuevoFormulario;
+            NuevoFormulario.TopLevel = false;
+            NuevoFormulario.FormBorderStyle = FormBorderStyle.None;
+            NuevoFormulario.Dock = DockStyle.Fill;
+            pnlContenedor.Controls.Add(NuevoFormulario);
+            pnlContenedor.Tag = NuevoFormulario;
+            NuevoFormulario.BringToFront();
+            NuevoFormulario.Show();
         }
 
         private void Cargartrabajadores()
@@ -95,19 +112,27 @@ namespace SistemaPsicoaprende.UI
                     }
                 }
             }
-
+            foreach (Control control in grpBoxSesiones.Controls)
+            {
+                if (control is TextBox textBox && textBox != txtBuscar)
+                {
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        return true;
+                    }
+                }
+            }
             return false;
         }
 
         private void LimpiarTextBoxes()
         {
             // Recorrer todos los controles del formulario
-            foreach (Control control in Controls)
+            foreach (Control control in grpBoxSesiones.Controls)
             {
                 if (control is TextBox textBox)
                 {
                     // Excluir el campo txtBuscar al limpiar los TextBox
-
                     textBox.Text = string.Empty;
 
                 }
@@ -120,6 +145,15 @@ namespace SistemaPsicoaprende.UI
                     maskedTextBox.Text = string.Empty;
                 }
             }
+            foreach (Control control in pnlContenedor.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Excluir el campo txtBuscar al limpiar los TextBox
+                    textBox.Text = string.Empty;
+
+                }
+            }
         }
 
         private enum ModoEdicion
@@ -130,7 +164,41 @@ namespace SistemaPsicoaprende.UI
 
         private ModoEdicion modoEdicion = ModoEdicion.NuevoRegistro;
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            Sesiones sesion = CtrlSesion.buscar(txtBuscar.Text);
+
+            if (sesion != null)
+            {
+                int FacturaIdSeleccionado = sesion.FacturaId;
+                int trabajadorIdSeleccionado = sesion.TrabajadorId;
+
+                txtcod.Text = sesion.cod_Sesion;
+                txtcod.Enabled = false;
+                datafecha.Text = sesion.fecha_Sesion.ToString();
+                mskcant.Text = sesion.cantHoras_Sesion.ToString();
+                cmbfactura.SelectedValue = FacturaIdSeleccionado;
+                cmbtrabajador.SelectedValue = trabajadorIdSeleccionado;
+
+                modoEdicion = ModoEdicion.Actualizacion;
+            }
+            else
+            {
+                MessageBox.Show("Registro: " + txtBuscar.Text + " no encontrado. Verifique que el valor es correcto", "Buscar Trabajador", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void btnListarEstu_Click(object sender, EventArgs e)
+        {
+            this.LoadForm(new FrmListadoSesiones());
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
             DateTime fecha = datafecha.Value;
             Trabajadores trabajadorSeleccionado = cmbtrabajador.SelectedItem as Trabajadores;
@@ -184,31 +252,6 @@ namespace SistemaPsicoaprende.UI
                 // Mostrar mensaje de error si no se seleccionó un departamento y municipio válidos
                 MessageBox.Show("Por favor llena todos los campos.", "Guardar");
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Sesiones sesion = CtrlSesion.buscar(txtBuscar.Text);
-
-            if (sesion != null)
-            {
-                int FacturaIdSeleccionado = sesion.FacturaId;
-                int trabajadorIdSeleccionado = sesion.TrabajadorId;
-
-                txtcod.Text = sesion.cod_Sesion;
-                txtcod.Enabled = false;
-                datafecha.Text = sesion.fecha_Sesion.ToString();
-                mskcant.Text = sesion.cantHoras_Sesion.ToString();
-                cmbfactura.SelectedValue = FacturaIdSeleccionado;
-                cmbtrabajador.SelectedValue = trabajadorIdSeleccionado;
-
-                modoEdicion = ModoEdicion.Actualizacion;
-            }
-            else
-            {
-                MessageBox.Show("Registro: " + txtBuscar.Text + " no encontrado. Verifique que el valor es correcto", "Buscar Trabajador", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-
         }
     }
 }

@@ -89,7 +89,7 @@
             this.lblFecha.AutoSize = true;
             this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFecha.ForeColor = System.Drawing.Color.SlateGray;
-            this.lblFecha.Location = new System.Drawing.Point(263, 90);
+            this.lblFecha.Location = new System.Drawing.Point(290, 87);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(86, 31);
             this.lblFecha.TabIndex = 8;

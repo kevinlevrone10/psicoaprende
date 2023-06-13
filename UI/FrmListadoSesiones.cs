@@ -13,35 +13,13 @@ using System.Windows.Forms;
 
 namespace SistemaPsicoaprende.UI
 {
-    public partial class ListadoSesion : Form
+    public partial class FrmListadoSesiones : Form
     {
-        public ListadoSesion()
+        private Form FormularioActual;
+        public FrmListadoSesiones()
         {
             InitializeComponent();
         }
-
-        private void Buscar_Click(object sender, EventArgs e)
-        {
-            string busqueda = textBusqueda.Text.Trim();
-            if (string.IsNullOrEmpty(busqueda))
-            {
-                MessageBox.Show("Por favor, ingrese un valor de búsqueda válido.", "Búsqueda",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            Sesiones sesiones = CtrlSesion.buscar(busqueda);
-
-            if (sesiones == null)
-            {
-                MessageBox.Show("No se encontró ningún estudiante con el código especificado.", "Búsqueda",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            MostrarEstudianteEnDataGridView(sesiones);
-        }
-
 
         private void MostrarEstudianteEnDataGridView(Sesiones sesiones)
         {
@@ -69,8 +47,7 @@ namespace SistemaPsicoaprende.UI
                     int trabajadorId = sesion.TrabajadorId;
 
                     // Abrir el formulario de FrmEstudiante y pasar los datos como argumentos
-                    FrmSesiones frmses = new FrmSesiones(codigo, fecha, cantidad, trabajadorId, facturaId);
-                    frmses.ShowDialog();
+                    this.LoadForm(new FrmSesiones(codigo, fecha, cantidad, trabajadorId, facturaId));
                 }
             }
         }
@@ -90,14 +67,49 @@ namespace SistemaPsicoaprende.UI
             dataGridView1.CellClick += dataGridView1_CellClick;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
+        private void LoadForm(Form NuevoFormulario)
+        {
+            //Verifica si existe un formulario activo
+            if (FormularioActual != null)
+
+                //Configurar vuevo formulario
+                FormularioActual.Close();
+            FormularioActual = NuevoFormulario;
+            NuevoFormulario.TopLevel = false;
+            NuevoFormulario.FormBorderStyle = FormBorderStyle.None;
+            NuevoFormulario.Dock = DockStyle.Fill;
+            pnlContenedor.Controls.Add(NuevoFormulario);
+            pnlContenedor.Tag = NuevoFormulario;
+            NuevoFormulario.BringToFront();
+            NuevoFormulario.Show();
         }
 
-        private void textBusqueda_TextChanged(object sender, EventArgs e)
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
+            string busqueda = txtBuscar.Text.Trim();
+            if (string.IsNullOrEmpty(busqueda))
+            {
+                MessageBox.Show("Por favor, ingrese un valor de búsqueda válido.", "Búsqueda",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
+            Sesiones sesiones = CtrlSesion.buscar(busqueda);
+
+            if (sesiones == null)
+            {
+                MessageBox.Show("No se encontró ningún estudiante con el código especificado.", "Búsqueda",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            MostrarEstudianteEnDataGridView(sesiones);
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

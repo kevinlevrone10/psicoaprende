@@ -174,11 +174,11 @@
     <Compile Include="UI\FrmListadoTrabajadores.Designer.cs">
       <DependentUpon>FrmListadoTrabajadores.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ListadoSesion.cs">
+    <Compile Include="UI\FrmListadoSesiones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ListadoSesion.Designer.cs">
-      <DependentUpon>ListadoSesion.cs</DependentUpon>
+    <Compile Include="UI\FrmListadoSesiones.Designer.cs">
+      <DependentUpon>FrmListadoSesiones.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -210,8 +210,8 @@
     <EmbeddedResource Include="UI\FrmListadoTrabajadores.resx">
       <DependentUpon>FrmListadoTrabajadores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ListadoSesion.resx">
-      <DependentUpon>ListadoSesion.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmListadoSesiones.resx">
+      <DependentUpon>FrmListadoSesiones.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="AppDatos\ModeloBD.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
