@@ -160,17 +160,17 @@
     <Compile Include="UI\FrmSesiones.Designer.cs">
       <DependentUpon>FrmSesiones.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FrmTrabajador.cs">
+    <Compile Include="UI\FrmTrabajadores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FrmTrabajador.Designer.cs">
-      <DependentUpon>FrmTrabajador.cs</DependentUpon>
+    <Compile Include="UI\FrmTrabajadores.Designer.cs">
+      <DependentUpon>FrmTrabajadores.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ListadoTrabajador.cs">
+    <Compile Include="UI\FrmListadoTrabajadores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ListadoTrabajador.Designer.cs">
-      <DependentUpon>ListadoTrabajador.cs</DependentUpon>
+    <Compile Include="UI\FrmListadoTrabajadores.Designer.cs">
+      <DependentUpon>FrmListadoTrabajadores.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -196,11 +196,11 @@
     <EmbeddedResource Include="UI\FrmSesiones.resx">
       <DependentUpon>FrmSesiones.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FrmTrabajador.resx">
-      <DependentUpon>FrmTrabajador.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmTrabajadores.resx">
+      <DependentUpon>FrmTrabajadores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ListadoTrabajador.resx">
-      <DependentUpon>ListadoTrabajador.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FrmListadoTrabajadores.resx">
+      <DependentUpon>FrmListadoTrabajadores.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="AppDatos\ModeloBD.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

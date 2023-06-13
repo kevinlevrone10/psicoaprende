@@ -31,9 +31,9 @@ namespace SistemaPsicoaprende.UI
             this.LoadForm(new FrmEstudiantes());
         }
 
-        private void btnMaestros_Click(object sender, EventArgs e)
+        private void btnTrabajadores_Click(object sender, EventArgs e)
         {
-            this.LoadForm(new FrmMaestros());
+            this.LoadForm(new FrmTrabajadores());
         }
 
         private void btnSesiones_Click(object sender, EventArgs e)
