@@ -122,11 +122,23 @@
     <Compile Include="Controlador\CtrlLogin.cs" />
     <Compile Include="Negocio\Estudiante.cs" />
     <Compile Include="Negocio\Login.cs" />
+    <Compile Include="UI\FrmEstudiante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmEstudiante.Designer.cs">
+      <DependentUpon>FrmEstudiante.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\FrmInicio.Designer.cs">
       <DependentUpon>FrmInicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmListado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmListado.Designer.cs">
+      <DependentUpon>FrmListado.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmLogin.cs">
       <SubType>Form</SubType>
@@ -157,8 +169,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\FrmEstudiante.resx">
+      <DependentUpon>FrmEstudiante.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmInicio.resx">
       <DependentUpon>FrmInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmListado.resx">
+      <DependentUpon>FrmListado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
