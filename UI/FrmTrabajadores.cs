@@ -3,15 +3,8 @@ using SistemaPsicoaprende.Controlador;
 using SistemaPsicoaprende.Negocio;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.Entity.Infrastructure;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace SistemaPsicoaprende.UI
 {
@@ -284,6 +277,16 @@ namespace SistemaPsicoaprende.UI
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void pnlContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void grbRegistrarTraba_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 

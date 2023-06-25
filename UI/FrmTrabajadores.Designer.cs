@@ -30,12 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTrabajadores));
             this.pnlContenedor = new System.Windows.Forms.Panel();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnCerrar = new System.Windows.Forms.Button();
-            this.btnListarTraba = new System.Windows.Forms.Button();
-            this.pnlMenu = new System.Windows.Forms.Panel();
             this.grbRegistrarTraba = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -53,9 +47,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtcod = new System.Windows.Forms.TextBox();
+            this.pnlMenu = new System.Windows.Forms.Panel();
+            this.btnListarTraba = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.pnlContenedor.SuspendLayout();
-            this.pnlMenu.SuspendLayout();
             this.grbRegistrarTraba.SuspendLayout();
+            this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlContenedor
@@ -67,94 +67,7 @@
             this.pnlContenedor.Name = "pnlContenedor";
             this.pnlContenedor.Size = new System.Drawing.Size(800, 450);
             this.pnlContenedor.TabIndex = 0;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
-            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(532, 5);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(89, 38);
-            this.btnGuardar.TabIndex = 61;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBuscar.BackColor = System.Drawing.Color.Gainsboro;
-            this.txtBuscar.Location = new System.Drawing.Point(119, 6);
-            this.txtBuscar.Multiline = true;
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(204, 38);
-            this.txtBuscar.TabIndex = 62;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
-            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscar.Location = new System.Drawing.Point(9, 5);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(89, 38);
-            this.btnBuscar.TabIndex = 63;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrar.Location = new System.Drawing.Point(647, 6);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(89, 37);
-            this.btnCerrar.TabIndex = 64;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // btnListarTraba
-            // 
-            this.btnListarTraba.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnListarTraba.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListarTraba.Image = ((System.Drawing.Image)(resources.GetObject("btnListarTraba.Image")));
-            this.btnListarTraba.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnListarTraba.Location = new System.Drawing.Point(425, 5);
-            this.btnListarTraba.Name = "btnListarTraba";
-            this.btnListarTraba.Size = new System.Drawing.Size(79, 38);
-            this.btnListarTraba.TabIndex = 65;
-            this.btnListarTraba.Text = "Listar";
-            this.btnListarTraba.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnListarTraba.UseVisualStyleBackColor = true;
-            this.btnListarTraba.Click += new System.EventHandler(this.btnListarTraba_Click);
-            // 
-            // pnlMenu
-            // 
-            this.pnlMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlMenu.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.pnlMenu.Controls.Add(this.btnListarTraba);
-            this.pnlMenu.Controls.Add(this.btnCerrar);
-            this.pnlMenu.Controls.Add(this.btnBuscar);
-            this.pnlMenu.Controls.Add(this.txtBuscar);
-            this.pnlMenu.Controls.Add(this.btnGuardar);
-            this.pnlMenu.Location = new System.Drawing.Point(22, 12);
-            this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(751, 48);
-            this.pnlMenu.TabIndex = 63;
+            this.pnlContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContenedor_Paint);
             // 
             // grbRegistrarTraba
             // 
@@ -185,6 +98,7 @@
             this.grbRegistrarTraba.TabIndex = 64;
             this.grbRegistrarTraba.TabStop = false;
             this.grbRegistrarTraba.Text = "Registrar Trabajador";
+            this.grbRegistrarTraba.Enter += new System.EventHandler(this.grbRegistrarTraba_Enter);
             // 
             // label8
             // 
@@ -335,6 +249,94 @@
             this.txtcod.Size = new System.Drawing.Size(100, 22);
             this.txtcod.TabIndex = 54;
             // 
+            // pnlMenu
+            // 
+            this.pnlMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlMenu.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.pnlMenu.Controls.Add(this.btnListarTraba);
+            this.pnlMenu.Controls.Add(this.btnCerrar);
+            this.pnlMenu.Controls.Add(this.btnBuscar);
+            this.pnlMenu.Controls.Add(this.txtBuscar);
+            this.pnlMenu.Controls.Add(this.btnGuardar);
+            this.pnlMenu.Location = new System.Drawing.Point(22, 12);
+            this.pnlMenu.Name = "pnlMenu";
+            this.pnlMenu.Size = new System.Drawing.Size(751, 48);
+            this.pnlMenu.TabIndex = 63;
+            // 
+            // btnListarTraba
+            // 
+            this.btnListarTraba.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnListarTraba.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListarTraba.Image = ((System.Drawing.Image)(resources.GetObject("btnListarTraba.Image")));
+            this.btnListarTraba.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnListarTraba.Location = new System.Drawing.Point(425, 5);
+            this.btnListarTraba.Name = "btnListarTraba";
+            this.btnListarTraba.Size = new System.Drawing.Size(79, 38);
+            this.btnListarTraba.TabIndex = 65;
+            this.btnListarTraba.Text = "Listar";
+            this.btnListarTraba.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnListarTraba.UseVisualStyleBackColor = true;
+            this.btnListarTraba.Click += new System.EventHandler(this.btnListarTraba_Click);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
+            this.btnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCerrar.Location = new System.Drawing.Point(647, 6);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(89, 37);
+            this.btnCerrar.TabIndex = 64;
+            this.btnCerrar.Text = "Cerrar";
+            this.btnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBuscar.Location = new System.Drawing.Point(9, 5);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(89, 38);
+            this.btnBuscar.TabIndex = 63;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBuscar.BackColor = System.Drawing.Color.Gainsboro;
+            this.txtBuscar.Location = new System.Drawing.Point(119, 6);
+            this.txtBuscar.Multiline = true;
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(204, 38);
+            this.txtBuscar.TabIndex = 62;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
+            this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardar.Location = new System.Drawing.Point(532, 5);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(89, 38);
+            this.btnGuardar.TabIndex = 61;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // FrmTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -345,10 +347,10 @@
             this.Text = "FrmTrabajador";
             this.Load += new System.EventHandler(this.FrmTrabajador_Load);
             this.pnlContenedor.ResumeLayout(false);
-            this.pnlMenu.ResumeLayout(false);
-            this.pnlMenu.PerformLayout();
             this.grbRegistrarTraba.ResumeLayout(false);
             this.grbRegistrarTraba.PerformLayout();
+            this.pnlMenu.ResumeLayout(false);
+            this.pnlMenu.PerformLayout();
             this.ResumeLayout(false);
 
         }

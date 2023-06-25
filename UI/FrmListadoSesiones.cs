@@ -1,14 +1,6 @@
 ﻿using SistemaPsicoaprende.AppDatos;
 using SistemaPsicoaprende.Controlador;
-using SistemaPsicoaprende.Negocio;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaPsicoaprende.UI
@@ -88,28 +80,42 @@ namespace SistemaPsicoaprende.UI
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             string busqueda = txtBuscar.Text.Trim();
+
             if (string.IsNullOrEmpty(busqueda))
             {
                 MessageBox.Show("Por favor, ingrese un valor de búsqueda válido.", "Búsqueda",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            Sesiones sesiones = CtrlSesion.buscar(busqueda);
-
-            if (sesiones == null)
-            {
-                MessageBox.Show("No se encontró ningún estudiante con el código especificado.", "Búsqueda",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
             }
+            else
+            {
+                Sesiones sesiones = CtrlSesion.buscar(busqueda);
 
-            MostrarEstudianteEnDataGridView(sesiones);
+                if (sesiones == null)
+                {
+                    MessageBox.Show("No se encontró ninguna sesión con el código especificado.", "Búsqueda",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MostrarEstudianteEnDataGridView(sesiones);
+                }
+            }
         }
+
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void pnlContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

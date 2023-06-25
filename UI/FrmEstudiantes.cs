@@ -23,8 +23,7 @@ namespace SistemaPsicoaprende.UI
             // Asignar los valores a los TextBox y ComboBox correspondientes en el evento Load
             Load += (sender, e) =>
             {
-                txtcod.Text = codigo;
-                txtcod.Enabled = false;
+                txtcod1.Text = codigo;
                 txtname.Text = nombre;
                 txtape.Text = apellido;
                 dateTimeFechaAL.Value = fecha_nac;
@@ -34,11 +33,43 @@ namespace SistemaPsicoaprende.UI
                 txtdom.Text = domicilio;
                 txtgrad.Text = grado;
                 txteva.Text = evaluacion;
-                cmbMunicipio.SelectedValue = municipioId;
-                cmbDepartamento.SelectedValue = departamentoId;
+
+                // Cargar la lista de departamentos
+                CargarDepartamentos();
+
+                // Verificar que se haya seleccionado un departamento válido
+                if (departamentoId > 0)
+                {
+                    // Obtener el departamento seleccionado
+                    Departamentos departamentoSeleccionado = cmbDepartamento.Items.Cast<Departamentos>().FirstOrDefault(d => d.Id == departamentoId);
+
+                    // Verificar que se haya encontrado el departamento
+                    if (departamentoSeleccionado != null)
+                    {
+                        // Seleccionar el departamento en el ComboBox
+                        cmbDepartamento.SelectedItem = departamentoSeleccionado;
+
+                        // Cargar los municipios asociados al departamento seleccionado
+                        CargarMunicipios(departamentoId);
+
+                        // Obtener el municipio seleccionado
+                        Municipios municipioSeleccionado = cmbMunicipio.Items.Cast<Municipios>().FirstOrDefault(m => m.Id == municipioId);
+
+                        // Verificar que se haya encontrado el municipio
+                        if (municipioSeleccionado != null)
+                        {
+                            // Seleccionar el municipio en el ComboBox
+                            cmbMunicipio.SelectedItem = municipioSeleccionado;
+                        }
+                    }
+                }
+
                 modoEdicion = ModoEdicion.Actualizacion;
             };
         }
+
+
+
         private void LoadForm(Form NuevoFormulario)
         {
             //Verifica si existe un formulario activo
@@ -91,18 +122,16 @@ namespace SistemaPsicoaprende.UI
             // Agregar los municipios al ComboBox
             cmbMunicipio.Items.AddRange(municipios.ToArray());
 
-            // Obtener el ID del municipio seleccionado del estudiante (si existe)
             int municipioIdSeleccionado = -1; // Valor por defecto para ningún municipio seleccionado
-            if (!string.IsNullOrEmpty(txtcod.Text))
+            if (cmbMunicipio.SelectedItem != null)
             {
-                Alumnos estudiante = CtrlEstudiante.buscar(txtcod.Text);
-                if (estudiante != null)
-                {
-                    municipioIdSeleccionado = estudiante.MunicipioId;
-                }
+                Municipios municipioSeleccionado = cmbMunicipio.SelectedItem as Municipios;
+                municipioIdSeleccionado = municipioSeleccionado.Id;
             }
-            // Establecer el municipio seleccionado en el ComboBox
+
             cmbMunicipio.SelectedItem = municipios.FirstOrDefault(m => m.Id == municipioIdSeleccionado);
+
+
         }
 
         private void cmbDepartamento_SelectedIndexChanged(object sender, EventArgs e)
@@ -140,20 +169,23 @@ namespace SistemaPsicoaprende.UI
                     }
                 }
             }
+
             foreach (Control control in pnlContenedor.Controls)
             {
-                if (control is TextBox textBox && textBox != txtBuscar)
+                if (control is TextBox textBox && textBox != txtBuscar && textBox != txtcod1)
                 {
                     if (string.IsNullOrEmpty(textBox.Text))
                     {
                         return true;
                     }
                 }
-
-                return false;
             }
+
             return false;
         }
+
+
+
 
         private void LimpiarTextBoxes()
         {
@@ -180,8 +212,16 @@ namespace SistemaPsicoaprende.UI
                 }
             }
 
-        }
+            foreach (Control control in pnlMenu.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Si el control es un TextBox, se limpia su texto estableciéndolo como vacío
+                    textBox.Text = string.Empty;
+                }
+            }
 
+        }
         private enum ModoEdicion
         {
             NuevoRegistro,
@@ -201,36 +241,94 @@ namespace SistemaPsicoaprende.UI
             this.Dispose();
         }
 
+        private void CargarEstudiante(Alumnos estudiante)
+        {
+            // Asignar los valores a los campos del formulario
+            txtcod1.Text = estudiante.cod_Alumno;
+            txtname.Text = estudiante.nom_Alumno;
+            txtape.Text = estudiante.ape_Alumno;
+            txtcol.Text = estudiante.colegio_Alumno;
+            txttel.Text = estudiante.telfResp_Alumno;
+            txtres.Text = estudiante.nomResp_Alumno;
+            txtdom.Text = estudiante.domicilio_Alumno;
+            txtgrad.Text = estudiante.gradoAcad_Alumno;
+            txteva.Text = estudiante.evaluacion_Alumno;
+            dateTimeFechaAL.Value = estudiante.fechaNac_Alumno;
+
+            // Obtener el departamento seleccionado del estudiante
+            int departamentoIdSeleccionado = estudiante.DepartamentoId;
+            Departamentos departamentoSeleccionado = cmbDepartamento.Items.OfType<Departamentos>().FirstOrDefault(d => d.Id == departamentoIdSeleccionado);
+
+            // Seleccionar el departamento correspondiente
+            if (departamentoSeleccionado != null)
+            {
+                cmbDepartamento.SelectedItem = departamentoSeleccionado;
+
+                // Cargar los municipios correspondientes al departamento seleccionado
+                CargarMunicipios(departamentoIdSeleccionado);
+
+                // Obtener el municipio seleccionado del estudiante
+                int municipioIdSeleccionado = estudiante.MunicipioId;
+
+                // Buscar el municipio correspondiente al municipioIdSeleccionado en la lista de municipios del ComboBox
+                Municipios municipioSeleccionado = cmbMunicipio.Items.OfType<Municipios>().FirstOrDefault(m => m.Id == municipioIdSeleccionado);
+
+                // Seleccionar el municipio correspondiente
+                if (municipioSeleccionado != null)
+                {
+                    cmbMunicipio.SelectedItem = municipioSeleccionado;
+                }
+
+                // Establecer el modo de edición a Actualización
+                modoEdicion = ModoEdicion.Actualizacion;
+
+            }
+        }
+
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            // Obtener el código del estudiante a buscar
+            string codigoEstudiante = txtBuscar.Text;
+
+            // Realizar la búsqueda del estudiante
+            Alumnos estudiante = CtrlEstudiante.buscar(codigoEstudiante);
+
+            if (estudiante != null)
+            {
+                // Cargar los datos del estudiante en los campos del formulario
+                CargarEstudiante(estudiante);
+
+            }
+            else
+            {
+                // Mostrar mensaje de error si no se encuentra el estudiante
+                MessageBox.Show("Registro: " + codigoEstudiante + " no encontrado. Verifique que el valor es correcto", "Buscar Estudiante", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DateTime fecha = dateTimeFechaAL.Value;
+            // Validar que se haya seleccionado un departamento y un municipio válidos
             Departamentos departamentoSeleccionado = cmbDepartamento.SelectedItem as Departamentos;
             Municipios municipioSeleccionado = cmbMunicipio.SelectedItem as Municipios;
 
-            // Verificar que se haya seleccionado un departamento y un municipio válidos
-            if ((departamentoSeleccionado != null && municipioSeleccionado != null && !CamposVacios() || !string.IsNullOrEmpty(txtBuscar.Text)))
+            if (departamentoSeleccionado != null && municipioSeleccionado != null && !CamposVacios())
             {
                 try
                 {
-                    // Verificar si el código del estudiante ya existe en la base de datos
-                    Alumnos estudianteExistente = CtrlEstudiante.buscar(txtcod.Text);
-                    if (estudianteExistente != null && modoEdicion == ModoEdicion.NuevoRegistro)
-                    {
-                        MessageBox.Show("El código de estudiante ya existe en la base de datos.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return; // Salir del método para evitar guardar el estudiante duplicado
-                    }
-
+                    
                     // Crear un objeto Estudiante con los valores de los campos del formulario
-                    Estudiante estudiante = new Estudiante(txtcod.Text, txtname.Text, txtape.Text, fecha, txtres.Text, txttel.Text, txtcol.Text, txtgrad.Text, txtdom.Text, txteva.Text, departamentoSeleccionado.Id, municipioSeleccionado.Id);
+                    Estudiante estudiante = new Estudiante(txtcod1.Text,txtname.Text, txtape.Text, dateTimeFechaAL.Value, txtres.Text, txttel.Text, txtcol.Text, txtgrad.Text, txtdom.Text, txteva.Text, departamentoSeleccionado.Id, municipioSeleccionado.Id);
 
                     // Guardar el estudiante en la base de datos
-                    int rst = estudiante.guardar();
 
-                    if (rst > 0)
+                    int resultado = estudiante.guardar();
+
+                    if (resultado > 0 )
                     {
                         // Mostrar mensaje de éxito y limpiar los campos del formulario
                         MessageBox.Show("Registro guardado", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtcod.Enabled = true;
                         LimpiarTextBoxes();
                         modoEdicion = ModoEdicion.NuevoRegistro; // Restablecer el modo de edición a NuevoRegistro
                     }
@@ -258,40 +356,9 @@ namespace SistemaPsicoaprende.UI
             }
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void pnlContenedor_Paint(object sender, PaintEventArgs e)
         {
-            // Realizar la búsqueda del estudiante
-            Alumnos estudiante = CtrlEstudiante.buscar(txtBuscar.Text);
 
-            if (estudiante != null)
-            {
-                // Obtener los IDs del departamento y municipio seleccionados en el estudiante
-                int departamentoIdSeleccionado = estudiante.DepartamentoId;
-                int municipioIdSeleccionado = estudiante.MunicipioId;
-
-                // Asignar los valores del estudiante a los campos correspondientes
-                txtcod.Text = estudiante.cod_Alumno;
-                txtcod.Enabled = false;
-                txtname.Text = estudiante.nom_Alumno;
-                txtape.Text = estudiante.ape_Alumno;
-                txtcol.Text = estudiante.colegio_Alumno;
-                txttel.Text = estudiante.telfResp_Alumno;
-                txtres.Text = estudiante.nomResp_Alumno;
-                txtdom.Text = estudiante.domicilio_Alumno;
-                txtgrad.Text = estudiante.gradoAcad_Alumno;
-                txteva.Text = estudiante.evaluacion_Alumno;
-                dateTimeFechaAL.Text = estudiante.fechaNac_Alumno.ToString();
-                cmbDepartamento.SelectedValue = departamentoIdSeleccionado;
-                cmbMunicipio.SelectedValue = municipioIdSeleccionado;
-
-                // Establecer el modo de edición a Actualizacion
-                modoEdicion = ModoEdicion.Actualizacion;
-            }
-            else
-            {
-                // Mostrar mensaje de error si no se encuentra el estudiante
-                MessageBox.Show("Registro: " + txtBuscar.Text + " no encontrado. Verifique que el valor es correcto", "Buscar Estudiante", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
         }
     }
 }

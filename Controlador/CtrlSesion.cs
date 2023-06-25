@@ -2,9 +2,6 @@
 using SistemaPsicoaprende.Negocio;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaPsicoaprende.Controlador
 {
@@ -29,6 +26,13 @@ namespace SistemaPsicoaprende.Controlador
             Sesion e = new Sesion();
 
             return e.ObtenerFacturas();
+        }
+
+        public static Facturas ObtenerFacturasid(int id)
+        {
+            Sesion e = new Sesion();
+
+            return e.ObtenerfacturasporId(id);
         }
 
         public static Sesiones buscar(string cod)

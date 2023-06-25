@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaPsicoaprende.Negocio
 {
@@ -126,6 +124,20 @@ namespace SistemaPsicoaprende.Negocio
             return trabajador; // retornando el objeto
         }
 
+        public Trabajadores ObtenerTrabajadorId(int id)
+        {
+            // establecemos el acceso a la capa de abstraccion de las entidades
+            SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection();
+
+            // buscamos el trabajador si existe , si existe pues retornaremos el objeto con sus atributos
+            Trabajadores trabajador = ctx.Trabajadores.FirstOrDefault(e => e.Id == id);
+
+            return trabajador; // retornando el objeto
+        }
+
+
+
+
         public List<Trabajadores> Leer()
         {
             //Establecer el contexto de la conexion 
@@ -134,16 +146,18 @@ namespace SistemaPsicoaprende.Negocio
             //Hacer la consulta del estudiante a filtrar
             var Listtrabajadores = ctx.Trabajadores.Select(e => new
             {
+                id = e.Id,
                 Codigo = e.cod_Trabajador,
                 Nombres = e.nom_Trabajador,
                 Apellido = e.ape_Trabajador,
-                Telefono = e.telefono_Trabajador,
+                Telefono = e.telefono_Trabajador
             }).ToList().Select(e => new Trabajadores()
             {
+                Id = e.id,
                 cod_Trabajador = e.Codigo,
                 nom_Trabajador = e.Nombres,
                 ape_Trabajador = e.Apellido,
-                telefono_Trabajador = e.Telefono,
+                telefono_Trabajador = e.Telefono
 
             });
             return Listtrabajadores.ToList(); //retornar la lista trabajadores

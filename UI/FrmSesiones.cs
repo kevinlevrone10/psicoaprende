@@ -2,16 +2,9 @@
 using SistemaPsicoaprende.Controlador;
 using SistemaPsicoaprende.Negocio;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.Entity.Infrastructure;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace SistemaPsicoaprende.UI
 {
@@ -23,11 +16,85 @@ namespace SistemaPsicoaprende.UI
             InitializeComponent();
         }
 
+        private DataTable registrosSeleccionados;
+        private DataTable registrosSeleccionados2;
+        private void FrmSesiones_Load(object sender, EventArgs e)
+        {
+            Listado();
+            Listado2();
+            dataGridView1.CellClick += dataGridView1_CellClick;
+            dataGridView2.CellClick += dataGridView2_CellClick;
+            LimpiarTextBoxes();
+
+            // Inicializar el DataTable para almacenar los registros seleccionados
+            registrosSeleccionados = new DataTable();
+            registrosSeleccionados.Columns.Add("Id", typeof(int));
+            registrosSeleccionados.Columns.Add("Nombre", typeof(string));
+
+            registrosSeleccionados2 = new DataTable();
+            registrosSeleccionados2.Columns.Add("Id", typeof(int));
+            registrosSeleccionados2.Columns.Add("Factura", typeof(string));
+
+            // Configurar el ComboBox
+            cmbtrabajador.DisplayMember = "Nombre";
+            cmbtrabajador.ValueMember = "Id";
+
+
+            cmbfactura.DisplayMember = "Factura";
+            cmbfactura.ValueMember = "Id";
+
+        }
+
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
+            {
+                int id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Id"].Value);
+
+                // Buscar el nombre del trabajador correspondiente al ID seleccionado
+                Trabajadores trabajadorSeleccionado = Ctrltrabajador.buscarporId(id);
+
+                if (trabajadorSeleccionado != null)
+                {
+                    string nombre = trabajadorSeleccionado.nom_Trabajador;
+
+                    // Limpiar el DataTable y agregar el registro seleccionado
+                    registrosSeleccionados.Clear();
+                    registrosSeleccionados.Rows.Add(id, nombre);
+
+                    // Asignar el DataTable como origen de datos del ComboBox
+                    cmbtrabajador.DataSource = registrosSeleccionados;
+                    cmbtrabajador.Refresh();
+                }
+            }
+        }
+
+
+        public void Listado()
+        {
+
+            foreach (var est in Ctrltrabajador.Buscar())
+            {
+                dataGridView1.Rows.Add(est.Id, est.cod_Trabajador, est.nom_Trabajador, "Seleccionar");
+            }
+        }
+
+
+        public void Listado2()
+        {
+
+            foreach (var fac in CtrlSesion.ObtenerFacturas())
+            {
+                dataGridView2.Rows.Add(fac.Id, fac.cod_Factura, "Seleccionar");
+            }
+        }
+
         public FrmSesiones(string codigo, DateTime fecha, int cantidad, int profesionid, int facturaid)
         {
             InitializeComponent();
 
-            // Asignar los valores a los TextBox y ComboBox correspondientes en el evento Load
+            // Asignar los valores a los TextBox correspondientes en el evento Load
             Load += (sender, e) =>
             {
                 txtcod.Text = codigo;
@@ -35,19 +102,72 @@ namespace SistemaPsicoaprende.UI
                 datafecha.Value = fecha;
                 mskcant.Text = cantidad.ToString();
                 cmbfactura.SelectedValue = facturaid;
-                cmbtrabajador.SelectedValue = profesionid;
                 modoEdicion = ModoEdicion.Actualizacion;
+
+                // Buscar el trabajador correspondiente por ID
+                Trabajadores trabajadorSeleccionado = Ctrltrabajador.buscarporId(profesionid);
+                Facturas facturaseleccionado = CtrlSesion.ObtenerFacturasid(facturaid);
+
+                if (trabajadorSeleccionado != null && facturaseleccionado != null)
+                {
+                    // Crear un DataTable con una única fila para el trabajador seleccionado
+                    DataTable registrosFiltrados = new DataTable();
+                    registrosFiltrados.Columns.Add("Id", typeof(int));
+                    registrosFiltrados.Columns.Add("Nombre", typeof(string));
+                    registrosFiltrados.Rows.Add(trabajadorSeleccionado.Id, trabajadorSeleccionado.nom_Trabajador);
+
+
+                    registrosFiltrados2 = new DataTable();
+                    registrosFiltrados2.Columns.Add("Id", typeof(int));
+                    registrosFiltrados2.Columns.Add("Factura", typeof(string));
+                    registrosFiltrados2.Rows.Add(facturaseleccionado.Id, facturaseleccionado.cod_Factura);
+
+                    // Asignar el DataTable como origen de datos del ComboBox
+                    cmbtrabajador.DataSource = registrosFiltrados;
+                    cmbtrabajador.DisplayMember = "Nombre";
+                    cmbtrabajador.ValueMember = "Id";
+
+
+
+                    cmbfactura.DataSource = registrosFiltrados2;
+                    cmbfactura.DisplayMember = "Factura";
+                    cmbfactura.ValueMember = "Id";
+
+                    // Establecer el trabajador seleccionado como el valor seleccionado en el ComboBox
+                    cmbtrabajador.SelectedValue = trabajadorSeleccionado.Id;
+                    cmbfactura.SelectedValue = facturaseleccionado.Id;
+
+                }
             };
-
         }
 
-        private void FrmSesiones_Load(object sender, EventArgs e)
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Cargartrabajadores();
-            CargarFacturas();
-            LimpiarTextBoxes();
+            if (e.ColumnIndex == dataGridView2.Columns["Edit2"].Index && e.RowIndex >= 0)
+            {
+                int id = Convert.ToInt32(dataGridView2.Rows[e.RowIndex].Cells["Identificador"].Value);
 
+                // Buscar la lógica necesaria para obtener el nombre o cualquier otro valor relacionado al ID seleccionado en dataGridView2
+                // Buscar el nombre del trabajador correspondiente al ID seleccionado
+                Facturas nombreSeleccionado = CtrlSesion.ObtenerFacturasid(id);
+
+                if (nombreSeleccionado != null)
+                {
+                    string codigo = nombreSeleccionado.cod_Factura;
+
+                    // Limpiar el DataTable y agregar el registro seleccionado
+                    registrosSeleccionados2.Clear();
+                    registrosSeleccionados2.Rows.Add(id, codigo);
+
+                    // Asignar el DataTable como origen de datos del ComboBox correspondiente en tu formulario
+                    cmbfactura.DataSource = registrosSeleccionados2;
+                    cmbfactura.Refresh();
+                }
+            }
         }
+
+
+
         private void LoadForm(Form NuevoFormulario)
         {
             //Verifica si existe un formulario activo
@@ -65,78 +185,61 @@ namespace SistemaPsicoaprende.UI
             NuevoFormulario.Show();
         }
 
-        private void Cargartrabajadores()
-        {
-            // Obtener la lista de trabajadores desde el controlador
-            List<Trabajadores> trabajador = CtrlSesion.Obtenertrabajadores();
 
-            // Configurar el ComboBox de trabajadores
-            cmbtrabajador.DisplayMember = "nom_Trabajador";
-            cmbtrabajador.ValueMember = "Id";
-
-
-            // Asignar la lista de trabajadores al ComboBox
-            cmbtrabajador.DataSource = trabajador;
-        }
-
-        private void CargarFacturas()
-        {
-            // Obtener la lista de facturas desde el controlador
-            List<Facturas> facturas = CtrlSesion.ObtenerFacturas();
-
-            // Configurar el ComboBox de facturas
-            cmbfactura.DisplayMember = "cod_Factura";
-            cmbfactura.ValueMember = "Id";
-
-
-            // Asignar la lista de facturas al ComboBox
-            cmbfactura.DataSource = facturas;
-        }
 
         private bool CamposVacios()
         {
+            bool camposVacios = true;
+
             foreach (Control control in Controls)
             {
-                if (control is TextBox textBox && textBox != txtBuscar)
+                if (control is System.Windows.Forms.TextBox textBox && textBox != txtBuscar)
                 {
-                    if (string.IsNullOrEmpty(textBox.Text))
+                    if (!string.IsNullOrEmpty(textBox.Text))
                     {
-                        return true;
+                        camposVacios = false;
+                        break;
                     }
                 }
                 else if (control is MaskedTextBox maskedTextBox)
                 {
-                    if (string.IsNullOrEmpty(maskedTextBox.Text))
+                    if (!string.IsNullOrEmpty(maskedTextBox.Text))
                     {
-                        return true;
+                        camposVacios = false;
+                        break;
                     }
                 }
             }
+
             foreach (Control control in grpBoxSesiones.Controls)
             {
-                if (control is TextBox textBox && textBox != txtBuscar)
+                if (control is System.Windows.Forms.TextBox textBox && textBox != txtBuscar)
                 {
-                    if (string.IsNullOrEmpty(textBox.Text))
+                    if (!string.IsNullOrEmpty(textBox.Text))
                     {
-                        return true;
+                        camposVacios = false;
+                        break;
                     }
                 }
             }
-            return false;
+
+            return camposVacios;
         }
+
+
 
         private void LimpiarTextBoxes()
         {
             // Recorrer todos los controles del formulario
             foreach (Control control in grpBoxSesiones.Controls)
             {
-                if (control is TextBox textBox)
+                if (control is System.Windows.Forms.TextBox textBox)
                 {
                     // Excluir el campo txtBuscar al limpiar los TextBox
                     textBox.Text = string.Empty;
 
                 }
-                else if (control is ComboBox comboBox)
+                else if (control is System.Windows.Forms.ComboBox comboBox)
                 {
                     comboBox.SelectedIndex = -1;
                 }
@@ -147,7 +250,7 @@ namespace SistemaPsicoaprende.UI
             }
             foreach (Control control in pnlContenedor.Controls)
             {
-                if (control is TextBox textBox)
+                if (control is System.Windows.Forms.TextBox textBox)
                 {
                     // Excluir el campo txtBuscar al limpiar los TextBox
                     textBox.Text = string.Empty;
@@ -171,40 +274,13 @@ namespace SistemaPsicoaprende.UI
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            Sesiones sesion = CtrlSesion.buscar(txtBuscar.Text);
-
-            if (sesion != null)
-            {
-                int FacturaIdSeleccionado = sesion.FacturaId;
-                int trabajadorIdSeleccionado = sesion.TrabajadorId;
-
-                txtcod.Text = sesion.cod_Sesion;
-                txtcod.Enabled = false;
-                datafecha.Text = sesion.fecha_Sesion.ToString();
-                mskcant.Text = sesion.cantHoras_Sesion.ToString();
-                cmbfactura.SelectedValue = FacturaIdSeleccionado;
-                cmbtrabajador.SelectedValue = trabajadorIdSeleccionado;
-
-                modoEdicion = ModoEdicion.Actualizacion;
-            }
-            else
-            {
-                MessageBox.Show("Registro: " + txtBuscar.Text + " no encontrado. Verifique que el valor es correcto", "Buscar Trabajador", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-        private void btnListarEstu_Click(object sender, EventArgs e)
-        {
-            this.LoadForm(new FrmListadoSesiones());
-        }
-
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
             DateTime fecha = datafecha.Value;
             Trabajadores trabajadorSeleccionado = cmbtrabajador.SelectedItem as Trabajadores;
             Facturas facturaSeleccionado = cmbfactura.SelectedItem as Facturas;
+
             // Verificar que se haya seleccionado un trabajador y una factura
-            if ((trabajadorSeleccionado != null && facturaSeleccionado != null && !CamposVacios() || !string.IsNullOrEmpty(txtBuscar.Text)))
+            if ((trabajadorSeleccionado != null && facturaSeleccionado != null && !CamposVacios()) || !string.IsNullOrEmpty(txtBuscar.Text))
+
             {
                 try
                 {
@@ -216,8 +292,12 @@ namespace SistemaPsicoaprende.UI
                         return; // Salir del método para evitar guardar el estudiante duplicado
                     }
 
+                    // Obtener el Id del trabajador seleccionado
+                    int trabajadorId = Convert.ToInt32(cmbtrabajador.SelectedValue);
+                    int facturaId = Convert.ToInt32(cmbfactura.SelectedValue);
+
                     // Crear un objeto sesiones con los valores de los campos del formulario
-                    Sesion sesion = new Sesion(txtcod.Text, fecha, Convert.ToInt32(mskcant.Text), trabajadorSeleccionado.Id, facturaSeleccionado.Id);
+                    Sesion sesion = new Sesion(txtcod.Text, fecha, Convert.ToInt32(mskcant.Text), trabajadorId, facturaId);
 
                     // Guardar el estudiante en la base de datos
                     int rst = sesion.guardar();
@@ -252,6 +332,92 @@ namespace SistemaPsicoaprende.UI
                 // Mostrar mensaje de error si no se seleccionó un departamento y municipio válidos
                 MessageBox.Show("Por favor llena todos los campos.", "Guardar");
             }
+        }
+
+
+        private void btnListarEstu_Click(object sender, EventArgs e)
+        {
+            this.LoadForm(new FrmListadoSesiones());
+        }
+
+        private DataTable registrosFiltrados;
+
+        private DataTable registrosFiltrados2;
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string codigo = txtBuscar.Text;
+            Sesiones sesion = CtrlSesion.buscar(codigo);
+
+            if (sesion != null)
+            {
+                int FacturaIdSeleccionado = sesion.FacturaId;
+                int trabajadorIdSeleccionado = sesion.TrabajadorId;
+
+                // Asignar los valores de la sesión a los campos del formulario
+                txtcod.Text = sesion.cod_Sesion;
+                datafecha.Value = sesion.fecha_Sesion;
+                mskcant.Text = sesion.cantHoras_Sesion.ToString();
+
+                // Buscar el trabajador correspondiente por ID
+                Trabajadores trabajadorSeleccionado = Ctrltrabajador.buscarporId(trabajadorIdSeleccionado);
+                Facturas facturaseleccionado = CtrlSesion.ObtenerFacturasid(FacturaIdSeleccionado);
+
+                if (trabajadorSeleccionado != null && facturaseleccionado != null)
+                {
+                    // Crear un DataTable con una única fila para el trabajador seleccionado
+                    registrosFiltrados = new DataTable();
+                    registrosFiltrados.Columns.Add("Id", typeof(int));
+                    registrosFiltrados.Columns.Add("Nombre", typeof(string));
+                    registrosFiltrados.Rows.Add(trabajadorSeleccionado.Id, trabajadorSeleccionado.nom_Trabajador);
+
+                    // Crear un DataTable con una única fila para la factura seleccionada
+                    registrosFiltrados2 = new DataTable();
+                    registrosFiltrados2.Columns.Add("Id", typeof(int));
+                    registrosFiltrados2.Columns.Add("Factura", typeof(string));
+                    registrosFiltrados2.Rows.Add(facturaseleccionado.Id, facturaseleccionado.cod_Factura);
+
+                    // Asignar el DataTable como origen de datos del ComboBox
+                    cmbtrabajador.DataSource = registrosFiltrados;
+                    cmbtrabajador.DisplayMember = "Nombre";
+                    cmbtrabajador.ValueMember = "Id";
+                    // Establecer el trabajador seleccionado como el valor seleccionado en el ComboBox
+                    cmbtrabajador.SelectedValue = trabajadorSeleccionado.Id;
+
+                    cmbfactura.DataSource = registrosFiltrados2;
+                    cmbfactura.DisplayMember = "Factura";
+                    cmbfactura.ValueMember = "Id";
+                    // Establecer la factura seleccionada como el valor seleccionado en el ComboBox
+                    cmbfactura.SelectedValue = facturaseleccionado.Id;
+                }
+
+                modoEdicion = ModoEdicion.Actualizacion;
+            }
+            else
+            {
+                MessageBox.Show("Registro: " + txtBuscar.Text + " no encontrado. Verifique que el valor es correcto", "Buscar Trabajador", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+
+        private void pnlContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void grpBoxSesiones_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaPsicoaprende.Negocio
 {
@@ -14,6 +12,17 @@ namespace SistemaPsicoaprende.Negocio
         public Sesion()
         {
 
+        }
+
+        public Facturas ObtenerfacturasporId(int id)
+        {
+            // establecemos el acceso a la capa de abstraccion de las entidades
+            SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection();
+
+            // buscamos la factura  si existe , si existe pues retornaremos el objeto con sus atributos
+            Facturas facts = ctx.Facturas.FirstOrDefault(e => e.Id == id);
+
+            return facts; // retornando el objeto
         }
 
         public Sesion(string codigo, DateTime fecha, int cantidad, int trabajadorId, int FacturaId)

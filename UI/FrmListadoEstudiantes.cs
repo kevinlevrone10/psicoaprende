@@ -1,14 +1,6 @@
 ﻿using SistemaPsicoaprende.AppDatos;
 using SistemaPsicoaprende.Controlador;
-using SistemaPsicoaprende.Negocio;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaPsicoaprende.UI
@@ -28,6 +20,7 @@ namespace SistemaPsicoaprende.UI
             {
                 dataGridView1.Rows.Add(est.cod_Alumno, est.nom_Alumno, est.ape_Alumno, est.fechaNac_Alumno, est.telfResp_Alumno, est.nomResp_Alumno, est.domicilio_Alumno, "Edit");
             }
+
         }
 
         private void MostrarEstudianteEnDataGridView(Alumnos estudiante)
@@ -66,7 +59,7 @@ namespace SistemaPsicoaprende.UI
                     int departamentoId = estudiante.DepartamentoId;
 
                     // Abrir el formulario de FrmEstudiante y pasar los datos como argumentos
-                    this.LoadForm(new FrmEstudiantes(codigo, nombre, apellido, fechaNacimiento, telefono, colegio, responsable, domicilio, grado, evaluacion, municipioId, departamentoId));
+                    this.LoadForm(new FrmEstudiantes(codigo , nombre, apellido, fechaNacimiento, telefono, colegio, responsable, domicilio, grado, evaluacion, municipioId, departamentoId));
                 }
             }
         }
@@ -119,6 +112,16 @@ namespace SistemaPsicoaprende.UI
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void pnlContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

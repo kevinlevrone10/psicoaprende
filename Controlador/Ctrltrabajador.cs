@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SistemaPsicoaprende.AppDatos;
+﻿using SistemaPsicoaprende.AppDatos;
 using SistemaPsicoaprende.Negocio;
+using System.Collections.Generic;
 
 
 namespace SistemaPsicoaprende.Controlador
@@ -42,6 +38,12 @@ namespace SistemaPsicoaprende.Controlador
             return e.ObtenerTrabajador(cod);
         }
 
+        public static Trabajadores buscarporId(int id)
+        {
+            Trabajador e = new Trabajador();
+
+            return e.ObtenerTrabajadorId(id);
+        }
         public static List<Trabajadores> Buscar()
         {
             Trabajador e = new Trabajador();

@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaPsicoaprende.Negocio
 {
@@ -11,15 +9,55 @@ namespace SistemaPsicoaprende.Negocio
     {
         private Alumnos est;//definir una instancia de la capa de datos Alumnos
 
+      
         public Estudiante() // constructor vacio
         {
+
+
+
+        }
+        private string GenerarCodigoEstudiante()
+        {
+            using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
+            {
+                var ultimoEstudiante = ctx.Alumnos.OrderByDescending(e => e.Id).FirstOrDefault();
+                if (ultimoEstudiante != null)
+                {
+                    // Extraer el número del último código de estudiante
+                    string ultimoCodigo = ultimoEstudiante.cod_Alumno;
+                    int ultimoNumero = int.Parse(ultimoCodigo.Substring(2));
+
+                    // Incrementar el número del código y generar el nuevo código
+                    int nuevoNumero = ultimoNumero + 1;
+                    string nuevoCodigo = "AL" + nuevoNumero.ToString("D3");
+                    return nuevoCodigo;
+                }
+                else
+                {
+                    return "AL001";
+                }
+            }
         }
 
+
+
         // constructor con parametros
-        public Estudiante(string codigo, string nombre, string apellido, DateTime fecha_nac, string responsable, string telefono, string colegio, string grado, string domicilio, string evaluacion, int departamentoId, int municipioId)
+        public Estudiante(string cod, string nombre, string apellido, DateTime fecha_nac, string responsable, string telefono, string colegio, string grado, string domicilio, string evaluacion, int departamentoId, int municipioId)
         {
             est = new Alumnos();
-            est.cod_Alumno = codigo;
+
+            if (string.IsNullOrEmpty(cod))
+            {
+                // Generar un nuevo código de estudiante automáticamente
+                est.cod_Alumno = GenerarCodigoEstudiante();
+            }
+            else
+            {
+                // Utilizar el código existente para una actualización
+                est.cod_Alumno = cod;
+            }
+
+            // Resto de asignaciones de propiedades
             est.nom_Alumno = nombre;
             est.ape_Alumno = apellido;
             est.fechaNac_Alumno = fecha_nac;
@@ -34,44 +72,48 @@ namespace SistemaPsicoaprende.Negocio
             est.EstadoAlumnoId = 1; // Asignas el estado como activo (1) por defecto
         }
 
-
         public int guardar()
         {
             int val = 0;
-            using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection()) // establecer el acceso a la capa de abstraccion de la db
+            using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
             {
-                // Buscar el estudiante existente por su código de alumno
-                Alumnos estudianteExistente = ctx.Alumnos.FirstOrDefault(e => e.cod_Alumno == est.cod_Alumno);
-
-
-                // si el estudiante no es null , pues toma ese objeto estudiante y actualiza sus propiedades
-                if (estudianteExistente != null)
+                if (string.IsNullOrEmpty(est.cod_Alumno))
                 {
-                    // Actualizar los valores del estudiante existente con los valores de la instancia "est"
-                    estudianteExistente.nom_Alumno = est.nom_Alumno;
-                    estudianteExistente.ape_Alumno = est.ape_Alumno;
-                    estudianteExistente.fechaNac_Alumno = est.fechaNac_Alumno;
-                    estudianteExistente.nomResp_Alumno = est.nomResp_Alumno;
-                    estudianteExistente.telfResp_Alumno = est.telfResp_Alumno;
-                    estudianteExistente.colegio_Alumno = est.colegio_Alumno;
-                    estudianteExistente.gradoAcad_Alumno = est.gradoAcad_Alumno;
-                    estudianteExistente.domicilio_Alumno = est.domicilio_Alumno;
-                    estudianteExistente.evaluacion_Alumno = est.evaluacion_Alumno;
-                    estudianteExistente.DepartamentoId = est.DepartamentoId;
-                    estudianteExistente.MunicipioId = est.MunicipioId;
-                    estudianteExistente.EstadoAlumnoId = est.EstadoAlumnoId;
+                    // Generar un nuevo código de estudiante automáticamente
+                    est.cod_Alumno = GenerarCodigoEstudiante();
                 }
-                else // si el objeto estudiante es null eso quiere decir que no existe y crea el nuevo registro
+                else
                 {
-                    // Crear un nuevo estudiante en la base de datos
-                    ctx.Alumnos.Add(est);
+                    // Verificar si el estudiante existente ya tiene ese código
+                    Alumnos estudianteExistente = ctx.Alumnos.FirstOrDefault(e => e.cod_Alumno == est.cod_Alumno);
+                    if (estudianteExistente != null)
+                    {
+                        // El código de estudiante ya existe, se trata de una actualización
+                        estudianteExistente.nom_Alumno = est.nom_Alumno;
+                        estudianteExistente.ape_Alumno = est.ape_Alumno;
+                        estudianteExistente.fechaNac_Alumno = est.fechaNac_Alumno;
+                        estudianteExistente.nomResp_Alumno = est.nomResp_Alumno;
+                        estudianteExistente.telfResp_Alumno = est.telfResp_Alumno;
+                        estudianteExistente.colegio_Alumno = est.colegio_Alumno;
+                        estudianteExistente.gradoAcad_Alumno = est.gradoAcad_Alumno;
+                        estudianteExistente.domicilio_Alumno = est.domicilio_Alumno;
+                        estudianteExistente.evaluacion_Alumno = est.evaluacion_Alumno;
+                        estudianteExistente.DepartamentoId = est.DepartamentoId;
+                        estudianteExistente.MunicipioId = est.MunicipioId;
+                        estudianteExistente.EstadoAlumnoId = est.EstadoAlumnoId;
+                    }
+                    else
+                    {
+                        // El código de estudiante no existe en la base de datos, es un nuevo registro
+                        ctx.Alumnos.Add(est);
+                    }
                 }
 
-                try // en una variable asignamos el cambio
+                try
                 {
                     val = ctx.SaveChanges();
                 }
-                catch // excepciones
+                catch
                 {
                     throw new ArgumentNullException();
                     throw new InvalidCastException();
@@ -80,6 +122,11 @@ namespace SistemaPsicoaprende.Negocio
             }
             return val;
         }
+
+
+
+
+
 
         public List<Departamentos> ObtenerDepartamentos()
         {
