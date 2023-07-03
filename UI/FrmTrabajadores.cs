@@ -4,6 +4,7 @@ using SistemaPsicoaprende.Negocio;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SistemaPsicoaprende.UI
@@ -40,7 +41,7 @@ namespace SistemaPsicoaprende.UI
             NuevoFormulario.BringToFront();
             NuevoFormulario.Show();
         }
-        public FrmTrabajadores(string codigo, string nombre, string apellido, string domicilio, string telefono, int profesionId, int DepartamentoId, int MunicipioId)
+        public FrmTrabajadores(string codigo, string nombre, string apellido, string domicilio, string telefono, int profesionId, int departamentoId, int municipioId)
         {
             InitializeComponent();
 
@@ -48,33 +49,55 @@ namespace SistemaPsicoaprende.UI
             Load += (sender, e) =>
             {
                 txtcod.Text = codigo;
-                txtcod.Enabled = false;
                 txtnom.Text = nombre;
                 txtape.Text = apellido;
                 txtdom.Text = domicilio;
                 Msktel.Text = telefono;
-                cmbmunicipio.SelectedValue = MunicipioId;
-                cmbdepartamento.SelectedValue = DepartamentoId;
-                cmbprofesion.SelectedValue = profesionId;
-                modoEdicion = ModoEdicion.Actualizacion;
+
+                // Seleccionar la profesión correspondiente
+                cmbprofesion.SelectedItem = cmbprofesion.Items.Cast<Profesiones>().FirstOrDefault(p => p.Id == profesionId);
+
+                CargarDepartamentos();
+
+                // Verificar que se haya seleccionado un departamento válido
+                if (departamentoId > 0)
+                {
+                    // Obtener el departamento seleccionado
+                    Departamentos departamentoSeleccionado = cmbDepartamento.Items.Cast<Departamentos>().FirstOrDefault(d => d.Id == departamentoId);
+
+                    // Verificar que se haya encontrado el departamento
+                    if (departamentoSeleccionado != null)
+                    {
+                        // Seleccionar el departamento en el ComboBox
+                        cmbDepartamento.SelectedItem = departamentoSeleccionado;
+
+                        // Cargar los municipios asociados al departamento seleccionado
+                        CargarMunicipios(departamentoId);
+
+                        // Obtener el municipio seleccionado
+                        Municipios municipioSeleccionado = cmbMunicipio.Items.Cast<Municipios>().FirstOrDefault(m => m.Id == municipioId);
+
+                        // Verificar que se haya encontrado el municipio
+                        if (municipioSeleccionado != null)
+                        {
+                            // Seleccionar el municipio en el ComboBox
+                            cmbMunicipio.SelectedItem = municipioSeleccionado;
+                        }
+                    }
+                }
+
+                    modoEdicion = ModoEdicion.Actualizacion;
             };
         }
 
+
         private void FrmTrabajador_Load(object sender, EventArgs e)
         {
-            CargarProfesiones();
+           
             CargarDepartamentos();
-            cmbdepartamento.SelectedIndexChanged += cmbDepartamento_SelectedIndexChanged;
+            cmbDepartamento.SelectedIndexChanged += cmbDepartamento_SelectedIndexChanged;
+            CargarProfesiones();
             LimpiarCampos();
-        }
-
-        private void CargarDepartamentos()
-        {
-            List<Departamentos> departamentos = CtrlEstudiante.ObtenerDepartamentos();
-
-            cmbdepartamento.DisplayMember = "nom_Departamento";
-            cmbdepartamento.ValueMember = "Id";
-            cmbdepartamento.DataSource = departamentos;
         }
 
         private void CargarProfesiones()
@@ -85,40 +108,61 @@ namespace SistemaPsicoaprende.UI
             cmbprofesion.ValueMember = "Id";
             cmbprofesion.DataSource = profesiones;
         }
+        private void CargarDepartamentos()
+        {
+            // Obtener la lista de departamentos desde el controlador
+            List<Departamentos> departamentos = CtrlEstudiante.ObtenerDepartamentos();
+
+            // Configurar el ComboBox de departamentos
+            cmbDepartamento.DisplayMember = "nom_Departamento"; // Mostrar el nombre del departamento en el ComboBox
+            cmbDepartamento.ValueMember = "Id"; // Establecer el valor del departamento como el ID
+
+            // Asignar la lista de departamentos al ComboBox
+            cmbDepartamento.DataSource = departamentos;
+        }
 
         private void CargarMunicipios(int departamentoId)
         {
+            // Obtener la lista de municipios por departamento desde el controlador
             List<Municipios> municipios = CtrlEstudiante.ObtenerMunicipiosPorDepartamento(departamentoId);
 
-            cmbmunicipio.DisplayMember = "nom_Municipio";
-            cmbmunicipio.ValueMember = "Id";
-            cmbmunicipio.DataSource = municipios;
+            // Limpiar el ComboBox de municipios antes de agregar los nuevos elementos
+            cmbMunicipio.Items.Clear();
 
-            // Obtener el ID del municipio seleccionado del trabajador (si existe)
+            // Configurar el ComboBox de municipios
+            cmbMunicipio.DisplayMember = "nom_Municipio"; // Mostrar el nombre del municipio en el ComboBox
+            cmbMunicipio.ValueMember = "Id"; // Establecer el valor del municipio como el ID
+
+            // Agregar los municipios al ComboBox
+            cmbMunicipio.Items.AddRange(municipios.ToArray());
+
             int municipioIdSeleccionado = -1; // Valor por defecto para ningún municipio seleccionado
-            if (!string.IsNullOrEmpty(txtcod.Text))
+            if (cmbMunicipio.SelectedItem != null)
             {
-                Trabajadores trabajador = Ctrltrabajador.buscar(txtcod.Text);
-                if (trabajador != null)
-                {
-                    municipioIdSeleccionado = trabajador.MunicipioId;
-                }
+                Municipios municipioSeleccionado = cmbMunicipio.SelectedItem as Municipios;
+                municipioIdSeleccionado = municipioSeleccionado.Id;
             }
-            // Establecer el municipio seleccionado en el ComboBox
-            cmbmunicipio.SelectedValue = municipioIdSeleccionado;
+
+            cmbMunicipio.SelectedItem = municipios.FirstOrDefault(m => m.Id == municipioIdSeleccionado);
+
+
         }
 
         private void cmbDepartamento_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Departamentos departamentoSeleccionado = cmbdepartamento.SelectedItem as Departamentos;
+            // Obtener el departamento seleccionado del ComboBox
+            Departamentos departamentoSeleccionado = cmbDepartamento.SelectedItem as Departamentos;
 
+            // Verificar que se haya seleccionado un departamento válido (diferente de la opción de título)
             if (departamentoSeleccionado != null && departamentoSeleccionado.Id > 0)
             {
+                // Obtener el ID del departamento seleccionado
                 int departamentoId = departamentoSeleccionado.Id;
+
+                // Cargar los municipios asociados al departamento seleccionado
                 CargarMunicipios(departamentoId);
             }
         }
-
         private void LimpiarCampos()
         {
             // Recorrer todos los controles del formulario
@@ -181,67 +225,106 @@ namespace SistemaPsicoaprende.UI
                     }
                 }
             }
+
+            foreach (Control control in pnlContenedor.Controls)
+            {
+                if (control is TextBox textBox && textBox != txtBuscar && textBox != txtcod)
+                {
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        return true;
+                    }
+                }
+            }
             return false;
+        }
+
+        private void CargarTrabajador(Trabajadores trabajador)
+        {
+            txtcod.Text = trabajador.cod_Trabajador;
+            txtnom.Text = trabajador.nom_Trabajador;
+            txtape.Text = trabajador.ape_Trabajador;
+            txtdom.Text = trabajador.domicilio_Trabajador;
+            Msktel.Text = trabajador.telefono_Trabajador;
+
+            int departamentoIdSeleccionado = trabajador.DepartamentoId;
+            int municipioIdSeleccionado = trabajador.MunicipioId;
+            int profesionIdSeleccionada = trabajador.ProfesionId;
+
+            // Obtener el departamento seleccionado del trabajador
+            Departamentos departamentoSeleccionado = cmbDepartamento.Items.OfType<Departamentos>().FirstOrDefault(d => d.Id == departamentoIdSeleccionado);
+
+            // Seleccionar el departamento correspondiente
+            if (departamentoSeleccionado != null)
+            {
+                cmbDepartamento.SelectedItem = departamentoSeleccionado;
+
+                // Cargar los municipios correspondientes al departamento seleccionado
+                CargarMunicipios(departamentoIdSeleccionado);
+
+                // Obtener el municipio seleccionado del trabajador
+                Municipios municipioSeleccionado = cmbMunicipio.Items.OfType<Municipios>().FirstOrDefault(m => m.Id == municipioIdSeleccionado);
+
+                // Seleccionar el municipio correspondiente
+                if (municipioSeleccionado != null)
+                {
+                    cmbMunicipio.SelectedItem = municipioSeleccionado;
+                }
+            }
+
+            // Obtener la profesión seleccionada del trabajador
+            Profesiones profesionSeleccionada = cmbprofesion.Items.OfType<Profesiones>().FirstOrDefault(p => p.Id == profesionIdSeleccionada);
+
+            // Seleccionar la profesión correspondiente
+            if (profesionSeleccionada != null)
+            {
+                cmbprofesion.SelectedItem = profesionSeleccionada;
+            }
+            modoEdicion = ModoEdicion.Actualizacion;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            Trabajadores trabajador = Ctrltrabajador.buscar(txtBuscar.Text);
+            // Obtener el código del trabajador a buscar
+            string codigoTrabajador = txtBuscar.Text;
+
+            // Realizar la búsqueda del trabajador
+            Trabajadores trabajador = Ctrltrabajador.buscar(codigoTrabajador);
 
             if (trabajador != null)
             {
-                int departamentoIdSeleccionado = trabajador.DepartamentoId;
-                int municipioIdSeleccionado = trabajador.MunicipioId;
-                int profesionIdSeleccionada = trabajador.ProfesionId;
-
-                txtcod.Text = trabajador.cod_Trabajador;
-                txtcod.Enabled = false;
-                txtnom.Text = trabajador.nom_Trabajador;
-                txtape.Text = trabajador.ape_Trabajador;
-                txtdom.Text = trabajador.domicilio_Trabajador;
-                Msktel.Text = trabajador.telefono_Trabajador;
-                cmbprofesion.SelectedValue = profesionIdSeleccionada;
-                cmbdepartamento.SelectedValue = departamentoIdSeleccionado;
-                cmbmunicipio.SelectedValue = municipioIdSeleccionado;
-
-                modoEdicion = ModoEdicion.Actualizacion;
+                // Cargar los datos del trabajador en los campos del formulario
+                CargarTrabajador(trabajador);
             }
             else
             {
-                MessageBox.Show("Registro: " + txtBuscar.Text + " no encontrado. Verifique que el valor es correcto", "Buscar Trabajador", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                // Mostrar mensaje de error si no se encuentra el trabajador
+                MessageBox.Show("Registro: " + codigoTrabajador + " no encontrado. Verifique que el valor es correcto", "Buscar Trabajador", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            Departamentos departamentoSeleccionado = cmbdepartamento.SelectedItem as Departamentos;
-            Municipios municipioSeleccionado = cmbmunicipio.SelectedItem as Municipios;
-            Profesiones profesionSeleccionado = cmbprofesion.SelectedItem as Profesiones;
+            // Validar que se haya seleccionado un departamento, un municipio y una profesión válidos
+            Departamentos departamentoSeleccionado = cmbDepartamento.SelectedItem as Departamentos;
+            Municipios municipioSeleccionado = cmbMunicipio.SelectedItem as Municipios;
+            Profesiones profesionSeleccionada = cmbprofesion.SelectedItem as Profesiones;
 
-            // Verificar que se haya seleccionado un departamento y un municipio válidos
-            if (departamentoSeleccionado != null && municipioSeleccionado != null && !CamposVacios() || !string.IsNullOrEmpty(txtBuscar.Text))
+          
+            if (departamentoSeleccionado != null && municipioSeleccionado != null && profesionSeleccionada != null && !CamposVacios())
             {
                 try
                 {
-                    // Verificar si el código del trabajador ya existe en la base de datos
-                    Trabajadores Existente = Ctrltrabajador.buscar(txtcod.Text);
-                    if (Existente != null && modoEdicion == ModoEdicion.NuevoRegistro)
-                    {
-                        MessageBox.Show("El código de trabajador ya existe en la base de datos.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return; // Salir del método para evitar guardar el trabajador duplicado
-                    }
-
                     // Crear un objeto Trabajador con los valores de los campos del formulario
-                    Trabajador trabajador = new Trabajador(txtcod.Text, txtnom.Text, txtape.Text, txtdom.Text, Msktel.Text, profesionSeleccionado.Id, departamentoSeleccionado.Id, municipioSeleccionado.Id);
+                    Trabajador trabajador = new Trabajador(txtcod.Text, txtnom.Text, txtape.Text, txtdom.Text, Msktel.Text, profesionSeleccionada.Id, departamentoSeleccionado.Id, municipioSeleccionado.Id);
 
                     // Guardar el trabajador en la base de datos
-                    int rst = trabajador.guardar();
+                    int resultado = trabajador.guardar();
 
-                    if (rst > 0)
+                    if (resultado > 0)
                     {
                         // Mostrar mensaje de éxito y limpiar los campos del formulario
                         MessageBox.Show("Registro guardado", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtcod.Enabled = true;
                         LimpiarCampos();
                         modoEdicion = ModoEdicion.NuevoRegistro; // Restablecer el modo de edición a NuevoRegistro
                     }
@@ -264,8 +347,8 @@ namespace SistemaPsicoaprende.UI
             }
             else
             {
-                // Mostrar mensaje de error si no se seleccionó un departamento y municipio válidos
-                MessageBox.Show("Por favor llena todos los campos o asegúrate de que el campo de búsqueda no esté vacío.", "Guardar");
+                // Mostrar mensaje de error si no se seleccionó un departamento, municipio y profesión válidos o si hay campos vacíos
+                MessageBox.Show("Por favor llena todos los campos correctamente.", "Guardar");
             }
         }
 

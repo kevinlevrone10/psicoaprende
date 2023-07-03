@@ -7,75 +7,106 @@ namespace SistemaPsicoaprende.Negocio
 {
     public class Trabajador
     {
-
         private Trabajadores tra;//definir una instancia de la capa de datos Alumnos
+        private string GenerarCodigoTrabajador()
+        {
+            using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
+            {
+                var ultimoTrabajador = ctx.Trabajadores.OrderByDescending(e => e.Id).FirstOrDefault();
+                if (ultimoTrabajador != null)
+                {
+                    // Extraer el número del último código de trabajador
+                    string ultimoCodigo = ultimoTrabajador.cod_Trabajador;
+                    int ultimoNumero = int.Parse(ultimoCodigo.Substring(1));
 
-
+                    // Incrementar el número del código y generar el nuevo código
+                    int nuevoNumero = ultimoNumero + 1;
+                    string nuevoCodigo = "T" + nuevoNumero.ToString("D3");
+                    return nuevoCodigo;
+                }
+                else
+                {
+                    return "T001";
+                }
+            }
+        }
         public Trabajador()
         {
 
         }
-
-        public Trabajador(string codigo, string nombre, string apellido, string domicilio, string telefono, int profesionId, int DepartamentoId, int MunicipioId)
+        public Trabajador(string codigo, string nombre, string apellido, string domicilio, string telefono, int profesionId, int departamentoId, int municipioId)
         {
             tra = new Trabajadores();
 
-            tra.cod_Trabajador = codigo;
+            if (string.IsNullOrEmpty(codigo))
+            {
+                // Generar un nuevo código de trabajador automáticamente
+                tra.cod_Trabajador = GenerarCodigoTrabajador();
+            }
+            else
+            {
+                // Utilizar el código existente para una actualización
+                tra.cod_Trabajador = codigo;
+            }
+
             tra.nom_Trabajador = nombre;
             tra.ape_Trabajador = apellido;
             tra.domicilio_Trabajador = domicilio;
             tra.telefono_Trabajador = telefono;
             tra.ProfesionId = profesionId;
-            tra.DepartamentoId = DepartamentoId;
-            tra.MunicipioId = MunicipioId;
-            tra.EstadoTrabajadorId = 1;
-
+            tra.DepartamentoId = departamentoId;
+            tra.MunicipioId = municipioId;
+            tra.EstadoTrabajadorId = 2;
         }
-
         public int guardar()
         {
             int val = 0;
-            using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection()) // establecer el acceso a la capa de abstraccion de la db
+
+            using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
             {
-                // Buscar el trabajador existente por su código de alumno
-                Trabajadores trabajadorExistente = ctx.Trabajadores.FirstOrDefault(e => e.cod_Trabajador == tra.cod_Trabajador);
-
-
-                // si el trabajador no es null , pues toma ese objeto trabajador y actualiza sus propiedades
-                if (trabajadorExistente != null)
+                if (string.IsNullOrEmpty(tra.cod_Trabajador))
                 {
-                    // Actualizar los valores del trabajador existente con los valores de la instancia "est"
-                    trabajadorExistente.nom_Trabajador = tra.nom_Trabajador;
-                    trabajadorExistente.ape_Trabajador = tra.ape_Trabajador;
-                    trabajadorExistente.domicilio_Trabajador = tra.domicilio_Trabajador;
-                    trabajadorExistente.telefono_Trabajador = tra.telefono_Trabajador;
-                    trabajadorExistente.ProfesionId = tra.ProfesionId;
-                    trabajadorExistente.DepartamentoId = tra.DepartamentoId;
-                    trabajadorExistente.MunicipioId = tra.MunicipioId;
-                    trabajadorExistente.EstadoTrabajadorId = tra.EstadoTrabajadorId;
-
+                    // Generar un nuevo código de trabajador automáticamente
+                    tra.cod_Trabajador = GenerarCodigoTrabajador();
                 }
-                else // si el objeto   trabajador  es null eso quiere decir que no existe y crea el nuevo registro
+                else
                 {
-                    // Crear un nuevo trabajador en la base de datos
-                    ctx.Trabajadores.Add(tra);
+                    // Buscar el trabajador existente por su código de trabajador
+                    Trabajadores trabajadorExistente = ctx.Trabajadores.FirstOrDefault(e => e.cod_Trabajador == tra.cod_Trabajador);
+
+                    if (trabajadorExistente != null)
+                    {
+                        // Actualizar los valores del trabajador existente con los valores de la instancia "tra"
+                        trabajadorExistente.nom_Trabajador = tra.nom_Trabajador;
+                        trabajadorExistente.ape_Trabajador = tra.ape_Trabajador;
+                        trabajadorExistente.domicilio_Trabajador = tra.domicilio_Trabajador;
+                        trabajadorExistente.telefono_Trabajador = tra.telefono_Trabajador;
+                        trabajadorExistente.ProfesionId = tra.ProfesionId;
+                        trabajadorExistente.DepartamentoId = tra.DepartamentoId;
+                        trabajadorExistente.MunicipioId = tra.MunicipioId;
+                        trabajadorExistente.EstadoTrabajadorId = tra.EstadoTrabajadorId;
+                    }
+                    else
+                    {
+                        // El trabajador no existe en la base de datos, es un nuevo registro
+                        ctx.Trabajadores.Add(tra);
+                    }
                 }
 
-                try // en una variable asignamos el cambio
+                try
                 {
                     val = ctx.SaveChanges();
                 }
-                catch // excepciones
+                catch
                 {
                     throw new ArgumentNullException();
                     throw new InvalidCastException();
                     throw new System.Data.Entity.Infrastructure.DbUpdateException();
                 }
             }
+
             return val;
         }
-
-
         public List<Departamentos> ObtenerDepartamentos()
         {
             // establecemos el acceso a la capa de abstraccion de las entidades
@@ -85,7 +116,6 @@ namespace SistemaPsicoaprende.Negocio
                 return ctx.Departamentos.ToList<Departamentos>();
             }
         }
-
         public List<Profesiones> Obtenerprofesiones()
         {
             // establecemos el acceso a la capa de abstraccion de las entidades
@@ -95,7 +125,6 @@ namespace SistemaPsicoaprende.Negocio
                 return ctx.Profesiones.ToList<Profesiones>();
             }
         }
-
         public List<Municipios> ObtenerMunicipiosPorDepartamento(int departamentoId)
         {
 
@@ -112,7 +141,6 @@ namespace SistemaPsicoaprende.Negocio
                 return query.ToList(); // retorna la lista con los municipios
             }
         }
-
         public Trabajadores ObtenerTrabajador(string codigo)
         {
             // establecemos el acceso a la capa de abstraccion de las entidades
@@ -123,7 +151,6 @@ namespace SistemaPsicoaprende.Negocio
 
             return trabajador; // retornando el objeto
         }
-
         public Trabajadores ObtenerTrabajadorId(int id)
         {
             // establecemos el acceso a la capa de abstraccion de las entidades
@@ -134,10 +161,6 @@ namespace SistemaPsicoaprende.Negocio
 
             return trabajador; // retornando el objeto
         }
-
-
-
-
         public List<Trabajadores> Leer()
         {
             //Establecer el contexto de la conexion 

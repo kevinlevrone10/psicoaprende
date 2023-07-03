@@ -30,8 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSesiones));
             this.pnlContenedor = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.grpBoxSesiones = new System.Windows.Forms.GroupBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Identificador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estudiante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edit2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,19 +57,11 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Identificador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edit2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlContenedor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grpBoxSesiones.SuspendLayout();
-            this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlContenedor
@@ -73,20 +74,6 @@
             this.pnlContenedor.Size = new System.Drawing.Size(800, 450);
             this.pnlContenedor.TabIndex = 16;
             this.pnlContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContenedor_Paint);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.codigo,
-            this.nombre,
-            this.Edit});
-            this.dataGridView1.Location = new System.Drawing.Point(23, 158);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(360, 150);
-            this.dataGridView1.TabIndex = 65;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // grpBoxSesiones
             // 
@@ -114,6 +101,81 @@
             this.grpBoxSesiones.TabStop = false;
             this.grpBoxSesiones.Text = "Registrar Sesiones";
             this.grpBoxSesiones.Enter += new System.EventHandler(this.grpBoxSesiones_Enter);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Identificador,
+            this.Cod,
+            this.estudiante,
+            this.Edit2});
+            this.dataGridView2.Location = new System.Drawing.Point(392, 158);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(349, 150);
+            this.dataGridView2.TabIndex = 75;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // Identificador
+            // 
+            this.Identificador.HeaderText = "Id";
+            this.Identificador.Name = "Identificador";
+            this.Identificador.Visible = false;
+            // 
+            // Cod
+            // 
+            this.Cod.HeaderText = "Codigo";
+            this.Cod.Name = "Cod";
+            // 
+            // estudiante
+            // 
+            this.estudiante.HeaderText = "Alumno";
+            this.estudiante.Name = "estudiante";
+            this.estudiante.ReadOnly = true;
+            // 
+            // Edit2
+            // 
+            this.Edit2.HeaderText = "Seleccionado";
+            this.Edit2.Name = "Edit2";
+            this.Edit2.ReadOnly = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.codigo,
+            this.nombre,
+            this.Edit});
+            this.dataGridView1.Location = new System.Drawing.Point(20, 158);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(360, 150);
+            this.dataGridView1.TabIndex = 65;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "id";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            // 
+            // codigo
+            // 
+            this.codigo.HeaderText = "Codigo";
+            this.codigo.Name = "codigo";
+            this.codigo.ReadOnly = true;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // Edit
+            // 
+            this.Edit.HeaderText = "Seleccionado";
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
             // 
             // label5
             // 
@@ -299,65 +361,11 @@
             this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuscar.BackColor = System.Drawing.Color.Gainsboro;
-            this.txtBuscar.Location = new System.Drawing.Point(117, 5);
+            this.txtBuscar.Location = new System.Drawing.Point(122, 5);
             this.txtBuscar.Multiline = true;
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(204, 38);
             this.txtBuscar.TabIndex = 62;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Identificador,
-            this.Cod,
-            this.Edit2});
-            this.dataGridView2.Location = new System.Drawing.Point(416, 158);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(255, 150);
-            this.dataGridView2.TabIndex = 75;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // Identificador
-            // 
-            this.Identificador.HeaderText = "Id";
-            this.Identificador.Name = "Identificador";
-            this.Identificador.Visible = false;
-            // 
-            // Cod
-            // 
-            this.Cod.HeaderText = "Codigo";
-            this.Cod.Name = "Cod";
-            // 
-            // Edit2
-            // 
-            this.Edit2.HeaderText = "Seleccionado";
-            this.Edit2.Name = "Edit2";
-            this.Edit2.ReadOnly = true;
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "id";
-            this.Id.Name = "Id";
-            this.Id.Visible = false;
-            // 
-            // codigo
-            // 
-            this.codigo.HeaderText = "Codigo";
-            this.codigo.Name = "codigo";
-            this.codigo.ReadOnly = true;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            // 
-            // Edit
-            // 
-            this.Edit.HeaderText = "Seleccionado";
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
             // 
             // FrmSesiones
             // 
@@ -370,12 +378,12 @@
             this.Text = "FrmSesiones";
             this.Load += new System.EventHandler(this.FrmSesiones_Load);
             this.pnlContenedor.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.grpBoxSesiones.ResumeLayout(false);
             this.grpBoxSesiones.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -401,12 +409,13 @@
         private System.Windows.Forms.Button btnListarEstu;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Identificador;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Edit2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Edit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Identificador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn estudiante;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Edit2;
     }
 }

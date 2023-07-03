@@ -101,6 +101,7 @@
             this.grpBoxEstu.TabIndex = 61;
             this.grpBoxEstu.TabStop = false;
             this.grpBoxEstu.Text = "Resgistrar Estudiante";
+            this.grpBoxEstu.Enter += new System.EventHandler(this.grpBoxEstu_Enter);
             // 
             // label12
             // 

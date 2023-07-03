@@ -36,6 +36,8 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoAlumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Alumno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -117,20 +119,33 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigo,
+            this.codigoAlumno,
+            this.Alumno,
             this.fecha,
             this.cantidad,
             this.Edit});
-            this.dataGridView1.Location = new System.Drawing.Point(179, 85);
+            this.dataGridView1.Location = new System.Drawing.Point(87, 75);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(444, 229);
+            this.dataGridView1.Size = new System.Drawing.Size(639, 229);
             this.dataGridView1.TabIndex = 78;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // codigo
             // 
-            this.codigo.HeaderText = "Codigo";
+            this.codigo.HeaderText = "Codigo_Sesion";
             this.codigo.Name = "codigo";
             this.codigo.ReadOnly = true;
+            // 
+            // codigoAlumno
+            // 
+            this.codigoAlumno.HeaderText = "Codigo_Alumno";
+            this.codigoAlumno.Name = "codigoAlumno";
+            // 
+            // Alumno
+            // 
+            this.Alumno.HeaderText = "Estudiante";
+            this.Alumno.Name = "Alumno";
+            this.Alumno.ReadOnly = true;
             // 
             // fecha
             // 
@@ -176,6 +191,8 @@
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigoAlumno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Alumno;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Edit;

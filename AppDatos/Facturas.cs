@@ -26,14 +26,12 @@ namespace SistemaPsicoaprende.AppDatos
         public double costo_Factura { get; set; }
         public System.DateTime fecha_Factura { get; set; }
         public int AlumnoId { get; set; }
-        public int EstadoSesionId { get; set; }
-        public int ServicioId { get; set; }
         public int ModalidadId { get; set; }
+        public double total_Factura { get; set; }
+        public string estado { get; set; }
     
         public virtual Alumnos Alumnos { get; set; }
-        public virtual EstadoSesiones EstadoSesiones { get; set; }
         public virtual Modalidades Modalidades { get; set; }
-        public virtual Servicios Servicios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sesiones> Sesiones { get; set; }
     }

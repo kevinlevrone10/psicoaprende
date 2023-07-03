@@ -1,6 +1,8 @@
 ﻿using SistemaPsicoaprende.AppDatos;
 using SistemaPsicoaprende.Controlador;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SistemaPsicoaprende.UI
@@ -13,10 +15,10 @@ namespace SistemaPsicoaprende.UI
             InitializeComponent();
         }
 
-        private void MostrarEstudianteEnDataGridView(Sesiones sesiones)
+        private void MostrarEstudianteEnDataGridView(Sesiones sesiones ,Alumnos alumnos)
         {
             dataGridView1.Rows.Clear();
-            dataGridView1.Rows.Add(sesiones.cod_Sesion, sesiones.fecha_Sesion, sesiones.cantHoras_Sesion, "Edit");
+            dataGridView1.Rows.Add(sesiones.cod_Sesion, alumnos.cod_Alumno,alumnos.nom_Alumno, sesiones.fecha_Sesion, sesiones.cantHoras_Sesion, "Edit");
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -43,15 +45,42 @@ namespace SistemaPsicoaprende.UI
                 }
             }
         }
-
         public void Listado()
         {
+            CtrlSesion cont = new CtrlSesion();
+            List<dynamic> sesiones = cont.Buscar();
 
-            foreach (var ses in CtrlSesion.Buscar())
+            foreach (dynamic sesionGrupo in sesiones)
             {
-                dataGridView1.Rows.Add(ses.cod_Sesion, ses.fecha_Sesion, ses.cantHoras_Sesion, "Edit");
+                string codAlumno = sesionGrupo.cod_Alumno;
+                List<dynamic> sesionesAlumno = new List<dynamic>();
+
+                foreach (var sesion in sesionGrupo.sesiones)
+                {
+                    dynamic sesionObj = new
+                    {
+                        cod_Sesion = sesion.cod_Sesion,
+                        nombreAlumno = sesion.nombreAlumno,
+                        fecha_Sesion = sesion.fecha_Sesion,
+                        cantHoras_Sesion = sesion.cantHoras_Sesion
+                    };
+
+                    sesionesAlumno.Add(sesionObj);
+                }
+
+                foreach (dynamic sesion in sesionesAlumno)
+                {
+                    string codSesion = sesion.cod_Sesion;
+                    string nombreAlumno = sesion.nombreAlumno;
+                    DateTime fechaSesion = sesion.fecha_Sesion;
+                    int cantHorasSesion = sesion.cantHoras_Sesion;
+
+                    dataGridView1.Rows.Add(codSesion, codAlumno, nombreAlumno, fechaSesion, cantHorasSesion, "Edit");
+                }
             }
         }
+
+
 
         private void ListadoSesion_Load(object sender, EventArgs e)
         {
@@ -81,6 +110,9 @@ namespace SistemaPsicoaprende.UI
         {
             string busqueda = txtBuscar.Text.Trim();
 
+            Alumnos alumnos = new Alumnos();
+
+
             if (string.IsNullOrEmpty(busqueda))
             {
                 MessageBox.Show("Por favor, ingrese un valor de búsqueda válido.", "Búsqueda",
@@ -97,7 +129,7 @@ namespace SistemaPsicoaprende.UI
                 }
                 else
                 {
-                    MostrarEstudianteEnDataGridView(sesiones);
+                    MostrarEstudianteEnDataGridView(sesiones,alumnos);
                 }
             }
         }

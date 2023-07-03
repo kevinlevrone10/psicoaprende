@@ -21,12 +21,12 @@ namespace SistemaPsicoaprende.Controlador
             return e.ObtenerTrabajadores();
         }
 
-        public static List<Facturas> ObtenerFacturas()
+        public static List<dynamic> ObtenerFacturas()
         {
             Sesion e = new Sesion();
-
             return e.ObtenerFacturas();
         }
+
 
         public static Facturas ObtenerFacturasid(int id)
         {
@@ -43,12 +43,12 @@ namespace SistemaPsicoaprende.Controlador
 
         }
 
-        public static List<Sesiones> Buscar()
+        public List<dynamic> Buscar()
         {
-            Sesion e = new Sesion();
-
-            return e.Leer();
+            Sesion sesion = new Sesion();
+            return sesion.Leer();
         }
+
     }
 
 }

@@ -63,71 +63,69 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDatos\Alumnos.cs">
-      <DependentUpon>ModeloBD.tt</DependentUpon>
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AppDatos\Departamentos.cs">
-      <DependentUpon>ModeloBD.tt</DependentUpon>
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AppDatos\DetalleNominas.cs">
-      <DependentUpon>ModeloBD.tt</DependentUpon>
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AppDatos\EstadoAlumnos.cs">
-      <DependentUpon>ModeloBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppDatos\EstadoSesiones.cs">
-      <DependentUpon>ModeloBD.tt</DependentUpon>
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AppDatos\EstadoTrabajadores.cs">
-      <DependentUpon>ModeloBD.tt</DependentUpon>
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AppDatos\Facturas.cs">
-      <DependentUpon>ModeloBD.tt</DependentUpon>
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AppDatos\Modalidades.cs">
-      <DependentUpon>ModeloBD.tt</DependentUpon>
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppDatos\ModeloBD.Context.cs">
+    <Compile Include="AppDatos\ModelDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloBD.Context.tt</DependentUpon>
+      <DependentUpon>ModelDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppDatos\ModeloBD.cs">
+    <Compile Include="AppDatos\ModelDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloBD.tt</DependentUpon>
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppDatos\ModeloBD.Designer.cs">
+    <Compile Include="AppDatos\ModelDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloBD.edmx</DependentUpon>
+      <DependentUpon>ModelDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="AppDatos\Municipios.cs">
-      <DependentUpon>ModeloBD.tt</DependentUpon>
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AppDatos\Nominas.cs">
-      <DependentUpon>ModeloBD.tt</DependentUpon>
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AppDatos\Profesiones.cs">
-      <DependentUpon>ModeloBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppDatos\Servicios.cs">
-      <DependentUpon>ModeloBD.tt</DependentUpon>
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AppDatos\Sesiones.cs">
-      <DependentUpon>ModeloBD.tt</DependentUpon>
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AppDatos\Trabajadores.cs">
-      <DependentUpon>ModeloBD.tt</DependentUpon>
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AppDatos\Usuario.cs">
-      <DependentUpon>ModeloBD.tt</DependentUpon>
+      <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Controlador\CtrlEstudiante.cs" />
+    <Compile Include="Controlador\CtrlFactura.cs" />
     <Compile Include="Controlador\CtrlLogin.cs" />
+    <Compile Include="Controlador\CtrlNomina.cs" />
     <Compile Include="Controlador\CtrlSesion.cs" />
     <Compile Include="Controlador\Ctrltrabajador.cs" />
     <Compile Include="Negocio\Estudiante.cs" />
+    <Compile Include="Negocio\Factura.cs" />
     <Compile Include="Negocio\Login.cs" />
+    <Compile Include="Negocio\Nomina.cs" />
     <Compile Include="Negocio\Sesion.cs" />
     <Compile Include="Negocio\Trabajador.cs" />
     <Compile Include="UI\FrmEstudiantes.cs">
@@ -135,6 +133,12 @@
     </Compile>
     <Compile Include="UI\FrmEstudiantes.Designer.cs">
       <DependentUpon>FrmEstudiantes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmFactura.Designer.cs">
+      <DependentUpon>FrmFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmInicio.cs">
       <SubType>Form</SubType>
@@ -156,6 +160,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\FrmNominas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmNominas.Designer.cs">
+      <DependentUpon>FrmNominas.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmSesiones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +202,9 @@
     <EmbeddedResource Include="UI\FrmEstudiantes.resx">
       <DependentUpon>FrmEstudiantes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmFactura.resx">
+      <DependentUpon>FrmFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmInicio.resx">
       <DependentUpon>FrmInicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmNominas.resx">
+      <DependentUpon>FrmNominas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmSesiones.resx">
       <DependentUpon>FrmSesiones.cs</DependentUpon>
@@ -213,12 +229,13 @@
     <EmbeddedResource Include="UI\FrmListadoSesiones.resx">
       <DependentUpon>FrmListadoSesiones.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="AppDatos\ModeloBD.edmx">
+    <EntityDeploy Include="AppDatos\ModelDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloBD.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="AppDatos\ModeloBD.edmx.diagram">
-      <DependentUpon>ModeloBD.edmx</DependentUpon>
+    <None Include="App.Config" />
+    <None Include="AppDatos\ModelDB.edmx.diagram">
+      <DependentUpon>ModelDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -231,20 +248,17 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="AppDatos\ModeloBD.Context.tt">
+    <Content Include="AppDatos\ModelDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeloBD.edmx</DependentUpon>
-      <LastGenOutput>ModeloBD.Context.cs</LastGenOutput>
+      <DependentUpon>ModelDB.edmx</DependentUpon>
+      <LastGenOutput>ModelDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="AppDatos\ModeloBD.tt">
+    <Content Include="AppDatos\ModelDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeloBD.edmx</DependentUpon>
-      <LastGenOutput>ModeloBD.cs</LastGenOutput>
+      <DependentUpon>ModelDB.edmx</DependentUpon>
+      <LastGenOutput>ModelDB.cs</LastGenOutput>
     </Content>
     <Content Include="Resource\Fondo3.jpeg" />
     <Content Include="Resource\Fondo4.png" />

@@ -76,13 +76,25 @@ namespace SistemaPsicoaprende.Negocio
         }
 
 
-        public List<Facturas> ObtenerFacturas()
+        public List<dynamic> ObtenerFacturas()
         {
-            // establecemos el acceso a la capa de abstraccion de las entidades
             using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
             {
-                // retornamos la lista con los trabajadores
-                return ctx.Facturas.ToList<Facturas>();
+                var facturas = (from f in ctx.Facturas
+                                join a in ctx.Alumnos on f.AlumnoId equals a.Id
+                                select new
+                                {
+                                    FacturaId = f.Id,
+                                    CodigoAlumno = a.cod_Alumno,
+                                    NombreAlumno = a.nom_Alumno
+                                }).ToList();
+
+                return facturas.Select(f => (dynamic)new
+                {
+                    FacturaId = f.FacturaId,
+                    CodigoAlumno = f.CodigoAlumno,
+                    NombreAlumno = f.NombreAlumno
+                }).ToList();
             }
         }
 
@@ -107,27 +119,45 @@ namespace SistemaPsicoaprende.Negocio
             return sesion; // retornando el objeto
         }
 
-        public List<Sesiones> Leer()
+        public List<dynamic> Leer()
         {
-            //Establecer el contexto de la conexion 
+            // Establecer el contexto de la conexión
             SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection();
 
-            //Hacer la consulta del estudiante a filtrar
-            var ListSesiones = ctx.Sesiones.Select(e => new
-            {
-                Codido = e.cod_Sesion,
-                fecha = e.fecha_Sesion,
-                cantidad = e.cantHoras_Sesion,
+            // Hacer la consulta y combinar las tablas mediante join
+            var sesiones = (from s in ctx.Sesiones
+                            join f in ctx.Facturas on s.FacturaId equals f.Id
+                            join a in ctx.Alumnos on f.AlumnoId equals a.Id
+                            select new
+                            {
+                                cod_Sesion = s.cod_Sesion,
+                                cod_Alumno = a.cod_Alumno,
+                                nombreAlumno = a.nom_Alumno,
+                                fecha_Sesion = s.fecha_Sesion,
+                                cantHoras_Sesion = s.cantHoras_Sesion
+                               
+                            })
+                            .GroupBy(s => s.cod_Alumno) // Agrupar por el código del alumno
+                            .Select(g => new
+                            {
+                                cod_Alumno = g.Key,
+                                sesiones = g.ToList()
+                            })
+                            .ToList();
 
-            }).ToList().Select(e => new Sesiones()
-            {
-                cod_Sesion = e.Codido,
-                fecha_Sesion = e.fecha,
-                cantHoras_Sesion = e.cantidad
+            return sesiones.Cast<dynamic>().ToList();
+        }
 
-            });
-            return ListSesiones.ToList(); //retornar la lista sesiones
-        }//Fin del metodo
+
+
+        
+
+
+
+
+
+
+
 
     }
 }

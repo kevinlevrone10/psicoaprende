@@ -29,14 +29,12 @@ namespace SistemaPsicoaprende.AppDatos
         public virtual DbSet<Departamentos> Departamentos { get; set; }
         public virtual DbSet<DetalleNominas> DetalleNominas { get; set; }
         public virtual DbSet<EstadoAlumnos> EstadoAlumnos { get; set; }
-        public virtual DbSet<EstadoSesiones> EstadoSesiones { get; set; }
         public virtual DbSet<EstadoTrabajadores> EstadoTrabajadores { get; set; }
         public virtual DbSet<Facturas> Facturas { get; set; }
         public virtual DbSet<Modalidades> Modalidades { get; set; }
         public virtual DbSet<Municipios> Municipios { get; set; }
         public virtual DbSet<Nominas> Nominas { get; set; }
         public virtual DbSet<Profesiones> Profesiones { get; set; }
-        public virtual DbSet<Servicios> Servicios { get; set; }
         public virtual DbSet<Sesiones> Sesiones { get; set; }
         public virtual DbSet<Trabajadores> Trabajadores { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }

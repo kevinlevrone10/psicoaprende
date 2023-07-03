@@ -80,15 +80,15 @@ namespace SistemaPsicoaprende.UI
             }
         }
 
-
         public void Listado2()
         {
-
-            foreach (var fac in CtrlSesion.ObtenerFacturas())
+            foreach (dynamic factura in CtrlSesion.ObtenerFacturas())
             {
-                dataGridView2.Rows.Add(fac.Id, fac.cod_Factura, "Seleccionar");
+                dataGridView2.Rows.Add(factura.FacturaId, factura.CodigoAlumno, factura.NombreAlumno, "Seleccionar");
             }
         }
+
+
 
         public FrmSesiones(string codigo, DateTime fecha, int cantidad, int profesionid, int facturaid)
         {
@@ -185,46 +185,42 @@ namespace SistemaPsicoaprende.UI
             NuevoFormulario.Show();
         }
 
-
-
         private bool CamposVacios()
         {
-            bool camposVacios = true;
-
             foreach (Control control in Controls)
             {
-                if (control is System.Windows.Forms.TextBox textBox && textBox != txtBuscar)
+                if (control is TextBox textBox )
                 {
-                    if (!string.IsNullOrEmpty(textBox.Text))
+                    if (string.IsNullOrEmpty(textBox.Text))
                     {
-                        camposVacios = false;
-                        break;
+                        return true;
                     }
                 }
                 else if (control is MaskedTextBox maskedTextBox)
                 {
-                    if (!string.IsNullOrEmpty(maskedTextBox.Text))
+                    if (string.IsNullOrEmpty(maskedTextBox.Text))
                     {
-                        camposVacios = false;
-                        break;
+                        return true;
                     }
                 }
             }
 
-            foreach (Control control in grpBoxSesiones.Controls)
+            foreach (Control control in pnlMenu.Controls)
             {
-                if (control is System.Windows.Forms.TextBox textBox && textBox != txtBuscar)
+                if (control is TextBox textBox && textBox != txtBuscar)
                 {
-                    if (!string.IsNullOrEmpty(textBox.Text))
+                    if (string.IsNullOrEmpty(textBox.Text))
                     {
-                        camposVacios = false;
-                        break;
+                        return true;
                     }
                 }
             }
 
-            return camposVacios;
+            return false;
         }
+
+
+
 
 
 
@@ -284,17 +280,19 @@ namespace SistemaPsicoaprende.UI
             {
                 try
                 {
-                    // Verificar si el código del estudiante ya existe en la base de datos
-                    Sesiones sesionExistente = CtrlSesion.buscar(txtcod.Text);
-                    if (sesionExistente != null && modoEdicion == ModoEdicion.NuevoRegistro)
-                    {
-                        MessageBox.Show("El código de la sesion ya existe en la base de datos.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return; // Salir del método para evitar guardar el estudiante duplicado
-                    }
-
-                    // Obtener el Id del trabajador seleccionado
                     int trabajadorId = Convert.ToInt32(cmbtrabajador.SelectedValue);
                     int facturaId = Convert.ToInt32(cmbfactura.SelectedValue);
+
+        
+                    // Verificar si se han cumplido todas las sesiones de la factura
+                    bool sesionesCumplidas = CtrlFactura.VerificarCumplimientoSesiones(facturaId);
+
+                    if (sesionesCumplidas)
+                    {
+                        // Mostrar mensaje de error
+                        MessageBox.Show("Esta factura ya se han cumplido todas las sesiones.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return; // Salir del método para evitar guardar la sesión
+                    }
 
                     // Crear un objeto sesiones con los valores de los campos del formulario
                     Sesion sesion = new Sesion(txtcod.Text, fecha, Convert.ToInt32(mskcant.Text), trabajadorId, facturaId);

@@ -8,13 +8,8 @@ namespace SistemaPsicoaprende.Negocio
     public class Estudiante
     {
         private Alumnos est;//definir una instancia de la capa de datos Alumnos
-
-      
         public Estudiante() // constructor vacio
         {
-
-
-
         }
         private string GenerarCodigoEstudiante()
         {
@@ -38,8 +33,6 @@ namespace SistemaPsicoaprende.Negocio
                 }
             }
         }
-
-
 
         // constructor con parametros
         public Estudiante(string cod, string nombre, string apellido, DateTime fecha_nac, string responsable, string telefono, string colegio, string grado, string domicilio, string evaluacion, int departamentoId, int municipioId)
@@ -122,11 +115,6 @@ namespace SistemaPsicoaprende.Negocio
             }
             return val;
         }
-
-
-
-
-
 
         public List<Departamentos> ObtenerDepartamentos()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using SistemaPsicoaprende.UI;
 
 namespace SistemaPsicoaprende
 {
@@ -13,7 +14,7 @@ namespace SistemaPsicoaprende
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLogin());
+            Application.Run(new FrmNominas());
         }
     }
 }

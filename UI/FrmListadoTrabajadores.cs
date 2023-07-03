@@ -1,5 +1,6 @@
 ﻿using SistemaPsicoaprende.AppDatos;
 using SistemaPsicoaprende.Controlador;
+using SistemaPsicoaprende.Negocio;
 using System;
 using System.Windows.Forms;
 
@@ -32,23 +33,21 @@ namespace SistemaPsicoaprende.UI
         private void MostrarEstudianteEnDataGridView(Trabajadores trabajador)
         {
             dataGridView1.Rows.Clear();
-            dataGridView1.Rows.Add(trabajador.cod_Trabajador, trabajador.nom_Trabajador, trabajador.ape_Trabajador, trabajador.telefono_Trabajador, trabajador.ProfesionId, "Edit");
+            dataGridView1.Rows.Add(trabajador.cod_Trabajador, trabajador.nom_Trabajador, trabajador.ape_Trabajador, trabajador.telefono_Trabajador, "Edit");
+
+            
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dataGridView1.Columns["Edit"].Index && e.RowIndex >= 0)
             {
-                // Obtener los valores de la fila seleccionada
                 DataGridViewRow selectedRow = dataGridView1.Rows[e.RowIndex];
                 string codigo = selectedRow.Cells[0].Value.ToString();
-
-                // Obtener el estudiante completo utilizando el código
-                Trabajadores trabajador = Ctrltrabajador.buscar(codigo);
+                var trabajador = Ctrltrabajador.buscar(codigo);
 
                 if (trabajador != null)
                 {
-                    // Obtener los valores de los campos del estudiante
                     string nombre = trabajador.nom_Trabajador;
                     string apellido = trabajador.ape_Trabajador;
                     string domicilio = trabajador.domicilio_Trabajador;
@@ -57,11 +56,12 @@ namespace SistemaPsicoaprende.UI
                     int municipioId = trabajador.MunicipioId;
                     int departamentoId = trabajador.DepartamentoId;
 
-                    // Abrir el formulario de FrmTrabajadores y pasar los datos como argumentos
-                    this.LoadForm(new FrmTrabajadores(codigo, nombre, apellido, domicilio, telefono, profesionId, municipioId, departamentoId));
+                    this.LoadForm(new FrmTrabajadores(codigo, nombre, apellido, domicilio, telefono, profesionId, departamentoId, municipioId));
                 }
             }
         }
+
+
         private void LoadForm(Form NuevoFormulario)
         {
             //Verifica si existe un formulario activo
@@ -104,6 +104,11 @@ namespace SistemaPsicoaprende.UI
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void pnlContenedor_Paint(object sender, PaintEventArgs e)
         {
 
         }

@@ -34,7 +34,6 @@ namespace SistemaPsicoaprende.UI
                 txtgrad.Text = grado;
                 txteva.Text = evaluacion;
 
-                // Cargar la lista de departamentos
                 CargarDepartamentos();
 
                 // Verificar que se haya seleccionado un departamento válido
@@ -63,6 +62,7 @@ namespace SistemaPsicoaprende.UI
                         }
                     }
                 }
+
 
                 modoEdicion = ModoEdicion.Actualizacion;
             };
@@ -102,7 +102,6 @@ namespace SistemaPsicoaprende.UI
             // Configurar el ComboBox de departamentos
             cmbDepartamento.DisplayMember = "nom_Departamento"; // Mostrar el nombre del departamento en el ComboBox
             cmbDepartamento.ValueMember = "Id"; // Establecer el valor del departamento como el ID
-
             // Asignar la lista de departamentos al ComboBox
             cmbDepartamento.DataSource = departamentos;
         }
@@ -118,7 +117,6 @@ namespace SistemaPsicoaprende.UI
             // Configurar el ComboBox de municipios
             cmbMunicipio.DisplayMember = "nom_Municipio"; // Mostrar el nombre del municipio en el ComboBox
             cmbMunicipio.ValueMember = "Id"; // Establecer el valor del municipio como el ID
-
             // Agregar los municipios al ComboBox
             cmbMunicipio.Items.AddRange(municipios.ToArray());
 
@@ -128,10 +126,7 @@ namespace SistemaPsicoaprende.UI
                 Municipios municipioSeleccionado = cmbMunicipio.SelectedItem as Municipios;
                 municipioIdSeleccionado = municipioSeleccionado.Id;
             }
-
             cmbMunicipio.SelectedItem = municipios.FirstOrDefault(m => m.Id == municipioIdSeleccionado);
-
-
         }
 
         private void cmbDepartamento_SelectedIndexChanged(object sender, EventArgs e)
@@ -183,8 +178,6 @@ namespace SistemaPsicoaprende.UI
 
             return false;
         }
-
-
 
 
         private void LimpiarTextBoxes()
@@ -317,7 +310,6 @@ namespace SistemaPsicoaprende.UI
             {
                 try
                 {
-                    
                     // Crear un objeto Estudiante con los valores de los campos del formulario
                     Estudiante estudiante = new Estudiante(txtcod1.Text,txtname.Text, txtape.Text, dateTimeFechaAL.Value, txtres.Text, txttel.Text, txtcol.Text, txtgrad.Text, txtdom.Text, txteva.Text, departamentoSeleccionado.Id, municipioSeleccionado.Id);
 
@@ -357,6 +349,11 @@ namespace SistemaPsicoaprende.UI
         }
 
         private void pnlContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void grpBoxEstu_Enter(object sender, EventArgs e)
         {
 
         }
