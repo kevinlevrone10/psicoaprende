@@ -2,7 +2,6 @@
 using SistemaPsicoaprende.Controlador;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace SistemaPsicoaprende.UI
@@ -15,10 +14,10 @@ namespace SistemaPsicoaprende.UI
             InitializeComponent();
         }
 
-        private void MostrarEstudianteEnDataGridView(Sesiones sesiones ,Alumnos alumnos)
+        private void MostrarEstudianteEnDataGridView(Sesiones sesiones, Alumnos alumnos)
         {
             dataGridView1.Rows.Clear();
-            dataGridView1.Rows.Add(sesiones.cod_Sesion, alumnos.cod_Alumno,alumnos.nom_Alumno, sesiones.fecha_Sesion, sesiones.cantHoras_Sesion, "Edit");
+            dataGridView1.Rows.Add(sesiones.cod_Sesion, alumnos.cod_Alumno, alumnos.nom_Alumno, sesiones.fecha_Sesion, sesiones.cantHoras_Sesion, "Edit");
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -36,12 +35,11 @@ namespace SistemaPsicoaprende.UI
                 {
                     // Obtener los valores de los campos de la sesion
                     DateTime fecha = sesion.fecha_Sesion;
-                    int cantidad = sesion.cantHoras_Sesion;
                     int facturaId = sesion.FacturaId;
                     int trabajadorId = sesion.TrabajadorId;
 
                     // Abrir el formulario de FrmEstudiante y pasar los datos como argumentos
-                    this.LoadForm(new FrmSesiones(codigo, fecha, cantidad, trabajadorId, facturaId));
+                    this.LoadForm(new FrmSesiones(codigo, fecha,trabajadorId, facturaId));
                 }
             }
         }
@@ -129,7 +127,7 @@ namespace SistemaPsicoaprende.UI
                 }
                 else
                 {
-                    MostrarEstudianteEnDataGridView(sesiones,alumnos);
+                    MostrarEstudianteEnDataGridView(sesiones, alumnos);
                 }
             }
         }

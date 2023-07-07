@@ -1,17 +1,13 @@
 ﻿using SistemaPsicoaprende.AppDatos;
-using System.Collections.Generic;
 using System;
-using SistemaPsicoaprende.Negocio;
+using System.Collections.Generic;
 using System.Linq;
-
 public class Nomina
 {
-
     private Nominas nomina;
 
     public Nomina()
     {
-
     }
 
     public Nomina(DateTime pagoDesde, DateTime pagoHasta, DateTime fechaPago)
@@ -27,12 +23,10 @@ public class Nomina
     public int AgregarNomina(List<DetalleNominas> lst)
     {
         int val = 0;
-
         using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
         {
             ctx.Nominas.Add(nomina);
             val = ctx.SaveChanges();
-
             if (val > 0)
             {
                 foreach (DetalleNominas detalle in lst)
@@ -41,22 +35,23 @@ public class Nomina
                     {
                         NominaId = nomina.Id,
                         total_Horas = detalle.total_Horas,
-                        valor_pHoras = detalle.valor_pHoras,
+                        total = detalle.total,
                         salario_Neto = detalle.salario_Neto,
                         viaticos = detalle.viaticos
                     };
-
                     ctx.DetalleNominas.Add(dn);
                 }
-
                 val += ctx.SaveChanges();
+                // Calcular el total pagado y actualizar el campo en la tabla Nominas
+                double totalPagado = lst.Sum(detalle => detalle.salario_Neto);
+                nomina.totalpago_Nomina = totalPagado;
+                ctx.SaveChanges();
             }
         }
-
         return val;
     }
 
-    public  List<dynamic> ObtenerHorasTrabajadas(DateTime fechaDesde, DateTime fechaHasta)
+    public List<dynamic> ObtenerHorasTrabajadas(DateTime fechaDesde, DateTime fechaHasta)
     {
         using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
         {
@@ -81,11 +76,5 @@ public class Nomina
             return listaHorasTrabajadas;
         }
     }
-
-
-
-
-
-
 }
 

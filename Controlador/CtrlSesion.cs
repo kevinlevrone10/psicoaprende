@@ -8,9 +8,9 @@ namespace SistemaPsicoaprende.Controlador
     public class CtrlSesion
     {
 
-        public static int Agregar(string codigo, DateTime fechaNac, int cantidad, int trabajadorid, int facturaId)
+        public static int Agregar(string codigo, DateTime fechaNac, int trabajadorid, int facturaId)
         {
-            Sesion e = new Sesion(codigo, fechaNac, cantidad, trabajadorid, facturaId);
+            Sesion e = new Sesion(codigo, fechaNac, trabajadorid, facturaId);
             return e.guardar();
         }
 

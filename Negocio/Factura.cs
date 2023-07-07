@@ -46,7 +46,7 @@ namespace SistemaPsicoaprende.Negocio
             fac.fecha_Factura = fecha;
             fac.AlumnoId = alumnoId;
             fac.ModalidadId = modalidadId;
-            fac.estado = "En Curso";
+            fac.EstadoSesionId = 1;
         }
 
         public int GuardarFactura()
@@ -66,7 +66,7 @@ namespace SistemaPsicoaprende.Negocio
                     throw new InvalidCastException();
                     throw new System.Data.Entity.Infrastructure.DbUpdateException();
                 }
-              
+
             }
             return val;
         }
@@ -94,6 +94,28 @@ namespace SistemaPsicoaprende.Negocio
             return estudiante; // retornando el objeto
         }
 
+        public void ActualizarEstadoFacturas()
+        {
+            using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
+            {
+                // Obtener todas las facturas en curso
+                List<Facturas> facturasEnCurso = ctx.Facturas.Where(f => f.EstadoSesionId == 1).ToList();
+
+                foreach (Facturas factura in facturasEnCurso)
+                {
+                    // Verificar si se han cumplido las sesiones de la factura
+                    if (SeCumplieronSesiones(factura.Id))
+                    {
+                        // Cambiar el estado de la factura a "finalizada"
+                        factura.EstadoSesionId = 2;
+                    }
+                }
+
+                ctx.SaveChanges(); // Guardar los cambios en la base de datos
+            }
+        }
+
+
         public bool SeCumplieronSesiones(int facturaId)
         {
             using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
@@ -107,10 +129,6 @@ namespace SistemaPsicoaprende.Negocio
 
                     if (sesionesRealizadas >= sesionesContratadas)
                     {
-                        // Cambiar el estado de la factura a "finalizada"
-                        factura.estado = "finalizada";
-                        ctx.SaveChanges(); // Guardar los cambios en la base de datos
-
                         return true;
                     }
                 }
@@ -118,6 +136,7 @@ namespace SistemaPsicoaprende.Negocio
 
             return false;
         }
+
 
 
 

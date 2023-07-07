@@ -14,12 +14,6 @@ namespace SistemaPsicoaprende.AppDatos
     
     public partial class Sesiones
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Sesiones()
-        {
-            this.DetalleNominas = new HashSet<DetalleNominas>();
-        }
-    
         public int Id { get; set; }
         public string cod_Sesion { get; set; }
         public System.DateTime fecha_Sesion { get; set; }
@@ -27,8 +21,6 @@ namespace SistemaPsicoaprende.AppDatos
         public int TrabajadorId { get; set; }
         public int FacturaId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetalleNominas> DetalleNominas { get; set; }
         public virtual Facturas Facturas { get; set; }
         public virtual Trabajadores Trabajadores { get; set; }
     }

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using SistemaPsicoaprende.UI;
+using System;
 using System.Windows.Forms;
-using SistemaPsicoaprende.UI;
 
 namespace SistemaPsicoaprende
 {

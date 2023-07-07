@@ -59,7 +59,7 @@ namespace SistemaPsicoaprende.UI
                     int departamentoId = estudiante.DepartamentoId;
 
                     // Abrir el formulario de FrmEstudiante y pasar los datos como argumentos
-                    this.LoadForm(new FrmEstudiantes(codigo , nombre, apellido, fechaNacimiento, telefono, colegio, responsable, domicilio, grado, evaluacion, municipioId, departamentoId));
+                    this.LoadForm(new FrmEstudiantes(codigo, nombre, apellido, fechaNacimiento, telefono, colegio, responsable, domicilio, grado, evaluacion, municipioId, departamentoId));
                 }
             }
         }

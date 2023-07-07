@@ -1,6 +1,5 @@
 ﻿using SistemaPsicoaprende.AppDatos;
 using SistemaPsicoaprende.Controlador;
-using SistemaPsicoaprende.Negocio;
 using System;
 using System.Windows.Forms;
 
@@ -35,7 +34,7 @@ namespace SistemaPsicoaprende.UI
             dataGridView1.Rows.Clear();
             dataGridView1.Rows.Add(trabajador.cod_Trabajador, trabajador.nom_Trabajador, trabajador.ape_Trabajador, trabajador.telefono_Trabajador, "Edit");
 
-            
+
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

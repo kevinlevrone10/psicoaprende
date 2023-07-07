@@ -86,14 +86,14 @@ namespace SistemaPsicoaprende.UI
                     }
                 }
 
-                    modoEdicion = ModoEdicion.Actualizacion;
+                modoEdicion = ModoEdicion.Actualizacion;
             };
         }
 
 
         private void FrmTrabajador_Load(object sender, EventArgs e)
         {
-           
+
             CargarDepartamentos();
             cmbDepartamento.SelectedIndexChanged += cmbDepartamento_SelectedIndexChanged;
             CargarProfesiones();
@@ -310,7 +310,7 @@ namespace SistemaPsicoaprende.UI
             Municipios municipioSeleccionado = cmbMunicipio.SelectedItem as Municipios;
             Profesiones profesionSeleccionada = cmbprofesion.SelectedItem as Profesiones;
 
-          
+
             if (departamentoSeleccionado != null && municipioSeleccionado != null && profesionSeleccionada != null && !CamposVacios())
             {
                 try

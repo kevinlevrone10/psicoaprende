@@ -84,13 +84,13 @@ namespace SistemaPsicoaprende.UI
         {
             foreach (dynamic factura in CtrlSesion.ObtenerFacturas())
             {
-                dataGridView2.Rows.Add(factura.FacturaId, factura.CodigoAlumno, factura.NombreAlumno, "Seleccionar");
+                dataGridView2.Rows.Add(factura.FacturaId, factura.CodigoFactura ,factura.nombre,"Seleccionar");
             }
         }
 
 
 
-        public FrmSesiones(string codigo, DateTime fecha, int cantidad, int profesionid, int facturaid)
+        public FrmSesiones(string codigo, DateTime fecha, int profesionid, int facturaid)
         {
             InitializeComponent();
 
@@ -100,7 +100,6 @@ namespace SistemaPsicoaprende.UI
                 txtcod.Text = codigo;
                 txtcod.Enabled = false;
                 datafecha.Value = fecha;
-                mskcant.Text = cantidad.ToString();
                 cmbfactura.SelectedValue = facturaid;
                 modoEdicion = ModoEdicion.Actualizacion;
 
@@ -189,7 +188,7 @@ namespace SistemaPsicoaprende.UI
         {
             foreach (Control control in Controls)
             {
-                if (control is TextBox textBox )
+                if (control is TextBox textBox)
                 {
                     if (string.IsNullOrEmpty(textBox.Text))
                     {
@@ -283,19 +282,8 @@ namespace SistemaPsicoaprende.UI
                     int trabajadorId = Convert.ToInt32(cmbtrabajador.SelectedValue);
                     int facturaId = Convert.ToInt32(cmbfactura.SelectedValue);
 
-        
-                    // Verificar si se han cumplido todas las sesiones de la factura
-                    bool sesionesCumplidas = CtrlFactura.VerificarCumplimientoSesiones(facturaId);
-
-                    if (sesionesCumplidas)
-                    {
-                        // Mostrar mensaje de error
-                        MessageBox.Show("Esta factura ya se han cumplido todas las sesiones.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return; // Salir del método para evitar guardar la sesión
-                    }
-
                     // Crear un objeto sesiones con los valores de los campos del formulario
-                    Sesion sesion = new Sesion(txtcod.Text, fecha, Convert.ToInt32(mskcant.Text), trabajadorId, facturaId);
+                    Sesion sesion = new Sesion(txtcod.Text, fecha, trabajadorId, facturaId);
 
                     // Guardar el estudiante en la base de datos
                     int rst = sesion.guardar();
@@ -304,7 +292,6 @@ namespace SistemaPsicoaprende.UI
                     {
                         // Mostrar mensaje de éxito y limpiar los campos del formulario
                         MessageBox.Show("Registro guardado", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtcod.Enabled = true;
                         LimpiarTextBoxes();
                         modoEdicion = ModoEdicion.NuevoRegistro; // Restablecer el modo de edición a NuevoRegistro
                     }
@@ -352,10 +339,7 @@ namespace SistemaPsicoaprende.UI
                 int FacturaIdSeleccionado = sesion.FacturaId;
                 int trabajadorIdSeleccionado = sesion.TrabajadorId;
 
-                // Asignar los valores de la sesión a los campos del formulario
-                txtcod.Text = sesion.cod_Sesion;
                 datafecha.Value = sesion.fecha_Sesion;
-                mskcant.Text = sesion.cantHoras_Sesion.ToString();
 
                 // Buscar el trabajador correspondiente por ID
                 Trabajadores trabajadorSeleccionado = Ctrltrabajador.buscarporId(trabajadorIdSeleccionado);
@@ -397,23 +381,7 @@ namespace SistemaPsicoaprende.UI
             }
         }
 
-
         private void pnlContenedor_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void grpBoxSesiones_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

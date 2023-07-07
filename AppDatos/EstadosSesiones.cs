@@ -12,27 +12,18 @@ namespace SistemaPsicoaprende.AppDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class Facturas
+    public partial class EstadosSesiones
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Facturas()
+        public EstadosSesiones()
         {
-            this.Sesiones = new HashSet<Sesiones>();
+            this.Facturas = new HashSet<Facturas>();
         }
     
         public int Id { get; set; }
-        public string cod_Factura { get; set; }
-        public int cantSesiones_Factura { get; set; }
-        public double costo_Factura { get; set; }
-        public System.DateTime fecha_Factura { get; set; }
-        public int AlumnoId { get; set; }
-        public int ModalidadId { get; set; }
-        public int EstadoSesionId { get; set; }
+        public string estado { get; set; }
     
-        public virtual Alumnos Alumnos { get; set; }
-        public virtual EstadosSesiones EstadosSesiones { get; set; }
-        public virtual Modalidades Modalidades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sesiones> Sesiones { get; set; }
+        public virtual ICollection<Facturas> Facturas { get; set; }
     }
 }

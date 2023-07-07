@@ -311,13 +311,13 @@ namespace SistemaPsicoaprende.UI
                 try
                 {
                     // Crear un objeto Estudiante con los valores de los campos del formulario
-                    Estudiante estudiante = new Estudiante(txtcod1.Text,txtname.Text, txtape.Text, dateTimeFechaAL.Value, txtres.Text, txttel.Text, txtcol.Text, txtgrad.Text, txtdom.Text, txteva.Text, departamentoSeleccionado.Id, municipioSeleccionado.Id);
+                    Estudiante estudiante = new Estudiante(txtcod1.Text, txtname.Text, txtape.Text, dateTimeFechaAL.Value, txtres.Text, txttel.Text, txtcol.Text, txtgrad.Text, txtdom.Text, txteva.Text, departamentoSeleccionado.Id, municipioSeleccionado.Id);
 
                     // Guardar el estudiante en la base de datos
 
                     int resultado = estudiante.guardar();
 
-                    if (resultado > 0 )
+                    if (resultado > 0)
                     {
                         // Mostrar mensaje de éxito y limpiar los campos del formulario
                         MessageBox.Show("Registro guardado", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);

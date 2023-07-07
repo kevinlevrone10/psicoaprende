@@ -24,6 +24,7 @@ namespace SistemaPsicoaprende.AppDatos
         public System.DateTime pagoDesde_Nomina { get; set; }
         public System.DateTime pagoHasta_Nomina { get; set; }
         public System.DateTime fechaPago_Nomina { get; set; }
+        public double totalpago_Nomina { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetalleNominas> DetalleNominas { get; set; }

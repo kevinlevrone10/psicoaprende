@@ -7,9 +7,9 @@ namespace SistemaPsicoaprende.Controlador
 {
     public class CtrlEstudiante
     {
-        public static int Agregar(string cod ,string nombre, string apellido, DateTime fechaNac, string responsable, string telefono, string colegio, string grado, string domicilio, string evaluacion, int departamentoId, int municipioId)
+        public static int Agregar(string cod, string nombre, string apellido, DateTime fechaNac, string responsable, string telefono, string colegio, string grado, string domicilio, string evaluacion, int departamentoId, int municipioId)
         {
-            Estudiante e = new Estudiante(cod , nombre, apellido, fechaNac, responsable, telefono, colegio, grado, domicilio, evaluacion, departamentoId, municipioId);
+            Estudiante e = new Estudiante(cod, nombre, apellido, fechaNac, responsable, telefono, colegio, grado, domicilio, evaluacion, departamentoId, municipioId);
             return e.guardar();
         }
 

@@ -15,14 +15,12 @@ namespace SistemaPsicoaprende.AppDatos
     public partial class DetalleNominas
     {
         public int Id { get; set; }
-        public double valor_pHoras { get; set; }
+        public decimal total { get; set; }
         public int total_Horas { get; set; }
-        public double viaticos { get; set; }
+        public decimal viaticos { get; set; }
         public double salario_Neto { get; set; }
         public int NominaId { get; set; }
-        public int SesionId { get; set; }
     
         public virtual Nominas Nominas { get; set; }
-        public virtual Sesiones Sesiones { get; set; }
     }
 }
