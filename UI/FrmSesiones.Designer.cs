@@ -30,8 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSesiones));
             this.pnlContenedor = new System.Windows.Forms.Panel();
+            this.txtcod = new System.Windows.Forms.TextBox();
             this.grpBoxSesiones = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Identificador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edit2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,11 +54,6 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.txtcod = new System.Windows.Forms.TextBox();
-            this.Identificador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edit2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlContenedor.SuspendLayout();
             this.grpBoxSesiones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -72,6 +72,14 @@
             this.pnlContenedor.Size = new System.Drawing.Size(800, 450);
             this.pnlContenedor.TabIndex = 16;
             this.pnlContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContenedor_Paint);
+            // 
+            // txtcod
+            // 
+            this.txtcod.Location = new System.Drawing.Point(3, 133);
+            this.txtcod.Name = "txtcod";
+            this.txtcod.Size = new System.Drawing.Size(27, 20);
+            this.txtcod.TabIndex = 65;
+            this.txtcod.Visible = false;
             // 
             // grpBoxSesiones
             // 
@@ -108,6 +116,29 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(332, 150);
             this.dataGridView2.TabIndex = 75;
+            // 
+            // Identificador
+            // 
+            this.Identificador.HeaderText = "Id";
+            this.Identificador.Name = "Identificador";
+            this.Identificador.Visible = false;
+            // 
+            // Cod
+            // 
+            this.Cod.HeaderText = "Codigo";
+            this.Cod.Name = "Cod";
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Alumno";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // Edit2
+            // 
+            this.Edit2.HeaderText = "Selecciona";
+            this.Edit2.Name = "Edit2";
+            this.Edit2.ReadOnly = true;
             // 
             // dataGridView1
             // 
@@ -298,37 +329,6 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(204, 38);
             this.txtBuscar.TabIndex = 62;
-            // 
-            // txtcod
-            // 
-            this.txtcod.Location = new System.Drawing.Point(3, 133);
-            this.txtcod.Name = "txtcod";
-            this.txtcod.Size = new System.Drawing.Size(27, 20);
-            this.txtcod.TabIndex = 65;
-            this.txtcod.Visible = false;
-            // 
-            // Identificador
-            // 
-            this.Identificador.HeaderText = "Id";
-            this.Identificador.Name = "Identificador";
-            this.Identificador.Visible = false;
-            // 
-            // Cod
-            // 
-            this.Cod.HeaderText = "Codigo";
-            this.Cod.Name = "Cod";
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Alumno";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // Edit2
-            // 
-            this.Edit2.HeaderText = "Selecciona";
-            this.Edit2.Name = "Edit2";
-            this.Edit2.ReadOnly = true;
             // 
             // FrmSesiones
             // 

@@ -39,18 +39,28 @@ namespace SistemaPsicoaprende.UI
             {
                 try
                 {
-                    decimal costo  = Convert.ToDecimal(dataGridView1.SelectedCells[0].Value);  
-                    // Crear un objeto Factura con los valores de los campos del formulario
-                    Factura facturas = new Factura(Convert.ToInt32(txtcant.Text), Convert.ToDouble(costo), fecha, Convert.ToInt32(txtid.Text), modalidaseleccionada.Id);
 
-                    // Guardar la factura en la base de datos
-
-                    int resultado = facturas.GuardarFactura();
-
-                    if (resultado > 0)
+                    if (dataGridView1.Rows.Count > 0)
                     {
-                        MessageBox.Show("Registro guardado", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        decimal total = Convert.ToDecimal(dataGridView1.Rows[0].Cells[2].Value);
+
+                        // Crear un objeto Factura con los valores de los campos del formulario
+                        Factura facturas = new Factura(Convert.ToInt32(txtcant.Text), Convert.ToDouble(total), fecha, Convert.ToInt32(txtid.Text), modalidaseleccionada.Id);
+
+                        // Guardar la factura en la base de datos
+
+                        int resultado = facturas.GuardarFactura();
+
+                        if (resultado > 0)
+                        {
+                            MessageBox.Show("Registro guardado", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
+                    else
+                    {
+                        MessageBox.Show("calcule el total de la factura");
+                    }
+                   
                 }
                 catch (ArgumentNullException arg)
                 {
@@ -73,16 +83,12 @@ namespace SistemaPsicoaprende.UI
                 // Mostrar mensaje de error si no se seleccionó un departamento y municipio válidos
                 MessageBox.Show("Por favor llena todos los campos.", "Guardar");
             }
-
-
-
         }
 
         private void FrmFactura_Load(object sender, EventArgs e)
         {
             CargarModalidades();
         }
-
 
         private void txtcod_TextChanged(object sender, EventArgs e)
         {
@@ -99,7 +105,6 @@ namespace SistemaPsicoaprende.UI
             else
             {
                 txtest.Text = string.Empty; // Limpiar el TextBox si no se encontró un alumno
-
             }
         }
 

@@ -74,7 +74,7 @@
     <Compile Include="AppDatos\EstadoAlumnos.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppDatos\EstadosSesiones.cs">
+    <Compile Include="AppDatos\EstadoFactura.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AppDatos\EstadoTrabajadores.cs">

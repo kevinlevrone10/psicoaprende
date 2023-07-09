@@ -84,7 +84,7 @@ namespace SistemaPsicoaprende.UI
         {
             foreach (dynamic factura in CtrlSesion.ObtenerFacturas())
             {
-                dataGridView2.Rows.Add(factura.FacturaId, factura.CodigoFactura ,factura.nombre,"Seleccionar");
+                dataGridView2.Rows.Add(factura.FacturaId, factura.CodigoFactura ,factura.Nombre,"Seleccionar");
             }
         }
 
@@ -266,7 +266,6 @@ namespace SistemaPsicoaprende.UI
         {
             this.Dispose();
         }
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             DateTime fecha = datafecha.Value;
@@ -275,46 +274,49 @@ namespace SistemaPsicoaprende.UI
 
             // Verificar que se haya seleccionado un trabajador y una factura
             if ((trabajadorSeleccionado != null && facturaSeleccionado != null && !CamposVacios()) || !string.IsNullOrEmpty(txtBuscar.Text))
-
             {
                 try
                 {
                     int trabajadorId = Convert.ToInt32(cmbtrabajador.SelectedValue);
                     int facturaId = Convert.ToInt32(cmbfactura.SelectedValue);
+                    string codigoSesion = txtcod.Text;
 
-                    // Crear un objeto sesiones con los valores de los campos del formulario
-                    Sesion sesion = new Sesion(txtcod.Text, fecha, trabajadorId, facturaId);
+                    // Verificar si se han cumplido todas las sesiones contratadas antes de guardar la sesión
+                    bool todasSesionesRealizadas = CtrlFactura.VerificarCumplimientoSesiones(facturaId);
 
-                    // Guardar el estudiante en la base de datos
-                    int rst = sesion.guardar();
-
-                    if (rst > 0)
+                    if (todasSesionesRealizadas && modoEdicion == ModoEdicion.NuevoRegistro)
                     {
-                        // Mostrar mensaje de éxito y limpiar los campos del formulario
+                        MessageBox.Show("No se pueden agregar más sesiones a esta factura porque ya se han cumplido todas las sesiones contratadas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    Sesion sesion = new Sesion(codigoSesion, fecha, trabajadorId, facturaId);
+                    int resultado = sesion.guardar();
+
+                    if (resultado > 0)
+                    {
                         MessageBox.Show("Registro guardado", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LimpiarTextBoxes();
-                        modoEdicion = ModoEdicion.NuevoRegistro; // Restablecer el modo de edición a NuevoRegistro
+                        modoEdicion = string.IsNullOrEmpty(codigoSesion) ? ModoEdicion.NuevoRegistro : ModoEdicion.Actualizacion;
+
+                        CtrlFactura.actualizarestado(); // Actualizar el estado de las facturas
                     }
                 }
                 catch (ArgumentNullException arg)
                 {
-                    // Mostrar mensaje de error en caso de ArgumentNullException
                     MessageBox.Show("Se ha producido una falla al ejecutar la acción guardar: " + arg.Message, "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (InvalidOperationException inv)
                 {
-                    // Mostrar mensaje de error en caso de InvalidOperationException
                     MessageBox.Show("Se ha producido una falla al ejecutar la acción guardar: " + inv.Message, "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (DbUpdateException db)
                 {
-                    // Mostrar mensaje de error en caso de DbUpdateException
                     MessageBox.Show("Se ha producido una falla al ejecutar la acción guardar: " + db.Message, "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                // Mostrar mensaje de error si no se seleccionó un departamento y municipio válidos
                 MessageBox.Show("Por favor llena todos los campos.", "Guardar");
             }
         }

@@ -2,18 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace SistemaPsicoaprende.Negocio
 {
     public class Sesion
     {
         private Sesiones ses;//definir una instancia de la capa de datos Sesiones
-
         public Sesion()
         {
 
         }
-
         private string GenerarCodigoSesion()
         {
             using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
@@ -38,8 +37,6 @@ namespace SistemaPsicoaprende.Negocio
                 }
             }
         }
-
-
         public Facturas ObtenerfacturasporId(int id)
         {
             // establecemos el acceso a la capa de abstraccion de las entidades
@@ -50,7 +47,6 @@ namespace SistemaPsicoaprende.Negocio
 
             return facts; // retornando el objeto
         }
-
         public Sesion(string codigo, DateTime fecha, int trabajadorId, int FacturaId)
         {
             ses = new Sesiones();
@@ -70,81 +66,84 @@ namespace SistemaPsicoaprende.Negocio
             ses.TrabajadorId = trabajadorId;
             ses.FacturaId = FacturaId;
         }
-
-
-
-
         public int guardar()
         {
             int val = 0;
-            using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection()) // establecer el acceso a la capa de abstraccion de la db
+            using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
             {
-
                 if (string.IsNullOrEmpty(ses.cod_Sesion))
                 {
-                    // Generar un nuevo código de estudiante automáticamente
                     ses.cod_Sesion = GenerarCodigoSesion();
                 }
                 else
                 {
-                    // verificar si la sesion existe
-                    Sesiones SesionExistente = ctx.Sesiones.FirstOrDefault(e => e.cod_Sesion == ses.cod_Sesion);
-                    // si la sesion no es null , pues toma ese objeto sesion y actualiza sus propiedades
-                    if (SesionExistente != null)
+                    Sesiones sesionExistente = ctx.Sesiones.FirstOrDefault(e => e.cod_Sesion == ses.cod_Sesion);
+
+                    if (sesionExistente != null)
                     {
-                        // Actualizar los valores dela sesion existente con los valores de la instancia "ses"
-                        SesionExistente.cod_Sesion = ses.cod_Sesion;
-                        SesionExistente.fecha_Sesion = ses.fecha_Sesion;
-                        SesionExistente.cantHoras_Sesion = ses.cantHoras_Sesion;
-                        SesionExistente.TrabajadorId = ses.TrabajadorId;
-                        SesionExistente.FacturaId = ses.FacturaId;
+                        sesionExistente.fecha_Sesion = ses.fecha_Sesion;
+                        sesionExistente.cantHoras_Sesion = ses.cantHoras_Sesion;
+                        sesionExistente.TrabajadorId = ses.TrabajadorId;
+                        sesionExistente.FacturaId = ses.FacturaId;
                     }
-                    else // si el objeto sesiones es null eso quiere decir que no existe y crea el nuevo registro
+                    else
                     {
-                        // Crear un nuevo estudiante en la base de datos
                         ctx.Sesiones.Add(ses);
                     }
                 }
-                try // en una variable asignamos el cambio
+
+                try
                 {
                     val = ctx.SaveChanges();
                 }
-                catch // excepciones
+                catch (Exception ex)
                 {
-                    throw new ArgumentNullException();
-                    throw new InvalidCastException();
-                    throw new System.Data.Entity.Infrastructure.DbUpdateException();
+                    MessageBox.Show("Se ha producido un error al guardar el registro: " + ex.Message, "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
             return val;
         }
-
-
         public List<dynamic> ObtenerFacturas()
         {
             using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
             {
-                var facturas = (from f in ctx.Facturas
-                                join a in ctx.Alumnos on f.AlumnoId equals a.Id
-                                join es in ctx.EstadosSesiones on f.EstadoSesionId equals es.Id
-                                where es.Id == 1 // Filtrar por el estado de sesión deseado (1 en este caso)
-                                select new
-                                {
-                                    FacturaId = f.Id,
-                                    CodigoFactura = f.cod_Factura,
-                                    nombre = a.nom_Alumno,
-                                }).ToList();
+                var facturas = ctx.Facturas
+                    .Join(
+                        ctx.Alumnos,
+                        f => f.AlumnoId,
+                        a => a.Id,
+                        (f, a) => new
+                        {
+                            Factura = f,
+                            Alumno = a
+                        }
+                    )
+                    .GroupBy(
+                        fa => fa.Alumno.Id,
+                        fa => fa.Factura,
+                        (alumnoId, facturasGrupo) => new
+                        {
+                            AlumnoId = alumnoId,
+                            FacturaReciente = facturasGrupo.OrderByDescending(f => f.fecha_Factura).FirstOrDefault()
+                        }
+                    )
+                    .Select(fa => new
+                    {
+                        FacturaId = fa.FacturaReciente.Id,
+                        CodigoFactura = fa.FacturaReciente.cod_Factura,
+                        Nombre = fa.FacturaReciente.Alumnos.nom_Alumno
+                    })
+                    .ToList();
 
                 return facturas.Select(f => (dynamic)new
                 {
                     FacturaId = f.FacturaId,
                     CodigoFactura = f.CodigoFactura,
-                    nombre = f.nombre
+                    Nombre = f.Nombre
                 }).ToList();
             }
         }
-
-
         public List<Trabajadores> ObtenerTrabajadores()
         {
             // establecemos el acceso a la capa de abstraccion de las entidades
@@ -154,7 +153,6 @@ namespace SistemaPsicoaprende.Negocio
                 return ctx.Trabajadores.ToList<Trabajadores>();
             }
         }
-
         public Sesiones ObtenerSesion(string codigo)
         {
             // establecemos el acceso a la capa de abstraccion de las entidades
@@ -165,7 +163,6 @@ namespace SistemaPsicoaprende.Negocio
 
             return sesion; // retornando el objeto
         }
-
         public List<dynamic> Leer()
         {
             // Establecer el contexto de la conexión
@@ -194,17 +191,6 @@ namespace SistemaPsicoaprende.Negocio
 
             return sesiones.Cast<dynamic>().ToList();
         }
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }

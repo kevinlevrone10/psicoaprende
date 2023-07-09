@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace SistemaPsicoaprende.Negocio
 {
@@ -46,7 +47,8 @@ namespace SistemaPsicoaprende.Negocio
             fac.fecha_Factura = fecha;
             fac.AlumnoId = alumnoId;
             fac.ModalidadId = modalidadId;
-            fac.EstadoSesionId = 1;
+            fac.EstadoSesionId = "En curso";
+            fac.EstadofacturaId= 1;
         }
 
         public int GuardarFactura()
@@ -54,8 +56,32 @@ namespace SistemaPsicoaprende.Negocio
             int val = 0;
             using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
             {
-                ctx.Facturas.Add(fac);
 
+                if (string.IsNullOrEmpty(fac.cod_Factura))
+                {
+                    // Generar un nuevo código de factura automáticamente
+                    fac.cod_Factura = GenerarCodigoFactura();
+                }
+                else
+                {
+                    // Verificar si la factura existente ya tiene ese código
+                    Facturas facturaexistente = ctx.Facturas.FirstOrDefault(e => e.cod_Factura == fac.cod_Factura);
+
+                    if (facturaexistente != null)
+                    {
+                        facturaexistente.cantSesiones_Factura = fac.cantSesiones_Factura;
+                        facturaexistente.costo_Factura = fac.costo_Factura;
+                        facturaexistente.fecha_Factura = fac.fecha_Factura;
+                        facturaexistente.AlumnoId = fac.AlumnoId;
+                        facturaexistente.ModalidadId = fac.ModalidadId;
+                        facturaexistente.EstadoSesionId = facturaexistente.EstadoSesionId;
+                        facturaexistente.EstadoFactura = facturaexistente.EstadoFactura;
+                    }
+                    else
+                    {
+                        ctx.Facturas.Add(fac);
+                    }
+                }
                 try
                 {
                     val = ctx.SaveChanges();
@@ -73,14 +99,12 @@ namespace SistemaPsicoaprende.Negocio
 
         public List<Modalidades> ObtenerModalidades()
         {
-
             // establecemos el acceso a la capa de abstraccion de las entidades
             using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
             {
                 // retornamos la lista con las modalidades
                 return ctx.Modalidades.ToList<Modalidades>();
             }
-
         }
 
         public Alumnos ObtenerEstudiantePorCarnet(string carnet)
@@ -94,26 +118,43 @@ namespace SistemaPsicoaprende.Negocio
             return estudiante; // retornando el objeto
         }
 
+        public Facturas ObtenerfacturaporId(int id)
+        {
+            // establecemos el acceso a la capa de abstraccion de las entidades
+            SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection();
+
+            // buscamos la factura si existe , si existe pues retornaremos el objeto con sus atributos
+            Facturas factura = ctx.Facturas.FirstOrDefault(e => e.Id == id);
+
+            return factura; // retornando el objeto
+        }
+
         public void ActualizarEstadoFacturas()
         {
             using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
             {
-                // Obtener todas las facturas en curso
-                List<Facturas> facturasEnCurso = ctx.Facturas.Where(f => f.EstadoSesionId == 1).ToList();
+                List<Facturas> facturas = ctx.Facturas.ToList();
 
-                foreach (Facturas factura in facturasEnCurso)
+                foreach (Facturas factura in facturas)
                 {
-                    // Verificar si se han cumplido las sesiones de la factura
-                    if (SeCumplieronSesiones(factura.Id))
+                    bool todasSesionesRealizadas = SeCumplieronSesiones(factura.Id);
+
+                    if (todasSesionesRealizadas)
                     {
-                        // Cambiar el estado de la factura a "finalizada"
-                        factura.EstadoSesionId = 2;
+                        factura.EstadoSesionId = "Terminado";
                     }
+                    else
+                    {
+                        factura.EstadoSesionId = "En curso";
+                    }
+                   
                 }
 
                 ctx.SaveChanges(); // Guardar los cambios en la base de datos
             }
         }
+
+
 
 
         public bool SeCumplieronSesiones(int facturaId)
@@ -127,8 +168,9 @@ namespace SistemaPsicoaprende.Negocio
                     int sesionesContratadas = factura.cantSesiones_Factura;
                     int sesionesRealizadas = ctx.Sesiones.Count(s => s.FacturaId == facturaId);
 
-                    if (sesionesRealizadas >= sesionesContratadas)
+                    if (sesionesRealizadas == sesionesContratadas)
                     {
+                        // Todas las sesiones contratadas ya se han realizado, incluyendo las nuevas sesiones
                         return true;
                     }
                 }
@@ -136,8 +178,6 @@ namespace SistemaPsicoaprende.Negocio
 
             return false;
         }
-
-
 
 
 

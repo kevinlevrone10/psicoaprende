@@ -14,7 +14,7 @@ namespace SistemaPsicoaprende
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmNominas());
+            Application.Run(new FrmFactura());
         }
     }
 }

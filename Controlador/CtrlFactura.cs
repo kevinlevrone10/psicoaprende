@@ -29,12 +29,28 @@ namespace SistemaPsicoaprende.Controlador
 
         }
 
+        public static Facturas buscarfac(int id)
+        {
+            Factura f = new Factura();
+
+            return f.ObtenerfacturaporId(id);
+
+        }
 
         public static bool VerificarCumplimientoSesiones(int facturaId)
         {
             Factura f = new Factura();
 
             return f.SeCumplieronSesiones(facturaId);
+        }
+
+
+        public static void actualizarestado()
+        {
+            Factura f = new Factura();
+
+           f.ActualizarEstadoFacturas();
+
         }
 
 
