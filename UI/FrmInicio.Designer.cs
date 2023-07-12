@@ -35,7 +35,9 @@
             this.lblHora = new System.Windows.Forms.Label();
             this.lblFecha = new System.Windows.Forms.Label();
             this.pnlMenuLateral = new System.Windows.Forms.Panel();
-            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnReportes = new System.Windows.Forms.Button();
+            this.btnGestionFinaciera = new System.Windows.Forms.Button();
+            this.btnInicio = new System.Windows.Forms.Button();
             this.btnSesiones = new System.Windows.Forms.Button();
             this.btnTrabajadores = new System.Windows.Forms.Button();
             this.btnEstudiantes = new System.Windows.Forms.Button();
@@ -44,6 +46,7 @@
             this.btnSalir2 = new System.Windows.Forms.Button();
             this.lblSesionUsuario = new System.Windows.Forms.Label();
             this.Tiempo = new System.Windows.Forms.Timer(this.components);
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.pnlContenedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlMenuLateral.SuspendLayout();
@@ -53,22 +56,23 @@
             // 
             // pnlContenedor
             // 
-            this.pnlContenedor.BackColor = System.Drawing.Color.White;
+            this.pnlContenedor.BackColor = System.Drawing.Color.Silver;
             this.pnlContenedor.Controls.Add(this.pictureBox2);
             this.pnlContenedor.Controls.Add(this.lblHora);
             this.pnlContenedor.Controls.Add(this.lblFecha);
             this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContenedor.Location = new System.Drawing.Point(225, 60);
             this.pnlContenedor.Name = "pnlContenedor";
-            this.pnlContenedor.Size = new System.Drawing.Size(859, 564);
+            this.pnlContenedor.Size = new System.Drawing.Size(799, 449);
             this.pnlContenedor.TabIndex = 12;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Location = new System.Drawing.Point(58, 153);
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(58, 95);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(765, 330);
+            this.pictureBox2.Size = new System.Drawing.Size(705, 330);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
@@ -78,7 +82,7 @@
             this.lblHora.AutoSize = true;
             this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHora.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lblHora.Location = new System.Drawing.Point(401, 23);
+            this.lblHora.Location = new System.Drawing.Point(355, 3);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(126, 46);
             this.lblHora.TabIndex = 9;
@@ -87,9 +91,10 @@
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
+            this.lblFecha.BackColor = System.Drawing.Color.Transparent;
             this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.ForeColor = System.Drawing.Color.SlateGray;
-            this.lblFecha.Location = new System.Drawing.Point(290, 87);
+            this.lblFecha.ForeColor = System.Drawing.Color.White;
+            this.lblFecha.Location = new System.Drawing.Point(229, 61);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(86, 31);
             this.lblFecha.TabIndex = 8;
@@ -98,37 +103,72 @@
             // pnlMenuLateral
             // 
             this.pnlMenuLateral.AutoScroll = true;
-            this.pnlMenuLateral.BackColor = System.Drawing.Color.White;
-            this.pnlMenuLateral.Controls.Add(this.btnSalir);
+            this.pnlMenuLateral.BackColor = System.Drawing.Color.Silver;
+            this.pnlMenuLateral.Controls.Add(this.btnReportes);
+            this.pnlMenuLateral.Controls.Add(this.btnGestionFinaciera);
+            this.pnlMenuLateral.Controls.Add(this.btnInicio);
             this.pnlMenuLateral.Controls.Add(this.btnSesiones);
             this.pnlMenuLateral.Controls.Add(this.btnTrabajadores);
             this.pnlMenuLateral.Controls.Add(this.btnEstudiantes);
             this.pnlMenuLateral.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenuLateral.Location = new System.Drawing.Point(0, 60);
             this.pnlMenuLateral.Name = "pnlMenuLateral";
-            this.pnlMenuLateral.Size = new System.Drawing.Size(225, 564);
+            this.pnlMenuLateral.Size = new System.Drawing.Size(225, 449);
             this.pnlMenuLateral.TabIndex = 10;
             // 
-            // btnSalir
+            // btnReportes
             // 
-            this.btnSalir.BackColor = System.Drawing.Color.MediumBlue;
-            this.btnSalir.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnSalir.FlatAppearance.BorderSize = 0;
-            this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.ForeColor = System.Drawing.Color.White;
-            this.btnSalir.Location = new System.Drawing.Point(0, 531);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(225, 33);
-            this.btnSalir.TabIndex = 43;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = false;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.btnReportes.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReportes.FlatAppearance.BorderSize = 0;
+            this.btnReportes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.ForeColor = System.Drawing.Color.White;
+            this.btnReportes.Location = new System.Drawing.Point(0, 149);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Size = new System.Drawing.Size(225, 33);
+            this.btnReportes.TabIndex = 45;
+            this.btnReportes.Text = "Reportes";
+            this.btnReportes.UseVisualStyleBackColor = false;
+            // 
+            // btnGestionFinaciera
+            // 
+            this.btnGestionFinaciera.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnGestionFinaciera.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGestionFinaciera.FlatAppearance.BorderSize = 0;
+            this.btnGestionFinaciera.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnGestionFinaciera.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGestionFinaciera.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGestionFinaciera.ForeColor = System.Drawing.Color.White;
+            this.btnGestionFinaciera.Location = new System.Drawing.Point(0, 108);
+            this.btnGestionFinaciera.Name = "btnGestionFinaciera";
+            this.btnGestionFinaciera.Size = new System.Drawing.Size(225, 41);
+            this.btnGestionFinaciera.TabIndex = 44;
+            this.btnGestionFinaciera.Text = "Gestión Financiera";
+            this.btnGestionFinaciera.UseVisualStyleBackColor = false;
+            this.btnGestionFinaciera.Click += new System.EventHandler(this.btnGestionFinaciera_Click);
+            // 
+            // btnInicio
+            // 
+            this.btnInicio.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnInicio.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnInicio.FlatAppearance.BorderSize = 0;
+            this.btnInicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInicio.ForeColor = System.Drawing.Color.White;
+            this.btnInicio.Location = new System.Drawing.Point(0, 416);
+            this.btnInicio.Name = "btnInicio";
+            this.btnInicio.Size = new System.Drawing.Size(225, 33);
+            this.btnInicio.TabIndex = 43;
+            this.btnInicio.Text = "Inicio";
+            this.btnInicio.UseVisualStyleBackColor = false;
+            this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
             // btnSesiones
             // 
-            this.btnSesiones.BackColor = System.Drawing.Color.Gold;
+            this.btnSesiones.BackColor = System.Drawing.Color.SteelBlue;
             this.btnSesiones.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSesiones.FlatAppearance.BorderSize = 0;
             this.btnSesiones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
@@ -145,7 +185,7 @@
             // 
             // btnTrabajadores
             // 
-            this.btnTrabajadores.BackColor = System.Drawing.Color.DarkBlue;
+            this.btnTrabajadores.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnTrabajadores.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnTrabajadores.FlatAppearance.BorderSize = 0;
             this.btnTrabajadores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
@@ -162,7 +202,7 @@
             // 
             // btnEstudiantes
             // 
-            this.btnEstudiantes.BackColor = System.Drawing.Color.Red;
+            this.btnEstudiantes.BackColor = System.Drawing.Color.SteelBlue;
             this.btnEstudiantes.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnEstudiantes.FlatAppearance.BorderSize = 0;
             this.btnEstudiantes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
@@ -179,13 +219,14 @@
             // 
             // pnlSuperior
             // 
+            this.pnlSuperior.Controls.Add(this.btnCerrarSesion);
             this.pnlSuperior.Controls.Add(this.pictureBox1);
             this.pnlSuperior.Controls.Add(this.btnSalir2);
             this.pnlSuperior.Controls.Add(this.lblSesionUsuario);
             this.pnlSuperior.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSuperior.Location = new System.Drawing.Point(0, 0);
             this.pnlSuperior.Name = "pnlSuperior";
-            this.pnlSuperior.Size = new System.Drawing.Size(1084, 60);
+            this.pnlSuperior.Size = new System.Drawing.Size(1024, 60);
             this.pnlSuperior.TabIndex = 11;
             this.pnlSuperior.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSuperior_Paint);
             // 
@@ -207,12 +248,13 @@
             this.btnSalir2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.btnSalir2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
             this.btnSalir2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir2.ForeColor = System.Drawing.Color.Black;
             this.btnSalir2.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir2.Image")));
             this.btnSalir2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalir2.Location = new System.Drawing.Point(1019, 3);
+            this.btnSalir2.Location = new System.Drawing.Point(955, 3);
             this.btnSalir2.Name = "btnSalir2";
-            this.btnSalir2.Size = new System.Drawing.Size(62, 39);
+            this.btnSalir2.Size = new System.Drawing.Size(66, 39);
             this.btnSalir2.TabIndex = 10;
             this.btnSalir2.Text = "Salir";
             this.btnSalir2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -235,14 +277,37 @@
             this.Tiempo.Enabled = true;
             this.Tiempo.Tick += new System.EventHandler(this.Tiempo_Tick);
             // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrarSesion.BackColor = System.Drawing.Color.White;
+            this.btnCerrarSesion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            this.btnCerrarSesion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnCerrarSesion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSesion.ForeColor = System.Drawing.Color.Black;
+            this.btnCerrarSesion.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrarSesion.Image")));
+            this.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(814, 0);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(135, 42);
+            this.btnCerrarSesion.TabIndex = 12;
+            this.btnCerrarSesion.Text = "Cerrar Sesión";
+            this.btnCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCerrarSesion.UseVisualStyleBackColor = false;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
             // FrmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 624);
+            this.ClientSize = new System.Drawing.Size(1024, 509);
             this.Controls.Add(this.pnlContenedor);
             this.Controls.Add(this.pnlMenuLateral);
             this.Controls.Add(this.pnlSuperior);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmInicio";
@@ -264,7 +329,7 @@
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Panel pnlMenuLateral;
-        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnInicio;
         private System.Windows.Forms.Button btnSesiones;
         private System.Windows.Forms.Button btnTrabajadores;
         private System.Windows.Forms.Button btnEstudiantes;
@@ -273,5 +338,8 @@
         private System.Windows.Forms.Button btnSalir2;
         private System.Windows.Forms.Label lblSesionUsuario;
         private System.Windows.Forms.Timer Tiempo;
+        private System.Windows.Forms.Button btnReportes;
+        private System.Windows.Forms.Button btnGestionFinaciera;
+        private System.Windows.Forms.Button btnCerrarSesion;
     }
 }

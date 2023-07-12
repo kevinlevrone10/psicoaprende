@@ -196,6 +196,58 @@ namespace SistemaPsicoaprende.UI
                     comboBox.SelectedIndex = -1;
                 }
             }
+            foreach (Control control in grpBoxEstu.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Si el control es un TextBox, se limpia su texto estableciéndolo como vacío
+                    textBox.Text = string.Empty;
+                }
+                else if (control is ComboBox comboBox)
+                {
+                    // Si el control es un ComboBox, se establece el índice seleccionado a -1 para limpiar la selección
+                    comboBox.SelectedIndex = -1;
+                }
+            }
+            foreach (Control control in grpBoxDatosEstu.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Si el control es un TextBox, se limpia su texto estableciéndolo como vacío
+                    textBox.Text = string.Empty;
+                }
+                else if (control is ComboBox comboBox)
+                {
+                    // Si el control es un ComboBox, se establece el índice seleccionado a -1 para limpiar la selección
+                    comboBox.SelectedIndex = -1;
+                }
+            }
+            foreach (Control control in grpBoxTutor.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Si el control es un TextBox, se limpia su texto estableciéndolo como vacío
+                    textBox.Text = string.Empty;
+                }
+                else if (control is ComboBox comboBox)
+                {
+                    // Si el control es un ComboBox, se establece el índice seleccionado a -1 para limpiar la selección
+                    comboBox.SelectedIndex = -1;
+                }
+            }
+            foreach (Control control in grpBoxUbicacion.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Si el control es un TextBox, se limpia su texto estableciéndolo como vacío
+                    textBox.Text = string.Empty;
+                }
+                else if (control is ComboBox comboBox)
+                {
+                    // Si el control es un ComboBox, se establece el índice seleccionado a -1 para limpiar la selección
+                    comboBox.SelectedIndex = -1;
+                }
+            }
             foreach (Control control in pnlContenedor.Controls)
             {
                 if (control is TextBox textBox)

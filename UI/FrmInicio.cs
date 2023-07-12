@@ -14,9 +14,7 @@ namespace SistemaPsicoaprende.UI
 
         private void btnSalir2_Click(object sender, EventArgs e)
         {
-            this.Dispose();
-            FrmLogin login = new FrmLogin();
-            login.Show();
+            Application.Exit();
         }
 
         private void btnEstudiantes_Click(object sender, EventArgs e)
@@ -34,11 +32,11 @@ namespace SistemaPsicoaprende.UI
             this.LoadForm(new FrmSesiones());
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void btnInicio_Click(object sender, EventArgs e)
         {
             this.Dispose();
-            FrmLogin login = new FrmLogin();
-            login.Show();
+            FrmInicio home = new FrmInicio();
+            home.Show();
         }
 
         private void LoadForm(Form NuevoFormulario)
@@ -66,6 +64,18 @@ namespace SistemaPsicoaprende.UI
         private void pnlSuperior_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnGestionFinaciera_Click(object sender, EventArgs e)
+        {
+            this.LoadForm(new FrmGestionFinanciera());
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            FrmLogin login = new FrmLogin();
+            login.Show(); 
         }
     }
 }

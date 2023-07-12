@@ -63,7 +63,7 @@
             // 
             this.pnlMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlMenu.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.pnlMenu.BackColor = System.Drawing.Color.SteelBlue;
             this.pnlMenu.Controls.Add(this.btnCerrar);
             this.pnlMenu.Controls.Add(this.btnBuscar);
             this.pnlMenu.Controls.Add(this.txtBuscar);

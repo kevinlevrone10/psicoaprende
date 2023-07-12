@@ -60,9 +60,19 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtcod1 = new System.Windows.Forms.TextBox();
             this.pnlContenedor = new System.Windows.Forms.Panel();
+            this.grpBoxDatosEstu = new System.Windows.Forms.GroupBox();
+            this.grpBoxDatosAcademicos = new System.Windows.Forms.GroupBox();
+            this.grpBoxUbicacion = new System.Windows.Forms.GroupBox();
+            this.grpBoxTutor = new System.Windows.Forms.GroupBox();
+            this.grpBoxEstado = new System.Windows.Forms.GroupBox();
             this.grpBoxEstu.SuspendLayout();
             this.pnlMenu.SuspendLayout();
             this.pnlContenedor.SuspendLayout();
+            this.grpBoxDatosEstu.SuspendLayout();
+            this.grpBoxDatosAcademicos.SuspendLayout();
+            this.grpBoxUbicacion.SuspendLayout();
+            this.grpBoxTutor.SuspendLayout();
+            this.grpBoxEstado.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpBoxEstu
@@ -70,34 +80,17 @@
             this.grpBoxEstu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpBoxEstu.BackColor = System.Drawing.Color.Silver;
-            this.grpBoxEstu.Controls.Add(this.label12);
-            this.grpBoxEstu.Controls.Add(this.label11);
-            this.grpBoxEstu.Controls.Add(this.label10);
-            this.grpBoxEstu.Controls.Add(this.label9);
-            this.grpBoxEstu.Controls.Add(this.label8);
-            this.grpBoxEstu.Controls.Add(this.label7);
-            this.grpBoxEstu.Controls.Add(this.label6);
-            this.grpBoxEstu.Controls.Add(this.label5);
-            this.grpBoxEstu.Controls.Add(this.label4);
-            this.grpBoxEstu.Controls.Add(this.label3);
-            this.grpBoxEstu.Controls.Add(this.label2);
-            this.grpBoxEstu.Controls.Add(this.cmbDepartamento);
-            this.grpBoxEstu.Controls.Add(this.cmbMunicipio);
-            this.grpBoxEstu.Controls.Add(this.dateTimeFechaAL);
-            this.grpBoxEstu.Controls.Add(this.txteva);
-            this.grpBoxEstu.Controls.Add(this.txtdom);
-            this.grpBoxEstu.Controls.Add(this.txtname);
-            this.grpBoxEstu.Controls.Add(this.txtres);
-            this.grpBoxEstu.Controls.Add(this.txttel);
-            this.grpBoxEstu.Controls.Add(this.txtcol);
-            this.grpBoxEstu.Controls.Add(this.txtgrad);
-            this.grpBoxEstu.Controls.Add(this.txtape);
+            this.grpBoxEstu.BackColor = System.Drawing.Color.White;
+            this.grpBoxEstu.Controls.Add(this.grpBoxEstado);
+            this.grpBoxEstu.Controls.Add(this.grpBoxTutor);
+            this.grpBoxEstu.Controls.Add(this.grpBoxUbicacion);
+            this.grpBoxEstu.Controls.Add(this.grpBoxDatosAcademicos);
+            this.grpBoxEstu.Controls.Add(this.grpBoxDatosEstu);
             this.grpBoxEstu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpBoxEstu.ForeColor = System.Drawing.Color.Black;
             this.grpBoxEstu.Location = new System.Drawing.Point(25, 74);
             this.grpBoxEstu.Name = "grpBoxEstu";
-            this.grpBoxEstu.Size = new System.Drawing.Size(749, 347);
+            this.grpBoxEstu.Size = new System.Drawing.Size(749, 364);
             this.grpBoxEstu.TabIndex = 61;
             this.grpBoxEstu.TabStop = false;
             this.grpBoxEstu.Text = "Resgistrar Estudiante";
@@ -105,11 +98,11 @@
             // 
             // label12
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(373, 236);
+            this.label12.Location = new System.Drawing.Point(14, 127);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(143, 15);
             this.label12.TabIndex = 80;
@@ -121,7 +114,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(527, 157);
+            this.label11.Location = new System.Drawing.Point(4, 78);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(70, 15);
             this.label11.TabIndex = 79;
@@ -133,7 +126,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(527, 111);
+            this.label10.Location = new System.Drawing.Point(4, 33);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(98, 15);
             this.label10.TabIndex = 78;
@@ -146,7 +139,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(305, 179);
+            this.label9.Location = new System.Drawing.Point(6, 18);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(77, 15);
             this.label9.TabIndex = 77;
@@ -154,12 +147,11 @@
             // 
             // label8
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(91, 92);
+            this.label8.Location = new System.Drawing.Point(11, 35);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 15);
             this.label8.TabIndex = 76;
@@ -167,12 +159,11 @@
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(90, 145);
+            this.label7.Location = new System.Drawing.Point(14, 78);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 15);
             this.label7.TabIndex = 75;
@@ -185,11 +176,11 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(3, 204);
+            this.label6.Location = new System.Drawing.Point(6, 18);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(146, 15);
+            this.label6.Size = new System.Drawing.Size(124, 15);
             this.label6.TabIndex = 74;
-            this.label6.Text = "Nombre Resposanble";
+            this.label6.Text = "Nombre y Apellido";
             // 
             // label5
             // 
@@ -198,7 +189,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(86, 259);
+            this.label5.Location = new System.Drawing.Point(6, 70);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 15);
             this.label5.TabIndex = 73;
@@ -211,7 +202,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(90, 312);
+            this.label4.Location = new System.Drawing.Point(9, 31);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 15);
             this.label4.TabIndex = 72;
@@ -224,7 +215,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(305, 71);
+            this.label3.Location = new System.Drawing.Point(9, 78);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 15);
             this.label3.TabIndex = 71;
@@ -237,7 +228,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(305, 124);
+            this.label2.Location = new System.Drawing.Point(181, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 15);
             this.label2.TabIndex = 70;
@@ -248,9 +239,9 @@
             this.cmbDepartamento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDepartamento.FormattingEnabled = true;
-            this.cmbDepartamento.Location = new System.Drawing.Point(521, 127);
+            this.cmbDepartamento.Location = new System.Drawing.Point(7, 51);
             this.cmbDepartamento.Name = "cmbDepartamento";
-            this.cmbDepartamento.Size = new System.Drawing.Size(152, 24);
+            this.cmbDepartamento.Size = new System.Drawing.Size(194, 24);
             this.cmbDepartamento.TabIndex = 68;
             // 
             // cmbMunicipio
@@ -258,98 +249,96 @@
             this.cmbMunicipio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbMunicipio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMunicipio.FormattingEnabled = true;
-            this.cmbMunicipio.Location = new System.Drawing.Point(521, 176);
+            this.cmbMunicipio.Location = new System.Drawing.Point(7, 96);
             this.cmbMunicipio.Name = "cmbMunicipio";
-            this.cmbMunicipio.Size = new System.Drawing.Size(152, 24);
+            this.cmbMunicipio.Size = new System.Drawing.Size(194, 24);
             this.cmbMunicipio.TabIndex = 67;
             // 
             // dateTimeFechaAL
             // 
-            this.dateTimeFechaAL.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimeFechaAL.Location = new System.Drawing.Point(304, 254);
+            this.dateTimeFechaAL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.dateTimeFechaAL.Location = new System.Drawing.Point(14, 145);
             this.dateTimeFechaAL.MaxDate = new System.DateTime(2023, 12, 31, 0, 0, 0, 0);
             this.dateTimeFechaAL.MinDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             this.dateTimeFechaAL.Name = "dateTimeFechaAL";
-            this.dateTimeFechaAL.Size = new System.Drawing.Size(329, 22);
+            this.dateTimeFechaAL.Size = new System.Drawing.Size(265, 22);
             this.dateTimeFechaAL.TabIndex = 65;
             // 
             // txteva
             // 
             this.txteva.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txteva.Location = new System.Drawing.Point(304, 197);
+            this.txteva.Location = new System.Drawing.Point(6, 41);
+            this.txteva.Multiline = true;
             this.txteva.Name = "txteva";
-            this.txteva.Size = new System.Drawing.Size(168, 22);
+            this.txteva.Size = new System.Drawing.Size(194, 69);
             this.txteva.TabIndex = 64;
             // 
             // txtdom
             // 
             this.txtdom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtdom.Location = new System.Drawing.Point(304, 142);
+            this.txtdom.Location = new System.Drawing.Point(184, 41);
+            this.txtdom.Multiline = true;
             this.txtdom.Name = "txtdom";
-            this.txtdom.Size = new System.Drawing.Size(168, 22);
+            this.txtdom.Size = new System.Drawing.Size(320, 69);
             this.txtdom.TabIndex = 63;
             // 
             // txtname
             // 
-            this.txtname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtname.Location = new System.Drawing.Point(155, 89);
+            this.txtname.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtname.Location = new System.Drawing.Point(13, 53);
             this.txtname.Name = "txtname";
-            this.txtname.Size = new System.Drawing.Size(100, 22);
+            this.txtname.Size = new System.Drawing.Size(166, 22);
             this.txtname.TabIndex = 62;
             // 
             // txtres
             // 
             this.txtres.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtres.Location = new System.Drawing.Point(155, 197);
+            this.txtres.Location = new System.Drawing.Point(9, 42);
             this.txtres.Name = "txtres";
-            this.txtres.Size = new System.Drawing.Size(100, 22);
+            this.txtres.Size = new System.Drawing.Size(152, 22);
             this.txtres.TabIndex = 61;
             // 
             // txttel
             // 
             this.txttel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txttel.Location = new System.Drawing.Point(155, 254);
+            this.txttel.Location = new System.Drawing.Point(9, 88);
             this.txttel.Name = "txttel";
-            this.txttel.Size = new System.Drawing.Size(100, 22);
+            this.txttel.Size = new System.Drawing.Size(152, 22);
             this.txttel.TabIndex = 60;
             // 
             // txtcol
             // 
-            this.txtcol.Location = new System.Drawing.Point(155, 309);
+            this.txtcol.Location = new System.Drawing.Point(9, 53);
             this.txtcol.Name = "txtcol";
-            this.txtcol.Size = new System.Drawing.Size(100, 22);
+            this.txtcol.Size = new System.Drawing.Size(200, 22);
             this.txtcol.TabIndex = 59;
             // 
             // txtgrad
             // 
             this.txtgrad.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtgrad.Location = new System.Drawing.Point(304, 89);
+            this.txtgrad.Location = new System.Drawing.Point(12, 96);
             this.txtgrad.Name = "txtgrad";
-            this.txtgrad.Size = new System.Drawing.Size(168, 22);
+            this.txtgrad.Size = new System.Drawing.Size(100, 22);
             this.txtgrad.TabIndex = 58;
             // 
             // txtape
             // 
-            this.txtape.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtape.Location = new System.Drawing.Point(155, 142);
+            this.txtape.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtape.Location = new System.Drawing.Point(13, 96);
             this.txtape.Name = "txtape";
-            this.txtape.Size = new System.Drawing.Size(100, 22);
+            this.txtape.Size = new System.Drawing.Size(166, 22);
             this.txtape.TabIndex = 57;
             // 
             // pnlMenu
             // 
             this.pnlMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlMenu.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.pnlMenu.BackColor = System.Drawing.Color.SteelBlue;
             this.pnlMenu.Controls.Add(this.btnListarEstu);
             this.pnlMenu.Controls.Add(this.btnCerrar);
             this.pnlMenu.Controls.Add(this.btnBuscar);
@@ -454,6 +443,78 @@
             this.pnlContenedor.TabIndex = 0;
             this.pnlContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContenedor_Paint);
             // 
+            // grpBoxDatosEstu
+            // 
+            this.grpBoxDatosEstu.BackColor = System.Drawing.Color.Silver;
+            this.grpBoxDatosEstu.Controls.Add(this.txtape);
+            this.grpBoxDatosEstu.Controls.Add(this.label12);
+            this.grpBoxDatosEstu.Controls.Add(this.txtname);
+            this.grpBoxDatosEstu.Controls.Add(this.label7);
+            this.grpBoxDatosEstu.Controls.Add(this.label8);
+            this.grpBoxDatosEstu.Controls.Add(this.dateTimeFechaAL);
+            this.grpBoxDatosEstu.Location = new System.Drawing.Point(9, 33);
+            this.grpBoxDatosEstu.Name = "grpBoxDatosEstu";
+            this.grpBoxDatosEstu.Size = new System.Drawing.Size(289, 180);
+            this.grpBoxDatosEstu.TabIndex = 81;
+            this.grpBoxDatosEstu.TabStop = false;
+            this.grpBoxDatosEstu.Text = "Datos del Estudiante";
+            // 
+            // grpBoxDatosAcademicos
+            // 
+            this.grpBoxDatosAcademicos.BackColor = System.Drawing.Color.Silver;
+            this.grpBoxDatosAcademicos.Controls.Add(this.txtgrad);
+            this.grpBoxDatosAcademicos.Controls.Add(this.txtcol);
+            this.grpBoxDatosAcademicos.Controls.Add(this.label3);
+            this.grpBoxDatosAcademicos.Controls.Add(this.label4);
+            this.grpBoxDatosAcademicos.Location = new System.Drawing.Point(304, 33);
+            this.grpBoxDatosAcademicos.Name = "grpBoxDatosAcademicos";
+            this.grpBoxDatosAcademicos.Size = new System.Drawing.Size(217, 180);
+            this.grpBoxDatosAcademicos.TabIndex = 82;
+            this.grpBoxDatosAcademicos.TabStop = false;
+            this.grpBoxDatosAcademicos.Text = "Datos Académicos";
+            // 
+            // grpBoxUbicacion
+            // 
+            this.grpBoxUbicacion.BackColor = System.Drawing.Color.Silver;
+            this.grpBoxUbicacion.Controls.Add(this.cmbMunicipio);
+            this.grpBoxUbicacion.Controls.Add(this.cmbDepartamento);
+            this.grpBoxUbicacion.Controls.Add(this.label10);
+            this.grpBoxUbicacion.Controls.Add(this.label11);
+            this.grpBoxUbicacion.Location = new System.Drawing.Point(527, 33);
+            this.grpBoxUbicacion.Name = "grpBoxUbicacion";
+            this.grpBoxUbicacion.Size = new System.Drawing.Size(209, 180);
+            this.grpBoxUbicacion.TabIndex = 83;
+            this.grpBoxUbicacion.TabStop = false;
+            this.grpBoxUbicacion.Text = "Ubicación";
+            // 
+            // grpBoxTutor
+            // 
+            this.grpBoxTutor.BackColor = System.Drawing.Color.Silver;
+            this.grpBoxTutor.Controls.Add(this.txttel);
+            this.grpBoxTutor.Controls.Add(this.label5);
+            this.grpBoxTutor.Controls.Add(this.txtres);
+            this.grpBoxTutor.Controls.Add(this.label6);
+            this.grpBoxTutor.Controls.Add(this.txtdom);
+            this.grpBoxTutor.Controls.Add(this.label2);
+            this.grpBoxTutor.Location = new System.Drawing.Point(9, 231);
+            this.grpBoxTutor.Name = "grpBoxTutor";
+            this.grpBoxTutor.Size = new System.Drawing.Size(513, 127);
+            this.grpBoxTutor.TabIndex = 84;
+            this.grpBoxTutor.TabStop = false;
+            this.grpBoxTutor.Text = "Datos Tutor";
+            // 
+            // grpBoxEstado
+            // 
+            this.grpBoxEstado.BackColor = System.Drawing.Color.Silver;
+            this.grpBoxEstado.Controls.Add(this.txteva);
+            this.grpBoxEstado.Controls.Add(this.label9);
+            this.grpBoxEstado.Location = new System.Drawing.Point(528, 231);
+            this.grpBoxEstado.Name = "grpBoxEstado";
+            this.grpBoxEstado.Size = new System.Drawing.Size(208, 127);
+            this.grpBoxEstado.TabIndex = 73;
+            this.grpBoxEstado.TabStop = false;
+            this.grpBoxEstado.Text = "Estado";
+            // 
             // FrmEstudiantes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -466,11 +527,20 @@
             this.Text = "FrmEstudiante";
             this.Load += new System.EventHandler(this.FrmEstudiante_Load);
             this.grpBoxEstu.ResumeLayout(false);
-            this.grpBoxEstu.PerformLayout();
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
             this.pnlContenedor.ResumeLayout(false);
             this.pnlContenedor.PerformLayout();
+            this.grpBoxDatosEstu.ResumeLayout(false);
+            this.grpBoxDatosEstu.PerformLayout();
+            this.grpBoxDatosAcademicos.ResumeLayout(false);
+            this.grpBoxDatosAcademicos.PerformLayout();
+            this.grpBoxUbicacion.ResumeLayout(false);
+            this.grpBoxUbicacion.PerformLayout();
+            this.grpBoxTutor.ResumeLayout(false);
+            this.grpBoxTutor.PerformLayout();
+            this.grpBoxEstado.ResumeLayout(false);
+            this.grpBoxEstado.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -509,5 +579,10 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.TextBox txtcod1;
         private System.Windows.Forms.Panel pnlContenedor;
+        private System.Windows.Forms.GroupBox grpBoxDatosEstu;
+        private System.Windows.Forms.GroupBox grpBoxDatosAcademicos;
+        private System.Windows.Forms.GroupBox grpBoxEstado;
+        private System.Windows.Forms.GroupBox grpBoxTutor;
+        private System.Windows.Forms.GroupBox grpBoxUbicacion;
     }
 }

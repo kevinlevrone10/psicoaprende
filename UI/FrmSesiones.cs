@@ -226,7 +226,41 @@ namespace SistemaPsicoaprende.UI
         private void LimpiarTextBoxes()
         {
             // Recorrer todos los controles del formulario
-            foreach (Control control in grpBoxSesiones.Controls)
+            foreach (Control control in grpBoxSesiones.Controls )
+            {
+                if (control is System.Windows.Forms.TextBox textBox)
+                {
+                    // Excluir el campo txtBuscar al limpiar los TextBox
+                    textBox.Text = string.Empty;
+
+                }
+                else if (control is System.Windows.Forms.ComboBox comboBox)
+                {
+                    comboBox.SelectedIndex = -1;
+                }
+                else if (control is MaskedTextBox maskedTextBox)
+                {
+                    maskedTextBox.Text = string.Empty;
+                }
+            }
+            foreach (Control control in grpBoxSeleccion.Controls)
+            {
+                if (control is System.Windows.Forms.TextBox textBox)
+                {
+                    // Excluir el campo txtBuscar al limpiar los TextBox
+                    textBox.Text = string.Empty;
+
+                }
+                else if (control is System.Windows.Forms.ComboBox comboBox)
+                {
+                    comboBox.SelectedIndex = -1;
+                }
+                else if (control is MaskedTextBox maskedTextBox)
+                {
+                    maskedTextBox.Text = string.Empty;
+                }
+            }
+            foreach (Control control in grpBoxEmision.Controls)
             {
                 if (control is System.Windows.Forms.TextBox textBox)
                 {

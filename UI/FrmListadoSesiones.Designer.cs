@@ -61,13 +61,13 @@
             // 
             this.pnlMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlMenu.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.pnlMenu.BackColor = System.Drawing.Color.SteelBlue;
             this.pnlMenu.Controls.Add(this.btnCerrar);
             this.pnlMenu.Controls.Add(this.btnBuscar);
             this.pnlMenu.Controls.Add(this.txtBuscar);
-            this.pnlMenu.Location = new System.Drawing.Point(161, 21);
+            this.pnlMenu.Location = new System.Drawing.Point(87, 21);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(461, 48);
+            this.pnlMenu.Size = new System.Drawing.Size(639, 48);
             this.pnlMenu.TabIndex = 79;
             // 
             // btnCerrar
@@ -76,7 +76,7 @@
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
             this.btnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrar.Location = new System.Drawing.Point(357, 6);
+            this.btnCerrar.Location = new System.Drawing.Point(535, 6);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(89, 37);
             this.btnCerrar.TabIndex = 64;
