@@ -11,6 +11,9 @@ namespace SistemaPsicoaprende.UI
 {
     public partial class FrmFactura : Form
     {
+        private Form FormularioActual;
+        private bool filaAgregada = false;
+
         public FrmFactura()
         {
             InitializeComponent();
@@ -25,9 +28,35 @@ namespace SistemaPsicoaprende.UI
             cmbmod.DataSource = modalidades;
         }
 
- 
+        private void FrmFactura_Load(object sender, EventArgs e)
+        {
+            CargarModalidades();
+        }
 
-        private void BtnEmitir_Click(object sender, EventArgs e)
+        private void txtcod_TextChanged(object sender, EventArgs e)
+        {
+            string codigoAlumno = txtcod.Text; // Código del alumno buscado
+
+            CtrlFactura factura = new CtrlFactura();
+            Alumnos alumno = CtrlFactura.buscar(codigoAlumno);
+
+            if (alumno != null)
+            {
+                txtest.Text = alumno.nom_Alumno;
+                txtid.Text = alumno.Id.ToString(); // Asignar el Id del alumno a la propiedad AlumnoId en tu objeto Factura
+            }
+            else
+            {
+                txtest.Text = string.Empty; // Limpiar el TextBox si no se encontró un alumno
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
 
             Modalidades modalidaseleccionada = cmbmod.SelectedItem as Modalidades;
@@ -60,7 +89,7 @@ namespace SistemaPsicoaprende.UI
                     {
                         MessageBox.Show("calcule el total de la factura");
                     }
-                   
+
                 }
                 catch (ArgumentNullException arg)
                 {
@@ -85,37 +114,7 @@ namespace SistemaPsicoaprende.UI
             }
         }
 
-        private void FrmFactura_Load(object sender, EventArgs e)
-        {
-            CargarModalidades();
-        }
-
-        private void txtcod_TextChanged(object sender, EventArgs e)
-        {
-            string codigoAlumno = txtcod.Text; // Código del alumno buscado
-
-            CtrlFactura factura = new CtrlFactura();
-            Alumnos alumno = CtrlFactura.buscar(codigoAlumno);
-
-            if (alumno != null)
-            {
-                txtest.Text = alumno.nom_Alumno;
-                txtid.Text = alumno.Id.ToString(); // Asignar el Id del alumno a la propiedad AlumnoId en tu objeto Factura
-            }
-            else
-            {
-                txtest.Text = string.Empty; // Limpiar el TextBox si no se encontró un alumno
-            }
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private bool filaAgregada = false;
-
-        private void Btncal_Click(object sender, EventArgs e)
+        private void btnCalcular_Click(object sender, EventArgs e)
         {
             int cantidadSesiones;
             if (int.TryParse(txtcant.Text, out cantidadSesiones))
@@ -140,8 +139,24 @@ namespace SistemaPsicoaprende.UI
                 MessageBox.Show("La cantidad de sesiones ingresada no es válida.", "Error");
             }
         }
+        private void LoadForm(Form NuevoFormulario)
+        {
+            //Verifica si existe un formulario activo
+            if (FormularioActual != null)
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+                //Configurar vuevo formulario
+                FormularioActual.Close();
+            FormularioActual = NuevoFormulario;
+            NuevoFormulario.TopLevel = false;
+            NuevoFormulario.FormBorderStyle = FormBorderStyle.None;
+            NuevoFormulario.Dock = DockStyle.Fill;
+            pnlContenedor.Controls.Add(NuevoFormulario);
+            pnlContenedor.Tag = NuevoFormulario;
+            NuevoFormulario.BringToFront();
+            NuevoFormulario.Show();
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
         {
 
         }

@@ -33,15 +33,7 @@
             this.txtcod = new System.Windows.Forms.TextBox();
             this.grpBoxSesiones = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Identificador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edit2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,11 +46,23 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.grpBoxEmision = new System.Windows.Forms.GroupBox();
+            this.Identificador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edit2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grpBoxSeleccion = new System.Windows.Forms.GroupBox();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlContenedor.SuspendLayout();
             this.grpBoxSesiones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlMenu.SuspendLayout();
+            this.grpBoxEmision.SuspendLayout();
+            this.grpBoxSeleccion.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlContenedor
@@ -86,19 +90,13 @@
             this.grpBoxSesiones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpBoxSesiones.BackColor = System.Drawing.Color.Silver;
-            this.grpBoxSesiones.Controls.Add(this.dataGridView2);
-            this.grpBoxSesiones.Controls.Add(this.dataGridView1);
-            this.grpBoxSesiones.Controls.Add(this.label5);
-            this.grpBoxSesiones.Controls.Add(this.label4);
-            this.grpBoxSesiones.Controls.Add(this.label3);
-            this.grpBoxSesiones.Controls.Add(this.cmbtrabajador);
-            this.grpBoxSesiones.Controls.Add(this.cmbfactura);
-            this.grpBoxSesiones.Controls.Add(this.datafecha);
+            this.grpBoxSesiones.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.grpBoxSesiones.Controls.Add(this.grpBoxSeleccion);
+            this.grpBoxSesiones.Controls.Add(this.grpBoxEmision);
             this.grpBoxSesiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpBoxSesiones.Location = new System.Drawing.Point(31, 76);
+            this.grpBoxSesiones.Location = new System.Drawing.Point(31, 88);
             this.grpBoxSesiones.Name = "grpBoxSesiones";
-            this.grpBoxSesiones.Size = new System.Drawing.Size(741, 314);
+            this.grpBoxSesiones.Size = new System.Drawing.Size(741, 350);
             this.grpBoxSesiones.TabIndex = 64;
             this.grpBoxSesiones.TabStop = false;
             this.grpBoxSesiones.Text = "Registrar Sesiones";
@@ -112,33 +110,10 @@
             this.Cod,
             this.name,
             this.Edit2});
-            this.dataGridView2.Location = new System.Drawing.Point(384, 158);
+            this.dataGridView2.Location = new System.Drawing.Point(368, 30);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(332, 150);
             this.dataGridView2.TabIndex = 75;
-            // 
-            // Identificador
-            // 
-            this.Identificador.HeaderText = "Id";
-            this.Identificador.Name = "Identificador";
-            this.Identificador.Visible = false;
-            // 
-            // Cod
-            // 
-            this.Cod.HeaderText = "Codigo";
-            this.Cod.Name = "Cod";
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Alumno";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // Edit2
-            // 
-            this.Edit2.HeaderText = "Selecciona";
-            this.Edit2.Name = "Edit2";
-            this.Edit2.ReadOnly = true;
             // 
             // dataGridView1
             // 
@@ -149,34 +124,10 @@
             this.codigo,
             this.nombre,
             this.Edit});
-            this.dataGridView1.Location = new System.Drawing.Point(20, 158);
+            this.dataGridView1.Location = new System.Drawing.Point(4, 30);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(343, 150);
             this.dataGridView1.TabIndex = 65;
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "id";
-            this.Id.Name = "Id";
-            this.Id.Visible = false;
-            // 
-            // codigo
-            // 
-            this.codigo.HeaderText = "Codigo";
-            this.codigo.Name = "codigo";
-            this.codigo.ReadOnly = true;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            // 
-            // Edit
-            // 
-            this.Edit.HeaderText = "Selecciona";
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
             // 
             // label5
             // 
@@ -184,7 +135,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(488, 97);
+            this.label5.Location = new System.Drawing.Point(372, 21);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(140, 15);
             this.label5.TabIndex = 74;
@@ -196,11 +147,11 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(89, 88);
+            this.label4.Location = new System.Drawing.Point(433, 56);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 15);
+            this.label4.Size = new System.Drawing.Size(59, 15);
             this.label4.TabIndex = 73;
-            this.label4.Text = "Trabajador";
+            this.label4.Text = "Maestro";
             // 
             // label3
             // 
@@ -209,7 +160,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(271, 37);
+            this.label3.Location = new System.Drawing.Point(3, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(128, 15);
             this.label3.TabIndex = 72;
@@ -220,9 +171,9 @@
             this.cmbtrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbtrabajador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbtrabajador.FormattingEnabled = true;
-            this.cmbtrabajador.Location = new System.Drawing.Point(63, 115);
+            this.cmbtrabajador.Location = new System.Drawing.Point(530, 53);
             this.cmbtrabajador.Name = "cmbtrabajador";
-            this.cmbtrabajador.Size = new System.Drawing.Size(137, 24);
+            this.cmbtrabajador.Size = new System.Drawing.Size(177, 24);
             this.cmbtrabajador.TabIndex = 19;
             // 
             // cmbfactura
@@ -230,14 +181,14 @@
             this.cmbfactura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbfactura.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbfactura.FormattingEnabled = true;
-            this.cmbfactura.Location = new System.Drawing.Point(491, 115);
+            this.cmbfactura.Location = new System.Drawing.Point(530, 18);
             this.cmbfactura.Name = "cmbfactura";
-            this.cmbfactura.Size = new System.Drawing.Size(137, 24);
+            this.cmbfactura.Size = new System.Drawing.Size(177, 24);
             this.cmbfactura.TabIndex = 20;
             // 
             // datafecha
             // 
-            this.datafecha.Location = new System.Drawing.Point(241, 55);
+            this.datafecha.Location = new System.Drawing.Point(6, 49);
             this.datafecha.Name = "datafecha";
             this.datafecha.Size = new System.Drawing.Size(200, 22);
             this.datafecha.TabIndex = 17;
@@ -246,15 +197,15 @@
             // 
             this.pnlMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlMenu.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.pnlMenu.BackColor = System.Drawing.Color.SteelBlue;
             this.pnlMenu.Controls.Add(this.btnListarEstu);
             this.pnlMenu.Controls.Add(this.btnCerrar);
             this.pnlMenu.Controls.Add(this.btnGuardar);
             this.pnlMenu.Controls.Add(this.btnBuscar);
             this.pnlMenu.Controls.Add(this.txtBuscar);
-            this.pnlMenu.Location = new System.Drawing.Point(22, 22);
+            this.pnlMenu.Location = new System.Drawing.Point(31, 22);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(751, 48);
+            this.pnlMenu.Size = new System.Drawing.Size(741, 48);
             this.pnlMenu.TabIndex = 63;
             // 
             // btnListarEstu
@@ -263,7 +214,7 @@
             this.btnListarEstu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListarEstu.Image = ((System.Drawing.Image)(resources.GetObject("btnListarEstu.Image")));
             this.btnListarEstu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnListarEstu.Location = new System.Drawing.Point(436, 5);
+            this.btnListarEstu.Location = new System.Drawing.Point(426, 5);
             this.btnListarEstu.Name = "btnListarEstu";
             this.btnListarEstu.Size = new System.Drawing.Size(79, 38);
             this.btnListarEstu.TabIndex = 65;
@@ -278,7 +229,7 @@
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
             this.btnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrar.Location = new System.Drawing.Point(647, 6);
+            this.btnCerrar.Location = new System.Drawing.Point(637, 6);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(89, 37);
             this.btnCerrar.TabIndex = 64;
@@ -293,7 +244,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(532, 5);
+            this.btnGuardar.Location = new System.Drawing.Point(522, 5);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(89, 38);
             this.btnGuardar.TabIndex = 61;
@@ -327,8 +278,83 @@
             this.txtBuscar.Location = new System.Drawing.Point(122, 5);
             this.txtBuscar.Multiline = true;
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(204, 38);
+            this.txtBuscar.Size = new System.Drawing.Size(194, 38);
             this.txtBuscar.TabIndex = 62;
+            // 
+            // grpBoxEmision
+            // 
+            this.grpBoxEmision.BackColor = System.Drawing.Color.Silver;
+            this.grpBoxEmision.Controls.Add(this.datafecha);
+            this.grpBoxEmision.Controls.Add(this.label3);
+            this.grpBoxEmision.Controls.Add(this.cmbfactura);
+            this.grpBoxEmision.Controls.Add(this.label4);
+            this.grpBoxEmision.Controls.Add(this.label5);
+            this.grpBoxEmision.Controls.Add(this.cmbtrabajador);
+            this.grpBoxEmision.Location = new System.Drawing.Point(9, 21);
+            this.grpBoxEmision.Name = "grpBoxEmision";
+            this.grpBoxEmision.Size = new System.Drawing.Size(718, 93);
+            this.grpBoxEmision.TabIndex = 76;
+            this.grpBoxEmision.TabStop = false;
+            this.grpBoxEmision.Text = "Emisión";
+            // 
+            // Identificador
+            // 
+            this.Identificador.HeaderText = "Id";
+            this.Identificador.Name = "Identificador";
+            this.Identificador.Visible = false;
+            // 
+            // Cod
+            // 
+            this.Cod.HeaderText = "Código";
+            this.Cod.Name = "Cod";
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Alumno";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            // 
+            // Edit2
+            // 
+            this.Edit2.HeaderText = "Selección";
+            this.Edit2.Name = "Edit2";
+            this.Edit2.ReadOnly = true;
+            // 
+            // grpBoxSeleccion
+            // 
+            this.grpBoxSeleccion.BackColor = System.Drawing.Color.Silver;
+            this.grpBoxSeleccion.Controls.Add(this.dataGridView1);
+            this.grpBoxSeleccion.Controls.Add(this.dataGridView2);
+            this.grpBoxSeleccion.Location = new System.Drawing.Point(9, 121);
+            this.grpBoxSeleccion.Name = "grpBoxSeleccion";
+            this.grpBoxSeleccion.Size = new System.Drawing.Size(726, 208);
+            this.grpBoxSeleccion.TabIndex = 77;
+            this.grpBoxSeleccion.TabStop = false;
+            this.grpBoxSeleccion.Text = "Selección del Maestro y Alumno de la sesión";
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "id";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            // 
+            // codigo
+            // 
+            this.codigo.HeaderText = "Código";
+            this.codigo.Name = "codigo";
+            this.codigo.ReadOnly = true;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Maestro";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // Edit
+            // 
+            this.Edit.HeaderText = "Selección";
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
             // 
             // FrmSesiones
             // 
@@ -343,11 +369,13 @@
             this.pnlContenedor.ResumeLayout(false);
             this.pnlContenedor.PerformLayout();
             this.grpBoxSesiones.ResumeLayout(false);
-            this.grpBoxSesiones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
+            this.grpBoxEmision.ResumeLayout(false);
+            this.grpBoxEmision.PerformLayout();
+            this.grpBoxSeleccion.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -369,14 +397,16 @@
         private System.Windows.Forms.Button btnListarEstu;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.TextBox txtcod;
+        private System.Windows.Forms.GroupBox grpBoxSeleccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Edit;
-        private System.Windows.Forms.TextBox txtcod;
         private System.Windows.Forms.DataGridViewTextBoxColumn Identificador;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cod;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Edit2;
+        private System.Windows.Forms.GroupBox grpBoxEmision;
     }
 }
