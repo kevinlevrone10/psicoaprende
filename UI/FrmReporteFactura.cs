@@ -8,6 +8,7 @@ namespace SistemaPsicoaprende.UI
 {
     public partial class FrmReporteFactura : Form
     {
+        private Form FormularioActual;
         public FrmReporteFactura()
         {
             InitializeComponent();
@@ -15,6 +16,22 @@ namespace SistemaPsicoaprende.UI
         private void FrmReporteFactura_Load(object sender, EventArgs e)
         {
 
+        }
+        private void LoadForm(Form NuevoFormulario)
+        {
+            //Verifica si existe un formulario activo
+            if (FormularioActual != null)
+
+                //Configurar vuevo formulario
+                FormularioActual.Close();
+            FormularioActual = NuevoFormulario;
+            NuevoFormulario.TopLevel = false;
+            NuevoFormulario.FormBorderStyle = FormBorderStyle.None;
+            NuevoFormulario.Dock = DockStyle.Fill;
+            //pnlContenedor.Controls.Add(NuevoFormulario);
+            //pnlContenedor.Tag = NuevoFormulario;
+            NuevoFormulario.BringToFront();
+            NuevoFormulario.Show();
         }
 
         private void button1_Click_1(object sender, EventArgs e)

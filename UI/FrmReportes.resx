@@ -131,7 +131,7 @@
         GliOiZUuYraRSv0C1Z523mJVAN4AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnNomina.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnReportNomina.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAIoSURBVFhH7ZjrThNREMf7DkTxbYywW3G3JMieTXwGLx/U
@@ -146,7 +146,7 @@
         cDWGAvwthYRmDL1+64BLRvmJ9iIR7LuIHDoU9hxXfFSmYFwplS4B7rMQ5EoNxssAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnFactura.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnReportFactura.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAATySURBVFhH7ZntT1tVGMBJ1MTExPjJ+Ff4ZR/VNFnbhN0W

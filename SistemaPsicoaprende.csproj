@@ -43,18 +43,30 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WinForms">
-      <HintPath>..\..\..\..\..\PROGRAM FILES\MICROSOFT VISUAL STUDIO\2022\COMMUNITY\COMMON7\IDE\COMMONEXTENSIONS\MICROSOFT\SSAS\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1586.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1586.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1586.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1586.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1586.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.Types.160.1000.6\lib\net462\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -135,16 +147,22 @@
     <Compile Include="Controlador\CtrlNomina.cs" />
     <Compile Include="Controlador\CtrlSesion.cs" />
     <Compile Include="Controlador\Ctrltrabajador.cs" />
+    <Compile Include="UI\FrmReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmReportes.Designer.cs">
+      <DependentUpon>FrmReportes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Negocio\Estudiante.cs" />
     <Compile Include="Negocio\Factura.cs" />
     <Compile Include="Negocio\Login.cs" />
     <Compile Include="Negocio\Nomina.cs" />
     <Compile Include="Negocio\Sesion.cs" />
     <Compile Include="Negocio\Trabajador.cs" />
-    <Compile Include="SistemaPsicoaprendeDatos.cs">
+    <Compile Include="AppDatos\SistemaPsicoaprendeDatos.cs">
       <DependentUpon>SistemaPsicoaprendeDatos.xsd</DependentUpon>
     </Compile>
-    <Compile Include="SistemaPsicoaprendeDatos.Designer.cs">
+    <Compile Include="AppDatos\SistemaPsicoaprendeDatos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SistemaPsicoaprendeDatos.xsd</DependentUpon>
@@ -238,8 +256,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ReporteFacturas.rdlc" />
-    <EmbeddedResource Include="ReporteNomina.rdlc" />
+    <EmbeddedResource Include="Reportes\ReporteFacturas.rdlc" />
+    <EmbeddedResource Include="Reportes\ReporteNomina.rdlc" />
     <EmbeddedResource Include="UI\FrmEstudiantes.resx">
       <DependentUpon>FrmEstudiantes.cs</DependentUpon>
     </EmbeddedResource>
@@ -266,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmReporteNomina.resx">
       <DependentUpon>FrmReporteNomina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmReportes.resx">
+      <DependentUpon>FrmReportes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmSesiones.resx">
       <DependentUpon>FrmSesiones.cs</DependentUpon>
@@ -298,15 +319,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SistemaPsicoaprendeDatos.xsc">
+    <None Include="AppDatos\SistemaPsicoaprendeDatos.xsc">
       <DependentUpon>SistemaPsicoaprendeDatos.xsd</DependentUpon>
     </None>
-    <None Include="SistemaPsicoaprendeDatos.xsd">
+    <None Include="AppDatos\SistemaPsicoaprendeDatos.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>SistemaPsicoaprendeDatos.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="SistemaPsicoaprendeDatos.xss">
+    <None Include="AppDatos\SistemaPsicoaprendeDatos.xss">
       <DependentUpon>SistemaPsicoaprendeDatos.xsd</DependentUpon>
     </None>
   </ItemGroup>

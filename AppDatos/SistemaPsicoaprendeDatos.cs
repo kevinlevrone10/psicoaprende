@@ -1,4 +1,4 @@
-﻿namespace SistemaPsicoaprende
+﻿namespace SistemaPsicoaprende.AppDatos
 {
 
 
@@ -7,7 +7,7 @@
     }
 }
 
-namespace SistemaPsicoaprende.SistemaPsicoaprendeDatosTableAdapters
+namespace SistemaPsicoaprende.AppDatos.SistemaPsicoaprendeDatosTableAdapters
 {
 
 

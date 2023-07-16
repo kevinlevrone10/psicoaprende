@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace SistemaPsicoaprende {
+namespace SistemaPsicoaprende.AppDatos {
     
     
     /// <summary>
@@ -7810,7 +7810,7 @@ namespace SistemaPsicoaprende {
         }
     }
 }
-namespace SistemaPsicoaprende.SistemaPsicoaprendeDatosTableAdapters {
+namespace SistemaPsicoaprende.AppDatos.SistemaPsicoaprendeDatosTableAdapters {
     
     
     /// <summary>

@@ -61,6 +61,7 @@
             this.grpGenerales.SuspendLayout();
             this.grpBoxCalculo.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.pnlContenedor.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtcant
@@ -75,7 +76,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(10, 151);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 16);
+            this.label2.Size = new System.Drawing.Size(140, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Costo de la  sesión";
             // 
@@ -163,7 +164,7 @@
             this.grpBoxEmisionFact.BackColor = System.Drawing.Color.Silver;
             this.grpBoxEmisionFact.Controls.Add(this.label3);
             this.grpBoxEmisionFact.Controls.Add(this.Fecha);
-            this.grpBoxEmisionFact.Location = new System.Drawing.Point(6, 248);
+            this.grpBoxEmisionFact.Location = new System.Drawing.Point(200, 253);
             this.grpBoxEmisionFact.Name = "grpBoxEmisionFact";
             this.grpBoxEmisionFact.Size = new System.Drawing.Size(394, 62);
             this.grpBoxEmisionFact.TabIndex = 16;
@@ -191,18 +192,19 @@
             this.pnlMenu.Controls.Add(this.btnCalcular);
             this.pnlMenu.Controls.Add(this.btnCerrar);
             this.pnlMenu.Controls.Add(this.btnGuardar);
-            this.pnlMenu.Location = new System.Drawing.Point(410, 248);
+            this.pnlMenu.Location = new System.Drawing.Point(212, 3);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(351, 62);
+            this.pnlMenu.Size = new System.Drawing.Size(351, 53);
             this.pnlMenu.TabIndex = 63;
             // 
             // btnCalcular
             // 
             this.btnCalcular.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnCalcular.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCalcular.Image = ((System.Drawing.Image)(resources.GetObject("btnCalcular.Image")));
             this.btnCalcular.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCalcular.Location = new System.Drawing.Point(137, 14);
+            this.btnCalcular.Location = new System.Drawing.Point(137, 9);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(98, 38);
             this.btnCalcular.TabIndex = 65;
@@ -214,10 +216,11 @@
             // btnCerrar
             // 
             this.btnCerrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
             this.btnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrar.Location = new System.Drawing.Point(15, 15);
+            this.btnCerrar.Location = new System.Drawing.Point(15, 10);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(94, 37);
             this.btnCerrar.TabIndex = 64;
@@ -229,10 +232,11 @@
             // btnGuardar
             // 
             this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(257, 14);
+            this.btnGuardar.Location = new System.Drawing.Point(257, 9);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(89, 38);
             this.btnGuardar.TabIndex = 61;
@@ -329,18 +333,18 @@
             // 
             this.groupBox1.Controls.Add(this.grpBoxEmisionFact);
             this.groupBox1.Controls.Add(this.grpBoxCalculo);
-            this.groupBox1.Controls.Add(this.pnlMenu);
             this.groupBox1.Controls.Add(this.grpGenerales);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.Location = new System.Drawing.Point(12, 56);
+            this.groupBox1.Location = new System.Drawing.Point(12, 76);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 349);
+            this.groupBox1.Size = new System.Drawing.Size(776, 329);
             this.groupBox1.TabIndex = 66;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registro de Factura";
             // 
             // pnlContenedor
             // 
+            this.pnlContenedor.Controls.Add(this.pnlMenu);
             this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContenedor.Location = new System.Drawing.Point(0, 0);
             this.pnlContenedor.Name = "pnlContenedor";
@@ -366,6 +370,7 @@
             this.grpGenerales.PerformLayout();
             this.grpBoxCalculo.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.pnlContenedor.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
