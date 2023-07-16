@@ -119,6 +119,7 @@
             // btnReportes
             // 
             this.btnReportes.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnReportes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReportes.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnReportes.FlatAppearance.BorderSize = 0;
             this.btnReportes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
@@ -136,6 +137,7 @@
             // btnGestionFinaciera
             // 
             this.btnGestionFinaciera.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnGestionFinaciera.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGestionFinaciera.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnGestionFinaciera.FlatAppearance.BorderSize = 0;
             this.btnGestionFinaciera.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
@@ -153,6 +155,7 @@
             // btnInicio
             // 
             this.btnInicio.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnInicio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInicio.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnInicio.FlatAppearance.BorderSize = 0;
             this.btnInicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
@@ -170,6 +173,7 @@
             // btnSesiones
             // 
             this.btnSesiones.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnSesiones.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSesiones.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSesiones.FlatAppearance.BorderSize = 0;
             this.btnSesiones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
@@ -187,6 +191,7 @@
             // btnTrabajadores
             // 
             this.btnTrabajadores.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnTrabajadores.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTrabajadores.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnTrabajadores.FlatAppearance.BorderSize = 0;
             this.btnTrabajadores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
@@ -204,6 +209,7 @@
             // btnEstudiantes
             // 
             this.btnEstudiantes.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnEstudiantes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEstudiantes.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnEstudiantes.FlatAppearance.BorderSize = 0;
             this.btnEstudiantes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;

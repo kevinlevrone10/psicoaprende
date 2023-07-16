@@ -21,7 +21,6 @@ namespace SistemaPsicoaprende.UI
 
         private void LimpiarFormulario()
         {
-
             txtcost.Text = string.Empty;
             txtvia.Text = string.Empty; 
             txttol.Text = string.Empty;
@@ -69,15 +68,19 @@ namespace SistemaPsicoaprende.UI
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void pnlContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnCalcularNom_Click(object sender, EventArgs e)
         {
             // Realizar los cálculos y actualizar el DataGridView
             ListarNominas();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnGenerarNom_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (dataGridView1.Rows.Count > 0)
@@ -160,9 +163,9 @@ namespace SistemaPsicoaprende.UI
             }
         }
 
-        private void pnlContenedor_Paint(object sender, PaintEventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            LimpiarFormulario();
         }
     }
 }

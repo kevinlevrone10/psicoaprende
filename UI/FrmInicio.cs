@@ -80,7 +80,7 @@ namespace SistemaPsicoaprende.UI
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
-            this.LoadForm(new FrmReporteNomina());
+            this.LoadForm(new FrmReportes());
         }
     }
 }
