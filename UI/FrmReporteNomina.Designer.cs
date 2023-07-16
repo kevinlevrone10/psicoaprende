@@ -36,10 +36,10 @@
             // reportViewer1
             // 
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "SistemaPsicoaprende.ReporteNomina.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(210, 53);
+            this.reportViewer1.Location = new System.Drawing.Point(194, 6);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(529, 348);
+            this.reportViewer1.Size = new System.Drawing.Size(605, 432);
             this.reportViewer1.TabIndex = 0;
             // 
             // dateTimePicker1
