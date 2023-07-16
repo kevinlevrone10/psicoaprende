@@ -28,7 +28,7 @@ namespace SistemaPsicoaprende.Negocio
                     // Incrementar el número del código y generar el nuevo código
                     int nuevoNumero = ultimoNumero + 1;
                     string nuevoCodigo = "SES" + nuevoNumero.ToString("D3");
-                    return nuevoCodigo;
+                    return nuevoCodigo.ToUpper();
                 }
                 else
                 {

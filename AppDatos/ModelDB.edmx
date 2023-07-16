@@ -37,6 +37,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="trabajador" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="total" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="total_Horas" Type="int" Nullable="false" />
           <Property Name="viaticos" Type="decimal" Precision="18" Scale="0" Nullable="false" />
@@ -79,7 +80,8 @@
           <Property Name="AlumnoId" Type="int" Nullable="false" />
           <Property Name="ModalidadId" Type="int" Nullable="false" />
           <Property Name="EstadofacturaId" Type="int" Nullable="false" />
-          <Property Name="EstadoSesionId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EstadoSesiones" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="costoTotal_Factura" Type="float" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="Modalidades">
           <Key>
@@ -150,7 +152,7 @@
           <Property Name="NomUsuario" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="PassWrd" Type="varchar" MaxLength="64" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Alumnos__Departa__5441852A">
+        <Association Name="FK__Alumnos__Departa__5BE2A6F2">
           <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
           <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -162,7 +164,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Alumnos__EstadoA__5629CD9C">
+        <Association Name="FK__Alumnos__EstadoA__5CD6CB2B">
           <End Role="EstadoAlumnos" Type="Self.EstadoAlumnos" Multiplicity="1" />
           <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -174,7 +176,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Alumnos__Municip__5535A963">
+        <Association Name="FK__Alumnos__Municip__5DCAEF64">
           <End Role="Municipios" Type="Self.Municipios" Multiplicity="1" />
           <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -186,7 +188,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DetalleNo__Nomin__68487DD7">
+        <Association Name="FK__DetalleNo__Nomin__5EBF139D">
           <End Role="Nominas" Type="Self.Nominas" Multiplicity="1" />
           <End Role="DetalleNominas" Type="Self.DetalleNominas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -198,7 +200,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Facturas__Alumno__5CD6CB2B">
+        <Association Name="FK__Facturas__Alumno__5FB337D6">
           <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="1" />
           <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -210,7 +212,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Facturas__Estado__5EBF139D">
+        <Association Name="FK__Facturas__Estado__60A75C0F">
           <End Role="EstadoFactura" Type="Self.EstadoFactura" Multiplicity="1" />
           <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -222,7 +224,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Facturas__Modali__5DCAEF64">
+        <Association Name="FK__Facturas__Modali__619B8048">
           <End Role="Modalidades" Type="Self.Modalidades" Multiplicity="1" />
           <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -234,7 +236,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Municipio__Depar__412EB0B6">
+        <Association Name="FK__Municipio__Depar__628FA481">
           <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
           <End Role="Municipios" Type="Self.Municipios" Multiplicity="*" />
           <ReferentialConstraint>
@@ -258,7 +260,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sesiones__Trabaj__628FA481">
+        <Association Name="FK__Sesiones__Trabaj__6477ECF3">
           <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="1" />
           <End Role="Sesiones" Type="Self.Sesiones" Multiplicity="*" />
           <ReferentialConstraint>
@@ -270,7 +272,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Trabajado__Depar__48CFD27E">
+        <Association Name="FK__Trabajado__Depar__656C112C">
           <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
           <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="*" />
           <ReferentialConstraint>
@@ -282,7 +284,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Trabajado__Estad__4AB81AF0">
+        <Association Name="FK__Trabajado__Estad__66603565">
           <End Role="EstadoTrabajadores" Type="Self.EstadoTrabajadores" Multiplicity="1" />
           <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="*" />
           <ReferentialConstraint>
@@ -294,7 +296,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Trabajado__Munic__49C3F6B7">
+        <Association Name="FK__Trabajado__Munic__6754599E">
           <End Role="Municipios" Type="Self.Municipios" Multiplicity="1" />
           <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="*" />
           <ReferentialConstraint>
@@ -306,7 +308,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Trabajado__Profe__47DBAE45">
+        <Association Name="FK__Trabajado__Profe__68487DD7">
           <End Role="Profesiones" Type="Self.Profesiones" Multiplicity="1" />
           <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="*" />
           <ReferentialConstraint>
@@ -318,6 +320,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ObtenerTotalFacturasPorMes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Anio" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="SistemaPsicoaprendeModelStoreContainer">
           <EntitySet Name="Alumnos" EntityType="Self.Alumnos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
@@ -333,35 +338,35 @@
           <EntitySet Name="Sesiones" EntityType="Self.Sesiones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trabajadores" EntityType="Self.Trabajadores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Alumnos__Departa__5441852A" Association="Self.FK__Alumnos__Departa__5441852A">
+          <AssociationSet Name="FK__Alumnos__Departa__5BE2A6F2" Association="Self.FK__Alumnos__Departa__5BE2A6F2">
             <End Role="Departamentos" EntitySet="Departamentos" />
             <End Role="Alumnos" EntitySet="Alumnos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Alumnos__EstadoA__5629CD9C" Association="Self.FK__Alumnos__EstadoA__5629CD9C">
+          <AssociationSet Name="FK__Alumnos__EstadoA__5CD6CB2B" Association="Self.FK__Alumnos__EstadoA__5CD6CB2B">
             <End Role="EstadoAlumnos" EntitySet="EstadoAlumnos" />
             <End Role="Alumnos" EntitySet="Alumnos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Alumnos__Municip__5535A963" Association="Self.FK__Alumnos__Municip__5535A963">
+          <AssociationSet Name="FK__Alumnos__Municip__5DCAEF64" Association="Self.FK__Alumnos__Municip__5DCAEF64">
             <End Role="Municipios" EntitySet="Municipios" />
             <End Role="Alumnos" EntitySet="Alumnos" />
           </AssociationSet>
-          <AssociationSet Name="FK__DetalleNo__Nomin__68487DD7" Association="Self.FK__DetalleNo__Nomin__68487DD7">
+          <AssociationSet Name="FK__DetalleNo__Nomin__5EBF139D" Association="Self.FK__DetalleNo__Nomin__5EBF139D">
             <End Role="Nominas" EntitySet="Nominas" />
             <End Role="DetalleNominas" EntitySet="DetalleNominas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Facturas__Alumno__5CD6CB2B" Association="Self.FK__Facturas__Alumno__5CD6CB2B">
+          <AssociationSet Name="FK__Facturas__Alumno__5FB337D6" Association="Self.FK__Facturas__Alumno__5FB337D6">
             <End Role="Alumnos" EntitySet="Alumnos" />
             <End Role="Facturas" EntitySet="Facturas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Facturas__Estado__5EBF139D" Association="Self.FK__Facturas__Estado__5EBF139D">
+          <AssociationSet Name="FK__Facturas__Estado__60A75C0F" Association="Self.FK__Facturas__Estado__60A75C0F">
             <End Role="EstadoFactura" EntitySet="EstadoFactura" />
             <End Role="Facturas" EntitySet="Facturas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Facturas__Modali__5DCAEF64" Association="Self.FK__Facturas__Modali__5DCAEF64">
+          <AssociationSet Name="FK__Facturas__Modali__619B8048" Association="Self.FK__Facturas__Modali__619B8048">
             <End Role="Modalidades" EntitySet="Modalidades" />
             <End Role="Facturas" EntitySet="Facturas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Municipio__Depar__412EB0B6" Association="Self.FK__Municipio__Depar__412EB0B6">
+          <AssociationSet Name="FK__Municipio__Depar__628FA481" Association="Self.FK__Municipio__Depar__628FA481">
             <End Role="Departamentos" EntitySet="Departamentos" />
             <End Role="Municipios" EntitySet="Municipios" />
           </AssociationSet>
@@ -369,23 +374,23 @@
             <End Role="Facturas" EntitySet="Facturas" />
             <End Role="Sesiones" EntitySet="Sesiones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sesiones__Trabaj__628FA481" Association="Self.FK__Sesiones__Trabaj__628FA481">
+          <AssociationSet Name="FK__Sesiones__Trabaj__6477ECF3" Association="Self.FK__Sesiones__Trabaj__6477ECF3">
             <End Role="Trabajadores" EntitySet="Trabajadores" />
             <End Role="Sesiones" EntitySet="Sesiones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Trabajado__Depar__48CFD27E" Association="Self.FK__Trabajado__Depar__48CFD27E">
+          <AssociationSet Name="FK__Trabajado__Depar__656C112C" Association="Self.FK__Trabajado__Depar__656C112C">
             <End Role="Departamentos" EntitySet="Departamentos" />
             <End Role="Trabajadores" EntitySet="Trabajadores" />
           </AssociationSet>
-          <AssociationSet Name="FK__Trabajado__Estad__4AB81AF0" Association="Self.FK__Trabajado__Estad__4AB81AF0">
+          <AssociationSet Name="FK__Trabajado__Estad__66603565" Association="Self.FK__Trabajado__Estad__66603565">
             <End Role="EstadoTrabajadores" EntitySet="EstadoTrabajadores" />
             <End Role="Trabajadores" EntitySet="Trabajadores" />
           </AssociationSet>
-          <AssociationSet Name="FK__Trabajado__Munic__49C3F6B7" Association="Self.FK__Trabajado__Munic__49C3F6B7">
+          <AssociationSet Name="FK__Trabajado__Munic__6754599E" Association="Self.FK__Trabajado__Munic__6754599E">
             <End Role="Municipios" EntitySet="Municipios" />
             <End Role="Trabajadores" EntitySet="Trabajadores" />
           </AssociationSet>
-          <AssociationSet Name="FK__Trabajado__Profe__47DBAE45" Association="Self.FK__Trabajado__Profe__47DBAE45">
+          <AssociationSet Name="FK__Trabajado__Profe__68487DD7" Association="Self.FK__Trabajado__Profe__68487DD7">
             <End Role="Profesiones" EntitySet="Profesiones" />
             <End Role="Trabajadores" EntitySet="Trabajadores" />
           </AssociationSet>
@@ -413,10 +418,10 @@
           <Property Name="DepartamentoId" Type="Int32" Nullable="false" />
           <Property Name="MunicipioId" Type="Int32" Nullable="false" />
           <Property Name="EstadoAlumnoId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Departamentos" Relationship="Self.FK__Alumnos__Departa__5441852A" FromRole="Alumnos" ToRole="Departamentos" />
-          <NavigationProperty Name="EstadoAlumnos" Relationship="Self.FK__Alumnos__EstadoA__5629CD9C" FromRole="Alumnos" ToRole="EstadoAlumnos" />
-          <NavigationProperty Name="Municipios" Relationship="Self.FK__Alumnos__Municip__5535A963" FromRole="Alumnos" ToRole="Municipios" />
-          <NavigationProperty Name="Facturas" Relationship="Self.FK__Facturas__Alumno__5CD6CB2B" FromRole="Alumnos" ToRole="Facturas" />
+          <NavigationProperty Name="Departamentos" Relationship="Self.FK__Alumnos__Departa__5BE2A6F2" FromRole="Alumnos" ToRole="Departamentos" />
+          <NavigationProperty Name="EstadoAlumnos" Relationship="Self.FK__Alumnos__EstadoA__5CD6CB2B" FromRole="Alumnos" ToRole="EstadoAlumnos" />
+          <NavigationProperty Name="Municipios" Relationship="Self.FK__Alumnos__Municip__5DCAEF64" FromRole="Alumnos" ToRole="Municipios" />
+          <NavigationProperty Name="Facturas" Relationship="Self.FK__Facturas__Alumno__5FB337D6" FromRole="Alumnos" ToRole="Facturas" />
         </EntityType>
         <EntityType Name="Departamentos">
           <Key>
@@ -425,21 +430,22 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cod_Departamento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nom_Departamento" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Alumnos" Relationship="Self.FK__Alumnos__Departa__5441852A" FromRole="Departamentos" ToRole="Alumnos" />
-          <NavigationProperty Name="Municipios" Relationship="Self.FK__Municipio__Depar__412EB0B6" FromRole="Departamentos" ToRole="Municipios" />
-          <NavigationProperty Name="Trabajadores" Relationship="Self.FK__Trabajado__Depar__48CFD27E" FromRole="Departamentos" ToRole="Trabajadores" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK__Alumnos__Departa__5BE2A6F2" FromRole="Departamentos" ToRole="Alumnos" />
+          <NavigationProperty Name="Municipios" Relationship="Self.FK__Municipio__Depar__628FA481" FromRole="Departamentos" ToRole="Municipios" />
+          <NavigationProperty Name="Trabajadores" Relationship="Self.FK__Trabajado__Depar__656C112C" FromRole="Departamentos" ToRole="Trabajadores" />
         </EntityType>
         <EntityType Name="DetalleNominas">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="trabajador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="total" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="total_Horas" Type="Int32" Nullable="false" />
           <Property Name="viaticos" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="salario_Neto" Type="Double" Nullable="false" />
           <Property Name="NominaId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Nominas" Relationship="Self.FK__DetalleNo__Nomin__68487DD7" FromRole="DetalleNominas" ToRole="Nominas" />
+          <NavigationProperty Name="Nominas" Relationship="Self.FK__DetalleNo__Nomin__5EBF139D" FromRole="DetalleNominas" ToRole="Nominas" />
         </EntityType>
         <EntityType Name="EstadoAlumnos">
           <Key>
@@ -448,7 +454,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cod_EstadoAlumno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nom_EstadoAlumno" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Alumnos" Relationship="Self.FK__Alumnos__EstadoA__5629CD9C" FromRole="EstadoAlumnos" ToRole="Alumnos" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK__Alumnos__EstadoA__5CD6CB2B" FromRole="EstadoAlumnos" ToRole="Alumnos" />
         </EntityType>
         <EntityType Name="EstadoFactura">
           <Key>
@@ -457,7 +463,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cod_EstadoFactura" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nom_EstadoFactura" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Facturas" Relationship="Self.FK__Facturas__Estado__5EBF139D" FromRole="EstadoFactura" ToRole="Facturas" />
+          <NavigationProperty Name="Facturas" Relationship="Self.FK__Facturas__Estado__60A75C0F" FromRole="EstadoFactura" ToRole="Facturas" />
         </EntityType>
         <EntityType Name="EstadoTrabajadores">
           <Key>
@@ -466,7 +472,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cod_EstadoTrabajador" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nom_EstadoTrabajador" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Trabajadores" Relationship="Self.FK__Trabajado__Estad__4AB81AF0" FromRole="EstadoTrabajadores" ToRole="Trabajadores" />
+          <NavigationProperty Name="Trabajadores" Relationship="Self.FK__Trabajado__Estad__66603565" FromRole="EstadoTrabajadores" ToRole="Trabajadores" />
         </EntityType>
         <EntityType Name="Facturas">
           <Key>
@@ -480,10 +486,11 @@
           <Property Name="AlumnoId" Type="Int32" Nullable="false" />
           <Property Name="ModalidadId" Type="Int32" Nullable="false" />
           <Property Name="EstadofacturaId" Type="Int32" Nullable="false" />
-          <Property Name="EstadoSesionId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Alumnos" Relationship="Self.FK__Facturas__Alumno__5CD6CB2B" FromRole="Facturas" ToRole="Alumnos" />
-          <NavigationProperty Name="EstadoFactura" Relationship="Self.FK__Facturas__Estado__5EBF139D" FromRole="Facturas" ToRole="EstadoFactura" />
-          <NavigationProperty Name="Modalidades" Relationship="Self.FK__Facturas__Modali__5DCAEF64" FromRole="Facturas" ToRole="Modalidades" />
+          <Property Name="EstadoSesiones" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="costoTotal_Factura" Type="Double" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK__Facturas__Alumno__5FB337D6" FromRole="Facturas" ToRole="Alumnos" />
+          <NavigationProperty Name="EstadoFactura" Relationship="Self.FK__Facturas__Estado__60A75C0F" FromRole="Facturas" ToRole="EstadoFactura" />
+          <NavigationProperty Name="Modalidades" Relationship="Self.FK__Facturas__Modali__619B8048" FromRole="Facturas" ToRole="Modalidades" />
           <NavigationProperty Name="Sesiones" Relationship="Self.FK__Sesiones__Factur__6383C8BA" FromRole="Facturas" ToRole="Sesiones" />
         </EntityType>
         <EntityType Name="Modalidades">
@@ -493,7 +500,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cod_Modalidad" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nom_Modalidad" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Facturas" Relationship="Self.FK__Facturas__Modali__5DCAEF64" FromRole="Modalidades" ToRole="Facturas" />
+          <NavigationProperty Name="Facturas" Relationship="Self.FK__Facturas__Modali__619B8048" FromRole="Modalidades" ToRole="Facturas" />
         </EntityType>
         <EntityType Name="Municipios">
           <Key>
@@ -503,9 +510,9 @@
           <Property Name="Cod_Municipio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nom_Municipio" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DepartamentoId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Alumnos" Relationship="Self.FK__Alumnos__Municip__5535A963" FromRole="Municipios" ToRole="Alumnos" />
-          <NavigationProperty Name="Departamentos" Relationship="Self.FK__Municipio__Depar__412EB0B6" FromRole="Municipios" ToRole="Departamentos" />
-          <NavigationProperty Name="Trabajadores" Relationship="Self.FK__Trabajado__Munic__49C3F6B7" FromRole="Municipios" ToRole="Trabajadores" />
+          <NavigationProperty Name="Alumnos" Relationship="Self.FK__Alumnos__Municip__5DCAEF64" FromRole="Municipios" ToRole="Alumnos" />
+          <NavigationProperty Name="Departamentos" Relationship="Self.FK__Municipio__Depar__628FA481" FromRole="Municipios" ToRole="Departamentos" />
+          <NavigationProperty Name="Trabajadores" Relationship="Self.FK__Trabajado__Munic__6754599E" FromRole="Municipios" ToRole="Trabajadores" />
         </EntityType>
         <EntityType Name="Nominas">
           <Key>
@@ -516,7 +523,7 @@
           <Property Name="pagoHasta_Nomina" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="fechaPago_Nomina" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="totalpago_Nomina" Type="Double" Nullable="false" />
-          <NavigationProperty Name="DetalleNominas" Relationship="Self.FK__DetalleNo__Nomin__68487DD7" FromRole="Nominas" ToRole="DetalleNominas" />
+          <NavigationProperty Name="DetalleNominas" Relationship="Self.FK__DetalleNo__Nomin__5EBF139D" FromRole="Nominas" ToRole="DetalleNominas" />
         </EntityType>
         <EntityType Name="Profesiones">
           <Key>
@@ -525,7 +532,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cod_Profesion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nom_Profesion" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Trabajadores" Relationship="Self.FK__Trabajado__Profe__47DBAE45" FromRole="Profesiones" ToRole="Trabajadores" />
+          <NavigationProperty Name="Trabajadores" Relationship="Self.FK__Trabajado__Profe__68487DD7" FromRole="Profesiones" ToRole="Trabajadores" />
         </EntityType>
         <EntityType Name="Sesiones">
           <Key>
@@ -538,7 +545,7 @@
           <Property Name="TrabajadorId" Type="Int32" Nullable="false" />
           <Property Name="FacturaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Facturas" Relationship="Self.FK__Sesiones__Factur__6383C8BA" FromRole="Sesiones" ToRole="Facturas" />
-          <NavigationProperty Name="Trabajadores" Relationship="Self.FK__Sesiones__Trabaj__628FA481" FromRole="Sesiones" ToRole="Trabajadores" />
+          <NavigationProperty Name="Trabajadores" Relationship="Self.FK__Sesiones__Trabaj__6477ECF3" FromRole="Sesiones" ToRole="Trabajadores" />
         </EntityType>
         <EntityType Name="Trabajadores">
           <Key>
@@ -554,11 +561,11 @@
           <Property Name="DepartamentoId" Type="Int32" Nullable="false" />
           <Property Name="MunicipioId" Type="Int32" Nullable="false" />
           <Property Name="EstadoTrabajadorId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Departamentos" Relationship="Self.FK__Trabajado__Depar__48CFD27E" FromRole="Trabajadores" ToRole="Departamentos" />
-          <NavigationProperty Name="EstadoTrabajadores" Relationship="Self.FK__Trabajado__Estad__4AB81AF0" FromRole="Trabajadores" ToRole="EstadoTrabajadores" />
-          <NavigationProperty Name="Municipios" Relationship="Self.FK__Trabajado__Munic__49C3F6B7" FromRole="Trabajadores" ToRole="Municipios" />
-          <NavigationProperty Name="Profesiones" Relationship="Self.FK__Trabajado__Profe__47DBAE45" FromRole="Trabajadores" ToRole="Profesiones" />
-          <NavigationProperty Name="Sesiones" Relationship="Self.FK__Sesiones__Trabaj__628FA481" FromRole="Trabajadores" ToRole="Sesiones" />
+          <NavigationProperty Name="Departamentos" Relationship="Self.FK__Trabajado__Depar__656C112C" FromRole="Trabajadores" ToRole="Departamentos" />
+          <NavigationProperty Name="EstadoTrabajadores" Relationship="Self.FK__Trabajado__Estad__66603565" FromRole="Trabajadores" ToRole="EstadoTrabajadores" />
+          <NavigationProperty Name="Municipios" Relationship="Self.FK__Trabajado__Munic__6754599E" FromRole="Trabajadores" ToRole="Municipios" />
+          <NavigationProperty Name="Profesiones" Relationship="Self.FK__Trabajado__Profe__68487DD7" FromRole="Trabajadores" ToRole="Profesiones" />
+          <NavigationProperty Name="Sesiones" Relationship="Self.FK__Sesiones__Trabaj__6477ECF3" FromRole="Trabajadores" ToRole="Sesiones" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -568,7 +575,7 @@
           <Property Name="NomUsuario" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PassWrd" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Alumnos__Departa__5441852A">
+        <Association Name="FK__Alumnos__Departa__5BE2A6F2">
           <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
           <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -580,7 +587,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Alumnos__EstadoA__5629CD9C">
+        <Association Name="FK__Alumnos__EstadoA__5CD6CB2B">
           <End Role="EstadoAlumnos" Type="Self.EstadoAlumnos" Multiplicity="1" />
           <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -592,7 +599,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Alumnos__Municip__5535A963">
+        <Association Name="FK__Alumnos__Municip__5DCAEF64">
           <End Role="Municipios" Type="Self.Municipios" Multiplicity="1" />
           <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -604,7 +611,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Facturas__Alumno__5CD6CB2B">
+        <Association Name="FK__Facturas__Alumno__5FB337D6">
           <End Role="Alumnos" Type="Self.Alumnos" Multiplicity="1" />
           <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -616,7 +623,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Municipio__Depar__412EB0B6">
+        <Association Name="FK__Municipio__Depar__628FA481">
           <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
           <End Role="Municipios" Type="Self.Municipios" Multiplicity="*" />
           <ReferentialConstraint>
@@ -628,7 +635,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Trabajado__Depar__48CFD27E">
+        <Association Name="FK__Trabajado__Depar__656C112C">
           <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
           <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="*" />
           <ReferentialConstraint>
@@ -640,7 +647,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DetalleNo__Nomin__68487DD7">
+        <Association Name="FK__DetalleNo__Nomin__5EBF139D">
           <End Role="Nominas" Type="Self.Nominas" Multiplicity="1" />
           <End Role="DetalleNominas" Type="Self.DetalleNominas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -652,7 +659,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Facturas__Estado__5EBF139D">
+        <Association Name="FK__Facturas__Estado__60A75C0F">
           <End Role="EstadoFactura" Type="Self.EstadoFactura" Multiplicity="1" />
           <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -664,7 +671,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Trabajado__Estad__4AB81AF0">
+        <Association Name="FK__Trabajado__Estad__66603565">
           <End Role="EstadoTrabajadores" Type="Self.EstadoTrabajadores" Multiplicity="1" />
           <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="*" />
           <ReferentialConstraint>
@@ -676,7 +683,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Facturas__Modali__5DCAEF64">
+        <Association Name="FK__Facturas__Modali__619B8048">
           <End Role="Modalidades" Type="Self.Modalidades" Multiplicity="1" />
           <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
           <ReferentialConstraint>
@@ -700,7 +707,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Trabajado__Munic__49C3F6B7">
+        <Association Name="FK__Trabajado__Munic__6754599E">
           <End Role="Municipios" Type="Self.Municipios" Multiplicity="1" />
           <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="*" />
           <ReferentialConstraint>
@@ -712,7 +719,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Trabajado__Profe__47DBAE45">
+        <Association Name="FK__Trabajado__Profe__68487DD7">
           <End Role="Profesiones" Type="Self.Profesiones" Multiplicity="1" />
           <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="*" />
           <ReferentialConstraint>
@@ -724,7 +731,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sesiones__Trabaj__628FA481">
+        <Association Name="FK__Sesiones__Trabaj__6477ECF3">
           <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="1" />
           <End Role="Sesiones" Type="Self.Sesiones" Multiplicity="*" />
           <ReferentialConstraint>
@@ -751,43 +758,43 @@
           <EntitySet Name="Sesiones" EntityType="Self.Sesiones" />
           <EntitySet Name="Trabajadores" EntityType="Self.Trabajadores" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" />
-          <AssociationSet Name="FK__Alumnos__Departa__5441852A" Association="Self.FK__Alumnos__Departa__5441852A">
+          <AssociationSet Name="FK__Alumnos__Departa__5BE2A6F2" Association="Self.FK__Alumnos__Departa__5BE2A6F2">
             <End Role="Departamentos" EntitySet="Departamentos" />
             <End Role="Alumnos" EntitySet="Alumnos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Alumnos__EstadoA__5629CD9C" Association="Self.FK__Alumnos__EstadoA__5629CD9C">
+          <AssociationSet Name="FK__Alumnos__EstadoA__5CD6CB2B" Association="Self.FK__Alumnos__EstadoA__5CD6CB2B">
             <End Role="EstadoAlumnos" EntitySet="EstadoAlumnos" />
             <End Role="Alumnos" EntitySet="Alumnos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Alumnos__Municip__5535A963" Association="Self.FK__Alumnos__Municip__5535A963">
+          <AssociationSet Name="FK__Alumnos__Municip__5DCAEF64" Association="Self.FK__Alumnos__Municip__5DCAEF64">
             <End Role="Municipios" EntitySet="Municipios" />
             <End Role="Alumnos" EntitySet="Alumnos" />
           </AssociationSet>
-          <AssociationSet Name="FK__Facturas__Alumno__5CD6CB2B" Association="Self.FK__Facturas__Alumno__5CD6CB2B">
+          <AssociationSet Name="FK__Facturas__Alumno__5FB337D6" Association="Self.FK__Facturas__Alumno__5FB337D6">
             <End Role="Alumnos" EntitySet="Alumnos" />
             <End Role="Facturas" EntitySet="Facturas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Municipio__Depar__412EB0B6" Association="Self.FK__Municipio__Depar__412EB0B6">
+          <AssociationSet Name="FK__Municipio__Depar__628FA481" Association="Self.FK__Municipio__Depar__628FA481">
             <End Role="Departamentos" EntitySet="Departamentos" />
             <End Role="Municipios" EntitySet="Municipios" />
           </AssociationSet>
-          <AssociationSet Name="FK__Trabajado__Depar__48CFD27E" Association="Self.FK__Trabajado__Depar__48CFD27E">
+          <AssociationSet Name="FK__Trabajado__Depar__656C112C" Association="Self.FK__Trabajado__Depar__656C112C">
             <End Role="Departamentos" EntitySet="Departamentos" />
             <End Role="Trabajadores" EntitySet="Trabajadores" />
           </AssociationSet>
-          <AssociationSet Name="FK__DetalleNo__Nomin__68487DD7" Association="Self.FK__DetalleNo__Nomin__68487DD7">
+          <AssociationSet Name="FK__DetalleNo__Nomin__5EBF139D" Association="Self.FK__DetalleNo__Nomin__5EBF139D">
             <End Role="Nominas" EntitySet="Nominas" />
             <End Role="DetalleNominas" EntitySet="DetalleNominas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Facturas__Estado__5EBF139D" Association="Self.FK__Facturas__Estado__5EBF139D">
+          <AssociationSet Name="FK__Facturas__Estado__60A75C0F" Association="Self.FK__Facturas__Estado__60A75C0F">
             <End Role="EstadoFactura" EntitySet="EstadoFactura" />
             <End Role="Facturas" EntitySet="Facturas" />
           </AssociationSet>
-          <AssociationSet Name="FK__Trabajado__Estad__4AB81AF0" Association="Self.FK__Trabajado__Estad__4AB81AF0">
+          <AssociationSet Name="FK__Trabajado__Estad__66603565" Association="Self.FK__Trabajado__Estad__66603565">
             <End Role="EstadoTrabajadores" EntitySet="EstadoTrabajadores" />
             <End Role="Trabajadores" EntitySet="Trabajadores" />
           </AssociationSet>
-          <AssociationSet Name="FK__Facturas__Modali__5DCAEF64" Association="Self.FK__Facturas__Modali__5DCAEF64">
+          <AssociationSet Name="FK__Facturas__Modali__619B8048" Association="Self.FK__Facturas__Modali__619B8048">
             <End Role="Modalidades" EntitySet="Modalidades" />
             <End Role="Facturas" EntitySet="Facturas" />
           </AssociationSet>
@@ -795,19 +802,26 @@
             <End Role="Facturas" EntitySet="Facturas" />
             <End Role="Sesiones" EntitySet="Sesiones" />
           </AssociationSet>
-          <AssociationSet Name="FK__Trabajado__Munic__49C3F6B7" Association="Self.FK__Trabajado__Munic__49C3F6B7">
+          <AssociationSet Name="FK__Trabajado__Munic__6754599E" Association="Self.FK__Trabajado__Munic__6754599E">
             <End Role="Municipios" EntitySet="Municipios" />
             <End Role="Trabajadores" EntitySet="Trabajadores" />
           </AssociationSet>
-          <AssociationSet Name="FK__Trabajado__Profe__47DBAE45" Association="Self.FK__Trabajado__Profe__47DBAE45">
+          <AssociationSet Name="FK__Trabajado__Profe__68487DD7" Association="Self.FK__Trabajado__Profe__68487DD7">
             <End Role="Profesiones" EntitySet="Profesiones" />
             <End Role="Trabajadores" EntitySet="Trabajadores" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sesiones__Trabaj__628FA481" Association="Self.FK__Sesiones__Trabaj__628FA481">
+          <AssociationSet Name="FK__Sesiones__Trabaj__6477ECF3" Association="Self.FK__Sesiones__Trabaj__6477ECF3">
             <End Role="Trabajadores" EntitySet="Trabajadores" />
             <End Role="Sesiones" EntitySet="Sesiones" />
           </AssociationSet>
+          <FunctionImport Name="ObtenerTotalFacturasPorMes" ReturnType="Collection(SistemaPsicoaprendeModel.ObtenerTotalFacturasPorMes_Result)">
+            <Parameter Name="Anio" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="ObtenerTotalFacturasPorMes_Result">
+          <Property Type="String" Name="Mes" Nullable="true" MaxLength="30" />
+          <Property Type="Double" Name="Total" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -847,6 +861,7 @@
             <EntityTypeMapping TypeName="SistemaPsicoaprendeModel.DetalleNominas">
               <MappingFragment StoreEntitySet="DetalleNominas">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="trabajador" ColumnName="trabajador" />
                 <ScalarProperty Name="total" ColumnName="total" />
                 <ScalarProperty Name="total_Horas" ColumnName="total_Horas" />
                 <ScalarProperty Name="viaticos" ColumnName="viaticos" />
@@ -893,7 +908,8 @@
                 <ScalarProperty Name="AlumnoId" ColumnName="AlumnoId" />
                 <ScalarProperty Name="ModalidadId" ColumnName="ModalidadId" />
                 <ScalarProperty Name="EstadofacturaId" ColumnName="EstadofacturaId" />
-                <ScalarProperty Name="EstadoSesionId" ColumnName="EstadoSesionId" />
+                <ScalarProperty Name="EstadoSesiones" ColumnName="EstadoSesiones" />
+                <ScalarProperty Name="costoTotal_Factura" ColumnName="costoTotal_Factura" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -973,6 +989,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ObtenerTotalFacturasPorMes" FunctionName="SistemaPsicoaprendeModel.Store.ObtenerTotalFacturasPorMes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SistemaPsicoaprendeModel.ObtenerTotalFacturasPorMes_Result">
+                <ScalarProperty Name="Mes" ColumnName="Mes" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

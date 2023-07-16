@@ -2,6 +2,7 @@
 using SistemaPsicoaprende.Controlador;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Windows.Forms;
 
 namespace SistemaPsicoaprende.UI
@@ -16,6 +17,18 @@ namespace SistemaPsicoaprende.UI
         private void FrmNominas_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void LimpiarFormulario()
+        {
+
+            txtcost.Text = string.Empty;
+            txtvia.Text = string.Empty; 
+            txttol.Text = string.Empty;
+            dateTimePickerPagoDesde.Value = DateTime.Today;
+            dateTimePickerPagoHasta.Value = DateTime.Today;
+            dateTimePickerFechaPago.Value = DateTime.Today;
+            dataGridView1.Rows.Clear();
         }
 
         public void ListarNominas()
@@ -64,58 +77,92 @@ namespace SistemaPsicoaprende.UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Obtener los valores de los campos necesarios para la nómina
-            DateTime pagoDesde = dateTimePickerPagoDesde.Value;
-            DateTime pagoHasta = dateTimePickerPagoHasta.Value;
-            DateTime fechaPago = dateTimePickerFechaPago.Value;
 
-            // Crear una instancia de la nómina
-            Nomina nomina = new Nomina(pagoDesde, pagoHasta, fechaPago);
-
-            // Crear una lista de detalles de la nómina
-            List<DetalleNominas> detalles = new List<DetalleNominas>();
-
-            // Obtener los detalles de la nómina y agregarlos a la lista
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            try
             {
-                int horasTrabajadas = Convert.ToInt32(row.Cells["horas"].Value);
-                decimal total = Convert.ToDecimal(row.Cells["total"].Value);
-                decimal viaticos = Convert.ToDecimal(row.Cells["viatico"].Value);
-
-
-
-
-                // Crear un objeto DetalleNomina y asignar el ID de la nómina
-                DetalleNominas detalle = new DetalleNominas
+                if (dataGridView1.Rows.Count > 0)
                 {
-                    total_Horas = horasTrabajadas,
-                    total = total,
-                    viaticos = viaticos,
-                    salario_Neto = (double)((Convert.ToDecimal(total) + viaticos))
-                };
+                    // Obtener los valores de los campos necesarios para la nómina
+                    DateTime pagoDesde = dateTimePickerPagoDesde.Value;
+                    DateTime pagoHasta = dateTimePickerPagoHasta.Value;
 
-                detalles.Add(detalle);
+                    DateTime fechaPago = dateTimePickerFechaPago.Value.Date; // Obtener solo la fecha sin la hora
+                    TimeSpan horaActual = DateTime.Now.TimeOfDay; // Obtener la hora actual
+                    fechaPago = fechaPago.Add(horaActual); // Combinar la fecha sin la hora con la hora actual
+
+                    // Ahora tienes la fecha y hora actualizada en la variable 'fechaPago'
+
+
+                    // Crear una instancia de la nómina
+                    Nomina nomina = new Nomina(pagoDesde, pagoHasta, fechaPago);
+
+                    // Crear una lista de detalles de la nómina
+                    List<DetalleNominas> detalles = new List<DetalleNominas>();
+
+                    // Obtener los detalles de la nómina y agregarlos a la lista
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+
+
+                        string trabajador = Convert.ToString(row.Cells["trabajador"].Value);
+                        int horasTrabajadas = Convert.ToInt32(row.Cells["horas"].Value);
+                        decimal total = Convert.ToDecimal(row.Cells["total"].Value);
+                        decimal viaticos = Convert.ToDecimal(row.Cells["viatico"].Value);
+                        // Crear un objeto DetalleNomina y asignar el ID de la nómina
+                        DetalleNominas detalle = new DetalleNominas
+                        {
+                            trabajador = trabajador,
+                            total_Horas = horasTrabajadas,
+                            total = total,
+                            viaticos = viaticos,
+                            salario_Neto = (double)((Convert.ToDecimal(total) + viaticos))
+                        };
+
+                        detalles.Add(detalle);
+                    }
+
+                    // Llamar al método AgregarNomina de la instancia de Nomina
+                    int resultado = nomina.AgregarNomina(detalles);
+                    // Verificar el resultado
+                    if (resultado > 0)
+                    {
+                        // La nómina se agregó correctamente
+                        MessageBox.Show("Nómina agregada correctamente");
+                        LimpiarFormulario();
+                    }
+                    else
+                    {
+                        // Hubo un error al agregar la nómina
+                        MessageBox.Show("Error al agregar la nómina");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("haga el calculo de la nomina");
+                }
+
             }
-
-            // Llamar al método AgregarNomina de la instancia de Nomina
-            int resultado = nomina.AgregarNomina(detalles);
-
-            // Verificar el resultado
-            if (resultado > 0)
+            catch (ArgumentNullException arg)
             {
-                // La nómina se agregó correctamente
-                MessageBox.Show("Nómina agregada correctamente");
+                // Mostrar mensaje de error en caso de ArgumentNullException
+                MessageBox.Show("Se ha producido una falla al ejecutar la acción guardar: " + arg.Message, "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
+            catch (InvalidOperationException inv)
             {
-                // Hubo un error al agregar la nómina
-                MessageBox.Show("Error al agregar la nómina");
+                // Mostrar mensaje de error en caso de InvalidOperationException
+                MessageBox.Show("Se ha producido una falla al ejecutar la acción guardar: " + inv.Message, "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (DbUpdateException db)
+            {
+                // Mostrar mensaje de error en caso de DbUpdateException
+                MessageBox.Show("Se ha producido una falla al ejecutar la acción guardar: " + db.Message, "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        private void pnlContenedor_Paint(object sender, PaintEventArgs e)
+        {
 
-
-
-
+        }
     }
 }

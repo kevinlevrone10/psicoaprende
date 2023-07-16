@@ -28,7 +28,8 @@ namespace SistemaPsicoaprende.AppDatos
         public int AlumnoId { get; set; }
         public int ModalidadId { get; set; }
         public int EstadofacturaId { get; set; }
-        public string EstadoSesionId { get; set; }
+        public string EstadoSesiones { get; set; }
+        public double costoTotal_Factura { get; set; }
     
         public virtual Alumnos Alumnos { get; set; }
         public virtual EstadoFactura EstadoFactura { get; set; }

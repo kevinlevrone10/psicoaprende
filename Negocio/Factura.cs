@@ -1,8 +1,9 @@
 ﻿using SistemaPsicoaprende.AppDatos;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace SistemaPsicoaprende.Negocio
 {
@@ -28,7 +29,7 @@ namespace SistemaPsicoaprende.Negocio
                     // Incrementar el número del código y generar el nuevo código
                     int nuevoNumero = ultimoNumero + 1;
                     string nuevoCodigo = "FAC" + nuevoNumero.ToString("D3");
-                    return nuevoCodigo;
+                    return nuevoCodigo.ToUpper();
                 }
                 else
                 {
@@ -41,14 +42,14 @@ namespace SistemaPsicoaprende.Negocio
         public Factura(int cantSesiones, double costo, DateTime fecha, int alumnoId, int modalidadId)
         {
             fac = new Facturas();
-            fac.cod_Factura = GenerarCodigoFactura();
+            fac.cod_Factura = GenerarCodigoFactura().ToUpper();
             fac.cantSesiones_Factura = cantSesiones;
             fac.costo_Factura = costo;
             fac.fecha_Factura = fecha;
             fac.AlumnoId = alumnoId;
             fac.ModalidadId = modalidadId;
-            fac.EstadoSesionId = "En curso";
-            fac.EstadofacturaId= 1;
+            fac.EstadoSesiones = "En curso".ToUpper();
+            fac.EstadofacturaId = 1;
         }
 
         public int GuardarFactura()
@@ -74,7 +75,7 @@ namespace SistemaPsicoaprende.Negocio
                         facturaexistente.fecha_Factura = fac.fecha_Factura;
                         facturaexistente.AlumnoId = fac.AlumnoId;
                         facturaexistente.ModalidadId = fac.ModalidadId;
-                        facturaexistente.EstadoSesionId = facturaexistente.EstadoSesionId;
+                        facturaexistente.EstadoSesiones = facturaexistente.EstadoSesiones;
                         facturaexistente.EstadoFactura = facturaexistente.EstadoFactura;
                     }
                     else
@@ -141,20 +142,18 @@ namespace SistemaPsicoaprende.Negocio
 
                     if (todasSesionesRealizadas)
                     {
-                        factura.EstadoSesionId = "Terminado";
+                        factura.EstadoSesiones = "Terminado".ToUpper();
                     }
                     else
                     {
-                        factura.EstadoSesionId = "En curso";
+                        factura.EstadoSesiones = "En curso".ToUpper();
                     }
-                   
+
                 }
 
                 ctx.SaveChanges(); // Guardar los cambios en la base de datos
             }
         }
-
-
 
 
         public bool SeCumplieronSesiones(int facturaId)
@@ -179,9 +178,96 @@ namespace SistemaPsicoaprende.Negocio
             return false;
         }
 
+        public List<dynamic> ObtenerTotalFacturasPorAño(int año)
+        {
+            SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection();
+
+            var totalFacturas = ctx.Facturas
+                .Where(f => f.fecha_Factura.Year == año)
+                .Sum(f => (double?)f.costoTotal_Factura);
+
+            double total = totalFacturas ?? 0;
+
+            var resultado = new List<dynamic>()
+         {
+        new
+        {
+            Total = total
+        }
+        };
+
+            return resultado;
+        }
 
 
+        public List<dynamic> ObtenerTotalFacturasPorMes(int año)
+        {
+            SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection();
+            var query = (from factura in ctx.Facturas
+                         where factura.fecha_Factura.Year == año
+                         group factura by factura.fecha_Factura.Month into grupo
+                         select new
+                         {
+                             fecha_Factura = grupo.Key,
+                             costo_Factura = grupo.Sum(f => f.costoTotal_Factura)
+                         }).OrderBy(x => x.fecha_Factura).ToList();
 
+            var resultados = query.Select(x => new
+            {
+                fecha_Factura = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(x.fecha_Factura),
+                costo_Factura = x.costo_Factura
+            }).ToList();
+
+            return resultados.ToList<dynamic>();
+        }
+
+        public List<dynamic> obtenerEgresos(int año)
+        {
+            using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
+            {
+                var totalEgresos = ctx.Nominas
+                    .Where(n => n.fechaPago_Nomina.Year == año)
+                    .Sum(n => (double?)n.totalpago_Nomina);
+
+                double Egresos = totalEgresos ?? 0;
+
+                var resultado = new List<dynamic>()
+        {
+            new
+            {
+                totalpago_Nomina = Egresos
+            }
+        };
+
+                return resultado;
+            }
+        }
+
+
+        public List<dynamic> CalcularGanancias(int año)
+        {
+            List<dynamic> ingresos = ObtenerTotalFacturasPorAño(año);
+            List<dynamic> egresos = obtenerEgresos(año);
+
+            // Sumar los ingresos
+            double totalIngresos = ingresos.Sum(x => (double)x.Total);
+
+            // Sumar los egresos
+            double totalEgresos = egresos.Sum(x => (double)x.totalpago_Nomina);
+
+            // Calcular las ganancias
+            double ganancias = totalIngresos - totalEgresos;
+
+            // Crear una lista dinámica con el resultado
+            List<dynamic> resultado = new List<dynamic>()
+            {
+             new
+            {
+            costoTotal_Factura = ganancias
+            }
+            };
+            return resultado;
+        }
 
     }
 }

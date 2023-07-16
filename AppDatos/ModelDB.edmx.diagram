@@ -4,35 +4,35 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a633bfa3bb7d4cc2a073872b65a01d47" Name="Diagram1">
+      <Diagram DiagramId="2bdbfbd292e64f51a23026bd5f7c6fa1" Name="Diagram1">
         <EntityTypeShape EntityType="SistemaPsicoaprendeModel.Alumnos" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaPsicoaprendeModel.Departamentos" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaPsicoaprendeModel.DetalleNominas" Width="1.5" PointX="13" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaPsicoaprendeModel.EstadoAlumnos" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaPsicoaprendeModel.EstadoFactura" Width="1.5" PointX="8.25" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaPsicoaprendeModel.EstadoTrabajadores" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SistemaPsicoaprendeModel.Facturas" Width="1.5" PointX="10.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModel.Facturas" Width="1.5" PointX="10.5" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaPsicoaprendeModel.Modalidades" Width="1.5" PointX="8.25" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaPsicoaprendeModel.Municipios" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SistemaPsicoaprendeModel.Nominas" Width="1.5" PointX="10.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SistemaPsicoaprendeModel.Nominas" Width="1.5" PointX="10.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaPsicoaprendeModel.Profesiones" Width="1.5" PointX="6" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaPsicoaprendeModel.Sesiones" Width="1.5" PointX="12.75" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaPsicoaprendeModel.Trabajadores" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SistemaPsicoaprendeModel.Usuario" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Alumnos__Departa__5441852A" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Alumnos__EstadoA__5629CD9C" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Alumnos__Municip__5535A963" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Facturas__Alumno__5CD6CB2B" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Municipio__Depar__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Trabajado__Depar__48CFD27E" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__DetalleNo__Nomin__68487DD7" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Facturas__Estado__5EBF139D" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Trabajado__Estad__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Facturas__Modali__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Alumnos__Departa__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Alumnos__EstadoA__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Alumnos__Municip__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Facturas__Alumno__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Municipio__Depar__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Trabajado__Depar__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__DetalleNo__Nomin__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Facturas__Estado__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Trabajado__Estad__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Facturas__Modali__619B8048" ManuallyRouted="false" />
         <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Sesiones__Factur__6383C8BA" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Trabajado__Munic__49C3F6B7" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Trabajado__Profe__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Sesiones__Trabaj__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Trabajado__Munic__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Trabajado__Profe__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="SistemaPsicoaprendeModel.FK__Sesiones__Trabaj__6477ECF3" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

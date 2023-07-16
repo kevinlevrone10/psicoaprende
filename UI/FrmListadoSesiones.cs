@@ -39,7 +39,7 @@ namespace SistemaPsicoaprende.UI
                     int trabajadorId = sesion.TrabajadorId;
 
                     // Abrir el formulario de FrmEstudiante y pasar los datos como argumentos
-                    this.LoadForm(new FrmSesiones(codigo, fecha,trabajadorId, facturaId));
+                    this.LoadForm(new FrmSesiones(codigo, fecha, trabajadorId, facturaId));
                 }
             }
         }
@@ -73,10 +73,12 @@ namespace SistemaPsicoaprende.UI
                     DateTime fechaSesion = sesion.fecha_Sesion;
                     int cantHorasSesion = sesion.cantHoras_Sesion;
 
-                    dataGridView1.Rows.Add(codSesion, codAlumno, nombreAlumno, fechaSesion, cantHorasSesion, "Edit");
+                    string fechaFormateada = fechaSesion.ToString("dd/MM/yyyy");
+                    dataGridView1.Rows.Add(codSesion, codAlumno, nombreAlumno, fechaFormateada, cantHorasSesion, "Edit");
                 }
             }
         }
+
 
 
 

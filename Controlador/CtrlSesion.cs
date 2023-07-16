@@ -27,7 +27,6 @@ namespace SistemaPsicoaprende.Controlador
             return e.ObtenerFacturas();
         }
 
-
         public static Facturas ObtenerFacturasid(int id)
         {
             Sesion e = new Sesion();

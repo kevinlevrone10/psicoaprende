@@ -75,7 +75,12 @@ namespace SistemaPsicoaprende.UI
         {
             this.Dispose();
             FrmLogin login = new FrmLogin();
-            login.Show(); 
+            login.Show();
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            this.LoadForm(new FrmReporteNomina());
         }
     }
 }

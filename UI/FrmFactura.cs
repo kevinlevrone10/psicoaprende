@@ -3,7 +3,6 @@ using SistemaPsicoaprende.Controlador;
 using SistemaPsicoaprende.Negocio;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Data.Entity.Infrastructure;
 using System.Windows.Forms;
 
@@ -71,7 +70,7 @@ namespace SistemaPsicoaprende.UI
 
                     if (dataGridView1.Rows.Count > 0)
                     {
-                        decimal total = Convert.ToDecimal(dataGridView1.Rows[0].Cells[2].Value);
+                        decimal total = Convert.ToDecimal(dataGridView1.Rows[0].Cells[0].Value);
 
                         // Crear un objeto Factura con los valores de los campos del formulario
                         Factura facturas = new Factura(Convert.ToInt32(txtcant.Text), Convert.ToDouble(total), fecha, Convert.ToInt32(txtid.Text), modalidaseleccionada.Id);
@@ -157,6 +156,11 @@ namespace SistemaPsicoaprende.UI
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlContenedor_Paint(object sender, PaintEventArgs e)
         {
 
         }

@@ -68,8 +68,6 @@ namespace SistemaPsicoaprende.UI
             };
         }
 
-
-
         private void LoadForm(Form NuevoFormulario)
         {
             //Verifica si existe un formulario activo
@@ -165,6 +163,42 @@ namespace SistemaPsicoaprende.UI
                 }
             }
 
+            foreach (Control control in grpBoxTutor.Controls)
+            {
+                if (control is TextBox textBox && textBox != txtBuscar)
+                {
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        return true;
+                    }
+                }
+                else if (control is MaskedTextBox maskedTextBox)
+                {
+                    if (string.IsNullOrEmpty(maskedTextBox.Text))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            foreach (Control control in grpBoxEstado.Controls)
+            {
+                if (control is TextBox textBox && textBox != txtBuscar)
+                {
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        return true;
+                    }
+                }
+                else if (control is MaskedTextBox maskedTextBox)
+                {
+                    if (string.IsNullOrEmpty(maskedTextBox.Text))
+                    {
+                        return true;
+                    }
+                }
+            }
+
             foreach (Control control in pnlContenedor.Controls)
             {
                 if (control is TextBox textBox && textBox != txtBuscar && textBox != txtcod1)
@@ -179,23 +213,10 @@ namespace SistemaPsicoaprende.UI
             return false;
         }
 
-
         private void LimpiarTextBoxes()
         {
             // Recorrer todos los controles del formulario
-            foreach (Control control in grpBoxEstu.Controls)
-            {
-                if (control is TextBox textBox)
-                {
-                    // Si el control es un TextBox, se limpia su texto estableciéndolo como vacío
-                    textBox.Text = string.Empty;
-                }
-                else if (control is ComboBox comboBox)
-                {
-                    // Si el control es un ComboBox, se establece el índice seleccionado a -1 para limpiar la selección
-                    comboBox.SelectedIndex = -1;
-                }
-            }
+           
             foreach (Control control in grpBoxEstu.Controls)
             {
                 if (control is TextBox textBox)
@@ -222,6 +243,35 @@ namespace SistemaPsicoaprende.UI
                     comboBox.SelectedIndex = -1;
                 }
             }
+
+            foreach (Control control in grpBoxDatosAcademicos.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Si el control es un TextBox, se limpia su texto estableciéndolo como vacío
+                    textBox.Text = string.Empty;
+                }
+                else if (control is ComboBox comboBox)
+                {
+                    // Si el control es un ComboBox, se establece el índice seleccionado a -1 para limpiar la selección
+                    comboBox.SelectedIndex = -1;
+                }
+            }
+
+            foreach (Control control in grpBoxEstado.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Si el control es un TextBox, se limpia su texto estableciéndolo como vacío
+                    textBox.Text = string.Empty;
+                }
+                else if (control is ComboBox comboBox)
+                {
+                    // Si el control es un ComboBox, se establece el índice seleccionado a -1 para limpiar la selección
+                    comboBox.SelectedIndex = -1;
+                }
+            }
+
             foreach (Control control in grpBoxTutor.Controls)
             {
                 if (control is TextBox textBox)
@@ -274,7 +324,6 @@ namespace SistemaPsicoaprende.UI
         }
 
         private ModoEdicion modoEdicion = ModoEdicion.NuevoRegistro;
-
 
         private void btnListarEstu_Click_1(object sender, EventArgs e)
         {
@@ -329,7 +378,6 @@ namespace SistemaPsicoaprende.UI
 
             }
         }
-
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {

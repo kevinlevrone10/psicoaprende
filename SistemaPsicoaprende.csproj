@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props" Condition="Exists('packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" />
   <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -41,6 +42,12 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms">
+      <HintPath>..\..\..\..\..\PROGRAM FILES\MICROSOFT VISUAL STUDIO\2022\COMMUNITY\COMMON7\IDE\COMMONEXTENSIONS\MICROSOFT\SSAS\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.160.1000.6\lib\net462\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -107,6 +114,9 @@
     <Compile Include="AppDatos\Nominas.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="AppDatos\ObtenerTotalFacturasPorMes_Result.cs">
+      <DependentUpon>ModelDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="AppDatos\Profesiones.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
@@ -131,6 +141,14 @@
     <Compile Include="Negocio\Nomina.cs" />
     <Compile Include="Negocio\Sesion.cs" />
     <Compile Include="Negocio\Trabajador.cs" />
+    <Compile Include="SistemaPsicoaprendeDatos.cs">
+      <DependentUpon>SistemaPsicoaprendeDatos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaPsicoaprendeDatos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaPsicoaprendeDatos.xsd</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmEstudiantes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +193,18 @@
     <Compile Include="UI\FrmNominas.Designer.cs">
       <DependentUpon>FrmNominas.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FrmReporteFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmReporteFactura.Designer.cs">
+      <DependentUpon>FrmReporteFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmReporteNomina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmReporteNomina.Designer.cs">
+      <DependentUpon>FrmReporteNomina.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmSesiones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +238,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ReporteFacturas.rdlc" />
+    <EmbeddedResource Include="ReporteNomina.rdlc" />
     <EmbeddedResource Include="UI\FrmEstudiantes.resx">
       <DependentUpon>FrmEstudiantes.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,6 +260,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmNominas.resx">
       <DependentUpon>FrmNominas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmReporteFactura.resx">
+      <DependentUpon>FrmReporteFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmReporteNomina.resx">
+      <DependentUpon>FrmReporteNomina.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmSesiones.resx">
       <DependentUpon>FrmSesiones.cs</DependentUpon>
@@ -250,6 +288,7 @@
       <DependentUpon>ModelDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SistemaPsicoaprende.AppDatos.Facturas.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -259,8 +298,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SistemaPsicoaprendeDatos.xsc">
+      <DependentUpon>SistemaPsicoaprendeDatos.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaPsicoaprendeDatos.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaPsicoaprendeDatos.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaPsicoaprendeDatos.xss">
+      <DependentUpon>SistemaPsicoaprendeDatos.xsd</DependentUpon>
+    </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="AppDatos\ModelDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -288,6 +340,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props'))" />
   </Target>
   <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

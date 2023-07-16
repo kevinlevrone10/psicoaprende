@@ -84,7 +84,7 @@ namespace SistemaPsicoaprende.UI
         {
             foreach (dynamic factura in CtrlSesion.ObtenerFacturas())
             {
-                dataGridView2.Rows.Add(factura.FacturaId, factura.CodigoFactura ,factura.Nombre,"Seleccionar");
+                dataGridView2.Rows.Add(factura.FacturaId, factura.CodigoFactura, factura.Nombre, "Seleccionar");
             }
         }
 
@@ -226,7 +226,7 @@ namespace SistemaPsicoaprende.UI
         private void LimpiarTextBoxes()
         {
             // Recorrer todos los controles del formulario
-            foreach (Control control in grpBoxSesiones.Controls )
+            foreach (Control control in grpBoxSesiones.Controls)
             {
                 if (control is System.Windows.Forms.TextBox textBox)
                 {
@@ -302,12 +302,12 @@ namespace SistemaPsicoaprende.UI
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            DateTime fecha = datafecha.Value;
+            DateTime fecha = datafecha.Value.Date;
             Trabajadores trabajadorSeleccionado = cmbtrabajador.SelectedItem as Trabajadores;
             Facturas facturaSeleccionado = cmbfactura.SelectedItem as Facturas;
 
             // Verificar que se haya seleccionado un trabajador y una factura
-            if ((trabajadorSeleccionado != null && facturaSeleccionado != null && !CamposVacios()) || !string.IsNullOrEmpty(txtBuscar.Text))
+            if ((trabajadorSeleccionado != null && facturaSeleccionado != null && CamposVacios()) == false || !string.IsNullOrEmpty(txtBuscar.Text))
             {
                 try
                 {

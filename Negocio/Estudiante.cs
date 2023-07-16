@@ -2,6 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
+using System.Text;
+using System.Data.Entity;
 
 namespace SistemaPsicoaprende.Negocio
 {
@@ -25,7 +28,7 @@ namespace SistemaPsicoaprende.Negocio
                     // Incrementar el número del código y generar el nuevo código
                     int nuevoNumero = ultimoNumero + 1;
                     string nuevoCodigo = "AL" + nuevoNumero.ToString("D3");
-                    return nuevoCodigo;
+                    return nuevoCodigo.ToUpper();
                 }
                 else
                 {
@@ -42,29 +45,34 @@ namespace SistemaPsicoaprende.Negocio
             if (string.IsNullOrEmpty(cod))
             {
                 // Generar un nuevo código de estudiante automáticamente
-                est.cod_Alumno = GenerarCodigoEstudiante();
+                est.cod_Alumno = GenerarCodigoEstudiante().ToUpper();
             }
             else
             {
                 // Utilizar el código existente para una actualización
-                est.cod_Alumno = cod;
+                est.cod_Alumno = cod.ToUpper();
             }
-
             // Resto de asignaciones de propiedades
-            est.nom_Alumno = nombre;
-            est.ape_Alumno = apellido;
+            est.nom_Alumno = RemoveAccentsAndSpecialCharacters(nombre.ToUpper());
+            est.ape_Alumno = RemoveAccentsAndSpecialCharacters(apellido.ToUpper());
             est.fechaNac_Alumno = fecha_nac;
-            est.nomResp_Alumno = responsable;
-            est.telfResp_Alumno = telefono;
-            est.colegio_Alumno = colegio;
-            est.gradoAcad_Alumno = grado;
-            est.domicilio_Alumno = domicilio;
-            est.evaluacion_Alumno = evaluacion;
+            est.nomResp_Alumno = RemoveAccentsAndSpecialCharacters(responsable.ToUpper());
+            est.telfResp_Alumno = RemoveAccentsAndSpecialCharacters(telefono.ToUpper());
+            est.colegio_Alumno = RemoveAccentsAndSpecialCharacters(colegio.ToUpper());
+            est.gradoAcad_Alumno = RemoveAccentsAndSpecialCharacters(grado.ToUpper());
+            est.domicilio_Alumno = RemoveAccentsAndSpecialCharacters(domicilio.ToUpper());
+            est.evaluacion_Alumno = RemoveAccentsAndSpecialCharacters(evaluacion.ToUpper());
             est.DepartamentoId = departamentoId;
             est.MunicipioId = municipioId;
             est.EstadoAlumnoId = 1; // Asignas el estado como activo (1) por defecto
         }
-
+        private string RemoveAccentsAndSpecialCharacters(string input)
+        {
+            string normalizedString = input.Normalize(NormalizationForm.FormD);
+            Regex regex = new Regex("[^a-zA-Z0-9 ]");
+            string result = regex.Replace(normalizedString, "");
+            return result;
+        }
         public int guardar()
         {
             int val = 0;
@@ -82,18 +90,19 @@ namespace SistemaPsicoaprende.Negocio
                     if (estudianteExistente != null)
                     {
                         // El código de estudiante ya existe, se trata de una actualización
-                        estudianteExistente.nom_Alumno = est.nom_Alumno;
-                        estudianteExistente.ape_Alumno = est.ape_Alumno;
+                        estudianteExistente.nom_Alumno = RemoveAccentsAndSpecialCharacters(est.nom_Alumno.ToUpper());
+                        estudianteExistente.ape_Alumno = RemoveAccentsAndSpecialCharacters(est.ape_Alumno.ToUpper());
                         estudianteExistente.fechaNac_Alumno = est.fechaNac_Alumno;
-                        estudianteExistente.nomResp_Alumno = est.nomResp_Alumno;
-                        estudianteExistente.telfResp_Alumno = est.telfResp_Alumno;
-                        estudianteExistente.colegio_Alumno = est.colegio_Alumno;
-                        estudianteExistente.gradoAcad_Alumno = est.gradoAcad_Alumno;
-                        estudianteExistente.domicilio_Alumno = est.domicilio_Alumno;
-                        estudianteExistente.evaluacion_Alumno = est.evaluacion_Alumno;
+                        estudianteExistente.nomResp_Alumno = RemoveAccentsAndSpecialCharacters(est.nomResp_Alumno.ToUpper());
+                        estudianteExistente.telfResp_Alumno = RemoveAccentsAndSpecialCharacters(est.telfResp_Alumno.ToUpper());
+                        estudianteExistente.colegio_Alumno = RemoveAccentsAndSpecialCharacters(est.colegio_Alumno.ToUpper());
+                        estudianteExistente.gradoAcad_Alumno = RemoveAccentsAndSpecialCharacters(est.gradoAcad_Alumno.ToUpper());
+                        estudianteExistente.domicilio_Alumno = RemoveAccentsAndSpecialCharacters(est.domicilio_Alumno.ToUpper());
+                        estudianteExistente.evaluacion_Alumno = RemoveAccentsAndSpecialCharacters(est.evaluacion_Alumno.ToUpper());
                         estudianteExistente.DepartamentoId = est.DepartamentoId;
                         estudianteExistente.MunicipioId = est.MunicipioId;
                         estudianteExistente.EstadoAlumnoId = est.EstadoAlumnoId;
+
                     }
                     else
                     {

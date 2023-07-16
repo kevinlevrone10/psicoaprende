@@ -12,6 +12,8 @@ namespace SistemaPsicoaprende.AppDatos
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class SistemaPsicoaprendeConnection : DbContext
     {
@@ -39,5 +41,14 @@ namespace SistemaPsicoaprende.AppDatos
         public virtual DbSet<Sesiones> Sesiones { get; set; }
         public virtual DbSet<Trabajadores> Trabajadores { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+    
+        public virtual ObjectResult<ObtenerTotalFacturasPorMes_Result> ObtenerTotalFacturasPorMes(Nullable<int> anio)
+        {
+            var anioParameter = anio.HasValue ?
+                new ObjectParameter("Anio", anio) :
+                new ObjectParameter("Anio", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ObtenerTotalFacturasPorMes_Result>("ObtenerTotalFacturasPorMes", anioParameter);
+        }
     }
 }

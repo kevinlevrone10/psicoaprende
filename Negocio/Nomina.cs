@@ -34,6 +34,7 @@ public class Nomina
                     DetalleNominas dn = new DetalleNominas
                     {
                         NominaId = nomina.Id,
+                        trabajador = detalle.trabajador,
                         total_Horas = detalle.total_Horas,
                         total = detalle.total,
                         salario_Neto = detalle.salario_Neto,
@@ -51,6 +52,42 @@ public class Nomina
         return val;
     }
 
+    public List<dynamic> ObtenerDetallesNominaPorFechaPago(DateTime fechaPago)
+    {
+        using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
+        {
+            var detallesNomina = from n in ctx.Nominas
+                                 join d in ctx.DetalleNominas on n.Id equals d.NominaId
+                                 where n.fechaPago_Nomina == fechaPago
+                                 select new
+                                 {
+                                     d.trabajador,
+                                     d.total,
+                                     d.total_Horas,
+                                     d.viaticos,
+                                     d.salario_Neto
+                                 };
+            return detallesNomina.ToList<dynamic>();
+        }
+    }
+
+    public List<dynamic> obtenerNominaporFecgaPago(DateTime fechapago)
+    {
+        using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
+        {
+            var Nomina = from n in ctx.Nominas
+                         where n.fechaPago_Nomina == fechapago
+                         select new
+                         {
+                             n.totalpago_Nomina,
+                             n.fechaPago_Nomina
+                         };
+
+            return Nomina.ToList<dynamic>();
+        }
+
+    }
+
     public List<dynamic> ObtenerHorasTrabajadas(DateTime fechaDesde, DateTime fechaHasta)
     {
         using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
@@ -59,7 +96,7 @@ public class Nomina
                 .Where(s => s.fecha_Sesion >= fechaDesde && s.fecha_Sesion <= fechaHasta)
                 .Join(ctx.Trabajadores, s => s.TrabajadorId, t => t.Id, (s, t) => new
                 {
-                    NombreTrabajador = t.nom_Trabajador,
+                    NombreTrabajador = t.nom_Trabajador + " " + t.ape_Trabajador,
                     HorasTrabajadas = 2 // Suponiendo que cada sesión dura 2 horas
                 })
                 .GroupBy(t => t.NombreTrabajador)
@@ -75,6 +112,7 @@ public class Nomina
 
             return listaHorasTrabajadas;
         }
+
     }
 }
 

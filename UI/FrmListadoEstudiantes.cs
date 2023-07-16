@@ -15,13 +15,13 @@ namespace SistemaPsicoaprende.UI
 
         public void Listado()
         {
-
             foreach (var est in CtrlEstudiante.Buscar())
             {
-                dataGridView1.Rows.Add(est.cod_Alumno, est.nom_Alumno, est.ape_Alumno, est.fechaNac_Alumno, est.telfResp_Alumno, est.nomResp_Alumno, est.domicilio_Alumno, "Edit");
+                string fechaFormateada = est.fechaNac_Alumno.ToString("dd/MM/yyyy");
+                dataGridView1.Rows.Add(est.cod_Alumno, est.nom_Alumno, est.ape_Alumno, fechaFormateada, est.telfResp_Alumno, est.nomResp_Alumno, est.domicilio_Alumno, "Edit");
             }
-
         }
+
 
         private void MostrarEstudianteEnDataGridView(Alumnos estudiante)
         {
@@ -116,6 +116,7 @@ namespace SistemaPsicoaprende.UI
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+          
 
         }
 

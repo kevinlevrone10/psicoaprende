@@ -49,7 +49,7 @@ namespace SistemaPsicoaprende.Controlador
         {
             Factura f = new Factura();
 
-           f.ActualizarEstadoFacturas();
+            f.ActualizarEstadoFacturas();
 
         }
 

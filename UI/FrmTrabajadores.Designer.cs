@@ -31,20 +31,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTrabajadores));
             this.pnlContenedor = new System.Windows.Forms.Panel();
             this.grbRegistrarTraba = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cmbMunicipio = new System.Windows.Forms.ComboBox();
-            this.cmbDepartamento = new System.Windows.Forms.ComboBox();
-            this.cmbprofesion = new System.Windows.Forms.ComboBox();
+            this.grpBoxContacto = new System.Windows.Forms.GroupBox();
             this.Msktel = new System.Windows.Forms.MaskedTextBox();
-            this.txtdom = new System.Windows.Forms.TextBox();
-            this.txtape = new System.Windows.Forms.TextBox();
-            this.txtnom = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.grpBoxUbicacion = new System.Windows.Forms.GroupBox();
+            this.txtdom = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbMunicipio = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbDepartamento = new System.Windows.Forms.ComboBox();
+            this.grpBoxDatosTrabajador = new System.Windows.Forms.GroupBox();
+            this.txtape = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbprofesion = new System.Windows.Forms.ComboBox();
+            this.txtnom = new System.Windows.Forms.TextBox();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.btnListarTraba = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
@@ -52,15 +55,12 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtcod = new System.Windows.Forms.TextBox();
-            this.grpBoxDatosTrabajador = new System.Windows.Forms.GroupBox();
-            this.grpBoxUbicacion = new System.Windows.Forms.GroupBox();
-            this.grpBoxContacto = new System.Windows.Forms.GroupBox();
             this.pnlContenedor.SuspendLayout();
             this.grbRegistrarTraba.SuspendLayout();
-            this.pnlMenu.SuspendLayout();
-            this.grpBoxDatosTrabajador.SuspendLayout();
-            this.grpBoxUbicacion.SuspendLayout();
             this.grpBoxContacto.SuspendLayout();
+            this.grpBoxUbicacion.SuspendLayout();
+            this.grpBoxDatosTrabajador.SuspendLayout();
+            this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlContenedor
@@ -94,99 +94,25 @@
             this.grbRegistrarTraba.Text = "Registrar Trabajador";
             this.grbRegistrarTraba.Enter += new System.EventHandler(this.grbRegistrarTraba_Enter);
             // 
-            // label8
+            // grpBoxContacto
             // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(240, 18);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 15);
-            this.label8.TabIndex = 69;
-            this.label8.Text = "Municipio";
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 17);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 15);
-            this.label7.TabIndex = 68;
-            this.label7.Text = "Departamento";
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 125);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 15);
-            this.label6.TabIndex = 67;
-            this.label6.Text = "Profesion";
-            // 
-            // cmbMunicipio
-            // 
-            this.cmbMunicipio.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cmbMunicipio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMunicipio.FormattingEnabled = true;
-            this.cmbMunicipio.Location = new System.Drawing.Point(15, 35);
-            this.cmbMunicipio.Name = "cmbMunicipio";
-            this.cmbMunicipio.Size = new System.Drawing.Size(176, 24);
-            this.cmbMunicipio.TabIndex = 66;
-            // 
-            // cmbDepartamento
-            // 
-            this.cmbDepartamento.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cmbDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDepartamento.FormattingEnabled = true;
-            this.cmbDepartamento.Location = new System.Drawing.Point(243, 35);
-            this.cmbDepartamento.Name = "cmbDepartamento";
-            this.cmbDepartamento.Size = new System.Drawing.Size(172, 24);
-            this.cmbDepartamento.TabIndex = 65;
-            // 
-            // cmbprofesion
-            // 
-            this.cmbprofesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbprofesion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbprofesion.FormattingEnabled = true;
-            this.cmbprofesion.Location = new System.Drawing.Point(84, 116);
-            this.cmbprofesion.Name = "cmbprofesion";
-            this.cmbprofesion.Size = new System.Drawing.Size(156, 24);
-            this.cmbprofesion.TabIndex = 64;
+            this.grpBoxContacto.BackColor = System.Drawing.Color.Silver;
+            this.grpBoxContacto.Controls.Add(this.Msktel);
+            this.grpBoxContacto.Controls.Add(this.label5);
+            this.grpBoxContacto.Location = new System.Drawing.Point(24, 203);
+            this.grpBoxContacto.Name = "grpBoxContacto";
+            this.grpBoxContacto.Size = new System.Drawing.Size(258, 63);
+            this.grpBoxContacto.TabIndex = 72;
+            this.grpBoxContacto.TabStop = false;
+            this.grpBoxContacto.Text = "Contacto";
             // 
             // Msktel
             // 
-            this.Msktel.Location = new System.Drawing.Point(84, 21);
+            this.Msktel.Location = new System.Drawing.Point(84, 25);
             this.Msktel.Mask = "0000-0000";
             this.Msktel.Name = "Msktel";
             this.Msktel.Size = new System.Drawing.Size(153, 22);
             this.Msktel.TabIndex = 63;
-            // 
-            // txtdom
-            // 
-            this.txtdom.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtdom.Location = new System.Drawing.Point(15, 97);
-            this.txtdom.Multiline = true;
-            this.txtdom.Name = "txtdom";
-            this.txtdom.Size = new System.Drawing.Size(383, 120);
-            this.txtdom.TabIndex = 62;
-            // 
-            // txtape
-            // 
-            this.txtape.Location = new System.Drawing.Point(84, 79);
-            this.txtape.Name = "txtape";
-            this.txtape.Size = new System.Drawing.Size(156, 22);
-            this.txtape.TabIndex = 61;
-            // 
-            // txtnom
-            // 
-            this.txtnom.Location = new System.Drawing.Point(81, 37);
-            this.txtnom.Name = "txtnom";
-            this.txtnom.Size = new System.Drawing.Size(156, 22);
-            this.txtnom.TabIndex = 60;
             // 
             // label5
             // 
@@ -197,6 +123,31 @@
             this.label5.Size = new System.Drawing.Size(63, 15);
             this.label5.TabIndex = 59;
             this.label5.Text = "Teléfono";
+            // 
+            // grpBoxUbicacion
+            // 
+            this.grpBoxUbicacion.BackColor = System.Drawing.Color.Silver;
+            this.grpBoxUbicacion.Controls.Add(this.txtdom);
+            this.grpBoxUbicacion.Controls.Add(this.label4);
+            this.grpBoxUbicacion.Controls.Add(this.label8);
+            this.grpBoxUbicacion.Controls.Add(this.cmbMunicipio);
+            this.grpBoxUbicacion.Controls.Add(this.label7);
+            this.grpBoxUbicacion.Controls.Add(this.cmbDepartamento);
+            this.grpBoxUbicacion.Location = new System.Drawing.Point(311, 29);
+            this.grpBoxUbicacion.Name = "grpBoxUbicacion";
+            this.grpBoxUbicacion.Size = new System.Drawing.Size(422, 237);
+            this.grpBoxUbicacion.TabIndex = 71;
+            this.grpBoxUbicacion.TabStop = false;
+            this.grpBoxUbicacion.Text = "Ubicación";
+            // 
+            // txtdom
+            // 
+            this.txtdom.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtdom.Location = new System.Drawing.Point(15, 97);
+            this.txtdom.Multiline = true;
+            this.txtdom.Name = "txtdom";
+            this.txtdom.Size = new System.Drawing.Size(383, 120);
+            this.txtdom.TabIndex = 62;
             // 
             // label4
             // 
@@ -209,15 +160,70 @@
             this.label4.TabIndex = 58;
             this.label4.Text = "Domicilio";
             // 
-            // label3
+            // label8
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 79);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 15);
-            this.label3.TabIndex = 57;
-            this.label3.Text = "Apellido";
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(57, 17);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(70, 15);
+            this.label8.TabIndex = 69;
+            this.label8.Text = "Municipio";
+            // 
+            // cmbMunicipio
+            // 
+            this.cmbMunicipio.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cmbMunicipio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMunicipio.FormattingEnabled = true;
+            this.cmbMunicipio.Location = new System.Drawing.Point(15, 35);
+            this.cmbMunicipio.Name = "cmbMunicipio";
+            this.cmbMunicipio.Size = new System.Drawing.Size(176, 24);
+            this.cmbMunicipio.TabIndex = 66;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(260, 18);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 15);
+            this.label7.TabIndex = 68;
+            this.label7.Text = "Departamento";
+            // 
+            // cmbDepartamento
+            // 
+            this.cmbDepartamento.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cmbDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDepartamento.FormattingEnabled = true;
+            this.cmbDepartamento.Location = new System.Drawing.Point(243, 35);
+            this.cmbDepartamento.Name = "cmbDepartamento";
+            this.cmbDepartamento.Size = new System.Drawing.Size(172, 24);
+            this.cmbDepartamento.TabIndex = 65;
+            // 
+            // grpBoxDatosTrabajador
+            // 
+            this.grpBoxDatosTrabajador.BackColor = System.Drawing.Color.Silver;
+            this.grpBoxDatosTrabajador.Controls.Add(this.txtape);
+            this.grpBoxDatosTrabajador.Controls.Add(this.label2);
+            this.grpBoxDatosTrabajador.Controls.Add(this.label6);
+            this.grpBoxDatosTrabajador.Controls.Add(this.label3);
+            this.grpBoxDatosTrabajador.Controls.Add(this.cmbprofesion);
+            this.grpBoxDatosTrabajador.Controls.Add(this.txtnom);
+            this.grpBoxDatosTrabajador.Location = new System.Drawing.Point(24, 29);
+            this.grpBoxDatosTrabajador.Name = "grpBoxDatosTrabajador";
+            this.grpBoxDatosTrabajador.Size = new System.Drawing.Size(258, 154);
+            this.grpBoxDatosTrabajador.TabIndex = 70;
+            this.grpBoxDatosTrabajador.TabStop = false;
+            this.grpBoxDatosTrabajador.Text = "Datos Peresonales";
+            // 
+            // txtape
+            // 
+            this.txtape.Location = new System.Drawing.Point(84, 79);
+            this.txtape.Name = "txtape";
+            this.txtape.Size = new System.Drawing.Size(156, 22);
+            this.txtape.TabIndex = 61;
             // 
             // label2
             // 
@@ -228,6 +234,44 @@
             this.label2.Size = new System.Drawing.Size(58, 15);
             this.label2.TabIndex = 56;
             this.label2.Text = "Nombre";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(3, 125);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 15);
+            this.label6.TabIndex = 67;
+            this.label6.Text = "Profesion";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(4, 79);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 15);
+            this.label3.TabIndex = 57;
+            this.label3.Text = "Apellido";
+            // 
+            // cmbprofesion
+            // 
+            this.cmbprofesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbprofesion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbprofesion.FormattingEnabled = true;
+            this.cmbprofesion.Location = new System.Drawing.Point(84, 116);
+            this.cmbprofesion.Name = "cmbprofesion";
+            this.cmbprofesion.Size = new System.Drawing.Size(156, 24);
+            this.cmbprofesion.TabIndex = 64;
+            // 
+            // txtnom
+            // 
+            this.txtnom.Location = new System.Drawing.Point(81, 37);
+            this.txtnom.Name = "txtnom";
+            this.txtnom.Size = new System.Drawing.Size(156, 22);
+            this.txtnom.TabIndex = 60;
             // 
             // pnlMenu
             // 
@@ -325,50 +369,6 @@
             this.txtcod.TabIndex = 54;
             this.txtcod.Visible = false;
             // 
-            // grpBoxDatosTrabajador
-            // 
-            this.grpBoxDatosTrabajador.BackColor = System.Drawing.Color.Silver;
-            this.grpBoxDatosTrabajador.Controls.Add(this.txtape);
-            this.grpBoxDatosTrabajador.Controls.Add(this.label2);
-            this.grpBoxDatosTrabajador.Controls.Add(this.label6);
-            this.grpBoxDatosTrabajador.Controls.Add(this.label3);
-            this.grpBoxDatosTrabajador.Controls.Add(this.cmbprofesion);
-            this.grpBoxDatosTrabajador.Controls.Add(this.txtnom);
-            this.grpBoxDatosTrabajador.Location = new System.Drawing.Point(24, 29);
-            this.grpBoxDatosTrabajador.Name = "grpBoxDatosTrabajador";
-            this.grpBoxDatosTrabajador.Size = new System.Drawing.Size(258, 154);
-            this.grpBoxDatosTrabajador.TabIndex = 70;
-            this.grpBoxDatosTrabajador.TabStop = false;
-            this.grpBoxDatosTrabajador.Text = "Datos Peresonales";
-            // 
-            // grpBoxUbicacion
-            // 
-            this.grpBoxUbicacion.BackColor = System.Drawing.Color.Silver;
-            this.grpBoxUbicacion.Controls.Add(this.txtdom);
-            this.grpBoxUbicacion.Controls.Add(this.label4);
-            this.grpBoxUbicacion.Controls.Add(this.label8);
-            this.grpBoxUbicacion.Controls.Add(this.cmbMunicipio);
-            this.grpBoxUbicacion.Controls.Add(this.label7);
-            this.grpBoxUbicacion.Controls.Add(this.cmbDepartamento);
-            this.grpBoxUbicacion.Location = new System.Drawing.Point(311, 29);
-            this.grpBoxUbicacion.Name = "grpBoxUbicacion";
-            this.grpBoxUbicacion.Size = new System.Drawing.Size(422, 237);
-            this.grpBoxUbicacion.TabIndex = 71;
-            this.grpBoxUbicacion.TabStop = false;
-            this.grpBoxUbicacion.Text = "Ubicación";
-            // 
-            // grpBoxContacto
-            // 
-            this.grpBoxContacto.BackColor = System.Drawing.Color.Silver;
-            this.grpBoxContacto.Controls.Add(this.Msktel);
-            this.grpBoxContacto.Controls.Add(this.label5);
-            this.grpBoxContacto.Location = new System.Drawing.Point(24, 203);
-            this.grpBoxContacto.Name = "grpBoxContacto";
-            this.grpBoxContacto.Size = new System.Drawing.Size(258, 63);
-            this.grpBoxContacto.TabIndex = 72;
-            this.grpBoxContacto.TabStop = false;
-            this.grpBoxContacto.Text = "Contacto";
-            // 
             // FrmTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,14 +381,14 @@
             this.pnlContenedor.ResumeLayout(false);
             this.pnlContenedor.PerformLayout();
             this.grbRegistrarTraba.ResumeLayout(false);
-            this.pnlMenu.ResumeLayout(false);
-            this.pnlMenu.PerformLayout();
-            this.grpBoxDatosTrabajador.ResumeLayout(false);
-            this.grpBoxDatosTrabajador.PerformLayout();
-            this.grpBoxUbicacion.ResumeLayout(false);
-            this.grpBoxUbicacion.PerformLayout();
             this.grpBoxContacto.ResumeLayout(false);
             this.grpBoxContacto.PerformLayout();
+            this.grpBoxUbicacion.ResumeLayout(false);
+            this.grpBoxUbicacion.PerformLayout();
+            this.grpBoxDatosTrabajador.ResumeLayout(false);
+            this.grpBoxDatosTrabajador.PerformLayout();
+            this.pnlMenu.ResumeLayout(false);
+            this.pnlMenu.PerformLayout();
             this.ResumeLayout(false);
 
         }

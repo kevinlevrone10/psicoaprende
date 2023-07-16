@@ -10,18 +10,10 @@
 namespace SistemaPsicoaprende.AppDatos
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class DetalleNominas
+    public partial class ObtenerTotalFacturasPorMes_Result
     {
-        public int Id { get; set; }
-        public string trabajador { get; set; }
-        public decimal total { get; set; }
-        public int total_Horas { get; set; }
-        public decimal viaticos { get; set; }
-        public double salario_Neto { get; set; }
-        public int NominaId { get; set; }
-    
-        public virtual Nominas Nominas { get; set; }
+        public string Mes { get; set; }
+        public Nullable<double> Total { get; set; }
     }
 }

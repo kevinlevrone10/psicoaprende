@@ -104,10 +104,17 @@ namespace SistemaPsicoaprende.UI
         {
             List<Profesiones> profesiones = Ctrltrabajador.ObtenerProfesiones();
 
+            // Agregar opción vacía al comienzo de la lista
+            profesiones.Insert(0, new Profesiones { Id = 0, nom_Profesion = "" });
+
             cmbprofesion.DisplayMember = "nom_Profesion";
             cmbprofesion.ValueMember = "Id";
             cmbprofesion.DataSource = profesiones;
+
+            // Establecer opción vacía como valor seleccionado
+            cmbprofesion.SelectedValue = 0;
         }
+
         private void CargarDepartamentos()
         {
             // Obtener la lista de departamentos desde el controlador
@@ -117,36 +124,34 @@ namespace SistemaPsicoaprende.UI
             cmbDepartamento.DisplayMember = "nom_Departamento"; // Mostrar el nombre del departamento en el ComboBox
             cmbDepartamento.ValueMember = "Id"; // Establecer el valor del departamento como el ID
 
-            // Asignar la lista de departamentos al ComboBox
+            // Asignar los departamentos al ComboBox
             cmbDepartamento.DataSource = departamentos;
+
+            // Establecer ninguna opción seleccionada
+            cmbDepartamento.SelectedIndex = -1;
         }
+
+
 
         private void CargarMunicipios(int departamentoId)
         {
             // Obtener la lista de municipios por departamento desde el controlador
             List<Municipios> municipios = CtrlEstudiante.ObtenerMunicipiosPorDepartamento(departamentoId);
 
-            // Limpiar el ComboBox de municipios antes de agregar los nuevos elementos
-            cmbMunicipio.Items.Clear();
+            // Agregar una opción vacía al inicio de la lista de municipios
+            municipios.Insert(0, new Municipios { Id = 0, nom_Municipio = "" });
 
             // Configurar el ComboBox de municipios
             cmbMunicipio.DisplayMember = "nom_Municipio"; // Mostrar el nombre del municipio en el ComboBox
             cmbMunicipio.ValueMember = "Id"; // Establecer el valor del municipio como el ID
 
-            // Agregar los municipios al ComboBox
-            cmbMunicipio.Items.AddRange(municipios.ToArray());
+            // Asignar los municipios al ComboBox
+            cmbMunicipio.DataSource = municipios;
 
-            int municipioIdSeleccionado = -1; // Valor por defecto para ningún municipio seleccionado
-            if (cmbMunicipio.SelectedItem != null)
-            {
-                Municipios municipioSeleccionado = cmbMunicipio.SelectedItem as Municipios;
-                municipioIdSeleccionado = municipioSeleccionado.Id;
-            }
-
-            cmbMunicipio.SelectedItem = municipios.FirstOrDefault(m => m.Id == municipioIdSeleccionado);
-
-
+            // Establecer la opción vacía como selección por defecto
+            cmbMunicipio.SelectedIndex = 0;
         }
+
 
         private void cmbDepartamento_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -166,7 +171,7 @@ namespace SistemaPsicoaprende.UI
         private void LimpiarCampos()
         {
             // Recorrer todos los controles del formulario
-            foreach (Control control in grbRegistrarTraba.Controls)
+            foreach (Control control in grpBoxDatosTrabajador.Controls)
             {
                 if (control is TextBox textBox)
                 {
@@ -184,6 +189,44 @@ namespace SistemaPsicoaprende.UI
                     maskedTextBox.Text = string.Empty;
                 }
             }
+
+            foreach (Control control in grpBoxUbicacion.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Excluir el campo txtBuscar al limpiar los TextBox
+
+                    textBox.Text = string.Empty;
+
+                }
+                else if (control is ComboBox comboBox)
+                {
+                    comboBox.SelectedIndex = -1;
+                }
+                else if (control is MaskedTextBox maskedTextBox)
+                {
+                    maskedTextBox.Text = string.Empty;
+                }
+            }
+            foreach (Control control in grpBoxContacto.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    // Excluir el campo txtBuscar al limpiar los TextBox
+
+                    textBox.Text = string.Empty;
+
+                }
+                else if (control is ComboBox comboBox)
+                {
+                    comboBox.SelectedIndex = -1;
+                }
+                else if (control is MaskedTextBox maskedTextBox)
+                {
+                    maskedTextBox.Text = string.Empty;
+                }
+            }
+
             foreach (Control control in pnlMenu.Controls)
             {
                 if (control is TextBox textBox)
@@ -198,6 +241,7 @@ namespace SistemaPsicoaprende.UI
 
         private bool CamposVacios()
         {
+
             foreach (Control control in grbRegistrarTraba.Controls)
             {
                 if (control is TextBox textBox && textBox != txtBuscar)
@@ -215,6 +259,64 @@ namespace SistemaPsicoaprende.UI
                     }
                 }
             }
+
+
+            foreach (Control control in grpBoxDatosTrabajador.Controls)
+            {
+                if (control is TextBox textBox && textBox != txtBuscar)
+                {
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        return true;
+                    }
+                }
+                else if (control is MaskedTextBox maskedTextBox)
+                {
+                    if (string.IsNullOrEmpty(maskedTextBox.Text))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            foreach (Control control in grpBoxUbicacion.Controls)
+            {
+                if (control is TextBox textBox && textBox != txtBuscar)
+                {
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        return true;
+                    }
+                }
+                else if (control is MaskedTextBox maskedTextBox)
+                {
+                    if (string.IsNullOrEmpty(maskedTextBox.Text))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+
+            foreach (Control control in grpBoxContacto.Controls)
+            {
+                if (control is TextBox textBox && textBox != txtBuscar)
+                {
+                    if (string.IsNullOrEmpty(textBox.Text))
+                    {
+                        return true;
+                    }
+                }
+                else if (control is MaskedTextBox maskedTextBox)
+                {
+                    if (string.IsNullOrEmpty(maskedTextBox.Text))
+                    {
+                        return true;
+                    }
+                }
+   
+            }
+
             foreach (Control control in pnlMenu.Controls)
             {
                 if (control is TextBox textBox && textBox != txtBuscar)
@@ -236,6 +338,7 @@ namespace SistemaPsicoaprende.UI
                     }
                 }
             }
+
             return false;
         }
 

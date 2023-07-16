@@ -2,6 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
+using System.Text.RegularExpressions;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
+using System.Linq.Expressions;
+using System.Text;
 
 namespace SistemaPsicoaprende.Negocio
 {
@@ -22,7 +27,7 @@ namespace SistemaPsicoaprende.Negocio
                     // Incrementar el número del código y generar el nuevo código
                     int nuevoNumero = ultimoNumero + 1;
                     string nuevoCodigo = "T" + nuevoNumero.ToString("D3");
-                    return nuevoCodigo;
+                    return nuevoCodigo.ToUpper();
                 }
                 else
                 {
@@ -41,22 +46,28 @@ namespace SistemaPsicoaprende.Negocio
             if (string.IsNullOrEmpty(codigo))
             {
                 // Generar un nuevo código de trabajador automáticamente
-                tra.cod_Trabajador = GenerarCodigoTrabajador();
+                tra.cod_Trabajador = GenerarCodigoTrabajador().ToUpper();
             }
             else
             {
                 // Utilizar el código existente para una actualización
-                tra.cod_Trabajador = codigo;
+                tra.cod_Trabajador = codigo.ToUpper();
             }
-
-            tra.nom_Trabajador = nombre;
-            tra.ape_Trabajador = apellido;
-            tra.domicilio_Trabajador = domicilio;
-            tra.telefono_Trabajador = telefono;
+            tra.nom_Trabajador = RemoveAccentsAndSpecialCharacters(nombre.ToUpper());
+            tra.ape_Trabajador = RemoveAccentsAndSpecialCharacters(apellido.ToUpper());
+            tra.domicilio_Trabajador = RemoveAccentsAndSpecialCharacters(domicilio.ToUpper());
+            tra.telefono_Trabajador = RemoveAccentsAndSpecialCharacters(telefono.ToUpper());
             tra.ProfesionId = profesionId;
             tra.DepartamentoId = departamentoId;
             tra.MunicipioId = municipioId;
             tra.EstadoTrabajadorId = 2;
+        }
+        private string RemoveAccentsAndSpecialCharacters(string input)
+        {
+            string normalizedString = input.Normalize(NormalizationForm.FormD);
+            Regex regex = new Regex("[^a-zA-Z0-9 ]");
+            string result = regex.Replace(normalizedString, "");
+            return result;
         }
         public int guardar()
         {
@@ -77,14 +88,15 @@ namespace SistemaPsicoaprende.Negocio
                     if (trabajadorExistente != null)
                     {
                         // Actualizar los valores del trabajador existente con los valores de la instancia "tra"
-                        trabajadorExistente.nom_Trabajador = tra.nom_Trabajador;
-                        trabajadorExistente.ape_Trabajador = tra.ape_Trabajador;
-                        trabajadorExistente.domicilio_Trabajador = tra.domicilio_Trabajador;
-                        trabajadorExistente.telefono_Trabajador = tra.telefono_Trabajador;
+                        trabajadorExistente.nom_Trabajador = RemoveAccentsAndSpecialCharacters(tra.nom_Trabajador.ToUpper());
+                        trabajadorExistente.ape_Trabajador = RemoveAccentsAndSpecialCharacters(tra.ape_Trabajador.ToUpper());
+                        trabajadorExistente.domicilio_Trabajador = RemoveAccentsAndSpecialCharacters(tra.domicilio_Trabajador.ToUpper());
+                        trabajadorExistente.telefono_Trabajador = RemoveAccentsAndSpecialCharacters(tra.telefono_Trabajador.ToUpper());
                         trabajadorExistente.ProfesionId = tra.ProfesionId;
                         trabajadorExistente.DepartamentoId = tra.DepartamentoId;
                         trabajadorExistente.MunicipioId = tra.MunicipioId;
                         trabajadorExistente.EstadoTrabajadorId = tra.EstadoTrabajadorId;
+
                     }
                     else
                     {

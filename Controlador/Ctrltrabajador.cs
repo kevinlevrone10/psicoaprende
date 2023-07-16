@@ -44,6 +44,7 @@ namespace SistemaPsicoaprende.Controlador
 
             return e.ObtenerTrabajadorId(id);
         }
+
         public static List<Trabajadores> Buscar()
         {
             Trabajador e = new Trabajador();

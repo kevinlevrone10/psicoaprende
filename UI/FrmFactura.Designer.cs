@@ -44,8 +44,8 @@
             this.grpBoxEmisionFact = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.btnCerrar = new System.Windows.Forms.Button();
             this.btnCalcular = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.grpGenerales = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -75,7 +75,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(10, 151);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 16);
+            this.label2.Size = new System.Drawing.Size(146, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Costo de la  sesión";
             // 
@@ -88,9 +88,10 @@
             // 
             // Fecha
             // 
+            this.Fecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.Fecha.Location = new System.Drawing.Point(147, 30);
             this.Fecha.Name = "Fecha";
-            this.Fecha.Size = new System.Drawing.Size(200, 22);
+            this.Fecha.Size = new System.Drawing.Size(125, 22);
             this.Fecha.TabIndex = 4;
             // 
             // cmbmod
@@ -195,21 +196,6 @@
             this.pnlMenu.Size = new System.Drawing.Size(351, 62);
             this.pnlMenu.TabIndex = 63;
             // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrar.Location = new System.Drawing.Point(15, 15);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(94, 37);
-            this.btnCerrar.TabIndex = 64;
-            this.btnCerrar.Text = "Cancelar";
-            this.btnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
             // btnCalcular
             // 
             this.btnCalcular.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -224,6 +210,21 @@
             this.btnCalcular.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCalcular.UseVisualStyleBackColor = true;
             this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
+            this.btnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCerrar.Location = new System.Drawing.Point(15, 15);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(94, 37);
+            this.btnCerrar.TabIndex = 64;
+            this.btnCerrar.Text = "Cancelar";
+            this.btnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // btnGuardar
             // 
@@ -345,6 +346,7 @@
             this.pnlContenedor.Name = "pnlContenedor";
             this.pnlContenedor.Size = new System.Drawing.Size(800, 450);
             this.pnlContenedor.TabIndex = 67;
+            this.pnlContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContenedor_Paint);
             // 
             // FrmFactura
             // 
