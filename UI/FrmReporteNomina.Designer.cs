@@ -35,26 +35,26 @@
             // 
             // reportViewer1
             // 
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "SistemaPsicoaprende.ReporteNomina.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(194, 6);
+            this.reportViewer1.DocumentMapWidth = 47;
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "SistemaPsicoaprende.Reportes.ReporteNomina.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(196, 12);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(605, 432);
+            this.reportViewer1.Size = new System.Drawing.Size(571, 362);
             this.reportViewer1.TabIndex = 0;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(46, 140);
+            this.dateTimePicker1.Location = new System.Drawing.Point(12, 52);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(99, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(152, 20);
             this.dateTimePicker1.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(59, 189);
+            this.button1.Location = new System.Drawing.Point(25, 110);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(139, 40);
             this.button1.TabIndex = 2;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;

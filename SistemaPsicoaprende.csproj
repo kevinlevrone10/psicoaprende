@@ -60,15 +60,15 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -147,6 +147,18 @@
     <Compile Include="Controlador\CtrlSesion.cs" />
     <Compile Include="Controlador\Ctrltrabajador.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UI\FrmReporteFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmReporteFactura.Designer.cs">
+      <DependentUpon>FrmReporteFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FrmReporteNomina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmReporteNomina.Designer.cs">
+      <DependentUpon>FrmReporteNomina.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmReportes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,18 +222,6 @@
     </Compile>
     <Compile Include="UI\FrmNominas.Designer.cs">
       <DependentUpon>FrmNominas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FrmReporteFactura.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FrmReporteFactura.Designer.cs">
-      <DependentUpon>FrmReporteFactura.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FrmReporteNomina.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FrmReporteNomina.Designer.cs">
-      <DependentUpon>FrmReporteNomina.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FrmSesiones.cs">
       <SubType>Form</SubType>

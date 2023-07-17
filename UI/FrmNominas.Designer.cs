@@ -42,25 +42,25 @@
             this.salario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txttol = new System.Windows.Forms.TextBox();
             this.pnlContenedor = new System.Windows.Forms.Panel();
-            this.grpBoxFechas = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.grpBoxCalculo = new System.Windows.Forms.GroupBox();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.btnCalcularNom = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGenerarNom = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.grpBoxCalculo = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.grpBoxFechas = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlContenedor.SuspendLayout();
-            this.grpBoxFechas.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.pnlMenu.SuspendLayout();
             this.grpBoxCalculo.SuspendLayout();
+            this.pnlMenu.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.grpBoxFechas.SuspendLayout();
             this.SuspendLayout();
             // 
             // dateTimePickerPagoDesde
@@ -171,75 +171,17 @@
             this.pnlContenedor.TabIndex = 13;
             this.pnlContenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContenedor_Paint);
             // 
-            // grpBoxFechas
+            // grpBoxCalculo
             // 
-            this.grpBoxFechas.BackColor = System.Drawing.Color.Silver;
-            this.grpBoxFechas.Controls.Add(this.label5);
-            this.grpBoxFechas.Controls.Add(this.label4);
-            this.grpBoxFechas.Controls.Add(this.label8);
-            this.grpBoxFechas.Controls.Add(this.dateTimePickerPagoHasta);
-            this.grpBoxFechas.Controls.Add(this.dateTimePickerPagoDesde);
-            this.grpBoxFechas.Controls.Add(this.dateTimePickerFechaPago);
-            this.grpBoxFechas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.grpBoxFechas.Location = new System.Drawing.Point(62, 82);
-            this.grpBoxFechas.Name = "grpBoxFechas";
-            this.grpBoxFechas.Size = new System.Drawing.Size(574, 83);
-            this.grpBoxFechas.TabIndex = 16;
-            this.grpBoxFechas.TabStop = false;
-            this.grpBoxFechas.Text = "Asginación de Fechas";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.Silver;
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtvia);
-            this.groupBox1.Controls.Add(this.txtcost);
-            this.groupBox1.Controls.Add(this.txttol);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.Location = new System.Drawing.Point(659, 173);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(120, 183);
-            this.groupBox1.TabIndex = 17;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cálculos";
-            // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(53, 31);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 15);
-            this.label8.TabIndex = 77;
-            this.label8.Text = "Desde ";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(223, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 15);
-            this.label4.TabIndex = 78;
-            this.label4.Text = "Hasta";
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(376, 31);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(149, 15);
-            this.label5.TabIndex = 79;
-            this.label5.Text = "Emisión de la Nómina";
+            this.grpBoxCalculo.BackColor = System.Drawing.Color.Silver;
+            this.grpBoxCalculo.Controls.Add(this.dataGridView1);
+            this.grpBoxCalculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.grpBoxCalculo.Location = new System.Drawing.Point(62, 182);
+            this.grpBoxCalculo.Name = "grpBoxCalculo";
+            this.grpBoxCalculo.Size = new System.Drawing.Size(574, 256);
+            this.grpBoxCalculo.TabIndex = 66;
+            this.grpBoxCalculo.TabStop = false;
+            this.grpBoxCalculo.Text = "Costo";
             // 
             // pnlMenu
             // 
@@ -302,29 +244,22 @@
             this.btnGenerarNom.UseVisualStyleBackColor = true;
             this.btnGenerarNom.Click += new System.EventHandler(this.btnGenerarNom_Click);
             // 
-            // label6
+            // groupBox1
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(6, 124);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 15);
-            this.label6.TabIndex = 79;
-            this.label6.Text = "Total a Pagar";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(6, 68);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 15);
-            this.label3.TabIndex = 79;
-            this.label3.Text = "Viatíco";
+            this.groupBox1.BackColor = System.Drawing.Color.Silver;
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txtvia);
+            this.groupBox1.Controls.Add(this.txtcost);
+            this.groupBox1.Controls.Add(this.txttol);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.groupBox1.Location = new System.Drawing.Point(659, 173);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(120, 183);
+            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Cálculos";
             // 
             // label2
             // 
@@ -338,17 +273,82 @@
             this.label2.TabIndex = 79;
             this.label2.Text = "Costo por Hora";
             // 
-            // grpBoxCalculo
+            // label3
             // 
-            this.grpBoxCalculo.BackColor = System.Drawing.Color.Silver;
-            this.grpBoxCalculo.Controls.Add(this.dataGridView1);
-            this.grpBoxCalculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.grpBoxCalculo.Location = new System.Drawing.Point(62, 182);
-            this.grpBoxCalculo.Name = "grpBoxCalculo";
-            this.grpBoxCalculo.Size = new System.Drawing.Size(574, 256);
-            this.grpBoxCalculo.TabIndex = 66;
-            this.grpBoxCalculo.TabStop = false;
-            this.grpBoxCalculo.Text = "Costo";
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(6, 68);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 15);
+            this.label3.TabIndex = 79;
+            this.label3.Text = "Viatíco";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(6, 124);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(93, 15);
+            this.label6.TabIndex = 79;
+            this.label6.Text = "Total a Pagar";
+            // 
+            // grpBoxFechas
+            // 
+            this.grpBoxFechas.BackColor = System.Drawing.Color.Silver;
+            this.grpBoxFechas.Controls.Add(this.label5);
+            this.grpBoxFechas.Controls.Add(this.label4);
+            this.grpBoxFechas.Controls.Add(this.label8);
+            this.grpBoxFechas.Controls.Add(this.dateTimePickerPagoHasta);
+            this.grpBoxFechas.Controls.Add(this.dateTimePickerPagoDesde);
+            this.grpBoxFechas.Controls.Add(this.dateTimePickerFechaPago);
+            this.grpBoxFechas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.grpBoxFechas.Location = new System.Drawing.Point(62, 82);
+            this.grpBoxFechas.Name = "grpBoxFechas";
+            this.grpBoxFechas.Size = new System.Drawing.Size(574, 83);
+            this.grpBoxFechas.TabIndex = 16;
+            this.grpBoxFechas.TabStop = false;
+            this.grpBoxFechas.Text = "Asginación de Fechas";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(376, 31);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(149, 15);
+            this.label5.TabIndex = 79;
+            this.label5.Text = "Emisión de la Nómina";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(223, 31);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(44, 15);
+            this.label4.TabIndex = 78;
+            this.label4.Text = "Hasta";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(53, 31);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 15);
+            this.label8.TabIndex = 77;
+            this.label8.Text = "Desde ";
             // 
             // FrmNominas
             // 
@@ -361,12 +361,12 @@
             this.Load += new System.EventHandler(this.FrmNominas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.pnlContenedor.ResumeLayout(false);
-            this.grpBoxFechas.ResumeLayout(false);
-            this.grpBoxFechas.PerformLayout();
+            this.grpBoxCalculo.ResumeLayout(false);
+            this.pnlMenu.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.pnlMenu.ResumeLayout(false);
-            this.grpBoxCalculo.ResumeLayout(false);
+            this.grpBoxFechas.ResumeLayout(false);
+            this.grpBoxFechas.PerformLayout();
             this.ResumeLayout(false);
 
         }
