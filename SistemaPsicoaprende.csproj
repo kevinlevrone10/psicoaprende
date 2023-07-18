@@ -147,6 +147,12 @@
     <Compile Include="Controlador\CtrlSesion.cs" />
     <Compile Include="Controlador\Ctrltrabajador.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UI\FrmListadoFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FrmListadoFacturas.Designer.cs">
+      <DependentUpon>FrmListadoFacturas.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FrmReporteFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmListadoEstudiantes.resx">
       <DependentUpon>FrmListadoEstudiantes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FrmListadoFacturas.resx">
+      <DependentUpon>FrmListadoFacturas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

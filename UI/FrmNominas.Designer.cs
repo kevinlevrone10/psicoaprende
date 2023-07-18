@@ -191,9 +191,9 @@
             this.pnlMenu.Controls.Add(this.btnCalcularNom);
             this.pnlMenu.Controls.Add(this.btnCancelar);
             this.pnlMenu.Controls.Add(this.btnGenerarNom);
-            this.pnlMenu.Location = new System.Drawing.Point(205, 12);
+            this.pnlMenu.Location = new System.Drawing.Point(165, 12);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(416, 53);
+            this.pnlMenu.Size = new System.Drawing.Size(462, 53);
             this.pnlMenu.TabIndex = 64;
             // 
             // btnCalcularNom
@@ -203,11 +203,11 @@
             this.btnCalcularNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCalcularNom.Image = ((System.Drawing.Image)(resources.GetObject("btnCalcularNom.Image")));
             this.btnCalcularNom.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCalcularNom.Location = new System.Drawing.Point(117, 9);
+            this.btnCalcularNom.Location = new System.Drawing.Point(184, 7);
             this.btnCalcularNom.Name = "btnCalcularNom";
-            this.btnCalcularNom.Size = new System.Drawing.Size(146, 38);
+            this.btnCalcularNom.Size = new System.Drawing.Size(95, 38);
             this.btnCalcularNom.TabIndex = 65;
-            this.btnCalcularNom.Text = "Cálcular Nómina";
+            this.btnCalcularNom.Text = "Cálcular";
             this.btnCalcularNom.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCalcularNom.UseVisualStyleBackColor = true;
             this.btnCalcularNom.Click += new System.EventHandler(this.btnCalcularNom_Click);
@@ -219,7 +219,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelar.Image")));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(17, 9);
+            this.btnCancelar.Location = new System.Drawing.Point(22, 8);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(94, 37);
             this.btnCancelar.TabIndex = 64;
@@ -235,11 +235,11 @@
             this.btnGenerarNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerarNom.Image = ((System.Drawing.Image)(resources.GetObject("btnGenerarNom.Image")));
             this.btnGenerarNom.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerarNom.Location = new System.Drawing.Point(269, 9);
+            this.btnGenerarNom.Location = new System.Drawing.Point(351, 7);
             this.btnGenerarNom.Name = "btnGenerarNom";
-            this.btnGenerarNom.Size = new System.Drawing.Size(142, 38);
+            this.btnGenerarNom.Size = new System.Drawing.Size(89, 38);
             this.btnGenerarNom.TabIndex = 61;
-            this.btnGenerarNom.Text = "Generar Nómina";
+            this.btnGenerarNom.Text = "Generar";
             this.btnGenerarNom.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGenerarNom.UseVisualStyleBackColor = true;
             this.btnGenerarNom.Click += new System.EventHandler(this.btnGenerarNom_Click);
@@ -254,7 +254,7 @@
             this.groupBox1.Controls.Add(this.txtcost);
             this.groupBox1.Controls.Add(this.txttol);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.Location = new System.Drawing.Point(659, 173);
+            this.groupBox1.Location = new System.Drawing.Point(652, 132);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(120, 183);
             this.groupBox1.TabIndex = 17;
