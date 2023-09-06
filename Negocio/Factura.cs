@@ -57,32 +57,10 @@ namespace SistemaPsicoaprende.Negocio
             int val = 0;
             using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
             {
+                // Generar un nuevo código de factura automáticamente
+                fac.cod_Factura = GenerarCodigoFactura();
+                ctx.Facturas.Add(fac);
 
-                if (string.IsNullOrEmpty(fac.cod_Factura))
-                {
-                    // Generar un nuevo código de factura automáticamente
-                    fac.cod_Factura = GenerarCodigoFactura();
-                }
-                else
-                {
-                    // Verificar si la factura existente ya tiene ese código
-                    Facturas facturaexistente = ctx.Facturas.FirstOrDefault(e => e.cod_Factura == fac.cod_Factura);
-
-                    if (facturaexistente != null)
-                    {
-                        facturaexistente.cantSesiones_Factura = fac.cantSesiones_Factura;
-                        facturaexistente.costo_Factura = fac.costo_Factura;
-                        facturaexistente.fecha_Factura = fac.fecha_Factura;
-                        facturaexistente.AlumnoId = fac.AlumnoId;
-                        facturaexistente.ModalidadId = fac.ModalidadId;
-                        facturaexistente.EstadoSesiones = facturaexistente.EstadoSesiones;
-                        facturaexistente.EstadoFactura = facturaexistente.EstadoFactura;
-                    }
-                    else
-                    {
-                        ctx.Facturas.Add(fac);
-                    }
-                }
                 try
                 {
                     val = ctx.SaveChanges();
@@ -93,7 +71,39 @@ namespace SistemaPsicoaprende.Negocio
                     throw new InvalidCastException();
                     throw new System.Data.Entity.Infrastructure.DbUpdateException();
                 }
+            }
+            return val;
+        }
 
+        public int EditarFactura(string codigoFactura)
+        {
+            int val = 0;
+            using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
+            {
+                // Verificar si la factura existente ya tiene ese código
+                Facturas facturaexistente = ctx.Facturas.FirstOrDefault(e => e.cod_Factura == codigoFactura);
+
+                if (facturaexistente != null)
+                {
+                    facturaexistente.cantSesiones_Factura = fac.cantSesiones_Factura;
+                    facturaexistente.costo_Factura = fac.costo_Factura;
+                    facturaexistente.fecha_Factura = fac.fecha_Factura;
+                    facturaexistente.AlumnoId = fac.AlumnoId;
+                    facturaexistente.ModalidadId = fac.ModalidadId;
+                    facturaexistente.EstadoSesiones = facturaexistente.EstadoSesiones;
+                    facturaexistente.EstadoFactura = facturaexistente.EstadoFactura;
+
+                    try
+                    {
+                        val = ctx.SaveChanges();
+                    }
+                    catch
+                    {
+                        throw new ArgumentNullException();
+                        throw new InvalidCastException();
+                        throw new System.Data.Entity.Infrastructure.DbUpdateException();
+                    }
+                }
             }
             return val;
         }
@@ -117,6 +127,17 @@ namespace SistemaPsicoaprende.Negocio
             Alumnos estudiante = ctx.Alumnos.FirstOrDefault(e => e.cod_Alumno == carnet);
 
             return estudiante; // retornando el objeto
+        }
+
+        public Facturas ObtenerFacturas(string cod)
+        {
+            // establecemos el acceso a la capa de abstraccion de las entidades
+            SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection();
+
+            // buscamos el alumno si existe , si existe pues retornaremos el objeto con sus atributos
+           Facturas facturas = ctx.Facturas.FirstOrDefault(e => e.cod_Factura== cod);
+
+            return facturas; // retornando el objeto
         }
 
         public Facturas ObtenerfacturaporId(int id)
@@ -268,6 +289,24 @@ namespace SistemaPsicoaprende.Negocio
             };
             return resultado;
         }
+
+
+        public List<dynamic> Leer()
+        {
+            using (SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection())
+            {
+                var facturas = ctx.Facturas.Select(f => new
+                {
+                    codigoFactura = f.cod_Factura,
+                    fechaFactura = f.fecha_Factura,
+                    costoTotal = f.costoTotal_Factura,
+                    estadoSesiones = f.EstadoSesiones
+                }).ToList();
+
+                return facturas.Cast<dynamic>().ToList();
+            }
+        }
+
 
     }
 }

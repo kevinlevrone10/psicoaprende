@@ -32,6 +32,14 @@ namespace SistemaPsicoaprende.Controlador
 
         }
 
+        public static Alumnos buscarAumnoId(int id)
+        {
+            Estudiante e = new Estudiante();
+
+            return e.ObtenerEstudiantePorId(id);
+
+        }
+
         public static List<Alumnos> Buscar()
         {
             Estudiante e = new Estudiante();

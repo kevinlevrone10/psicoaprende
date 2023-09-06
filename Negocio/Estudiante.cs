@@ -164,6 +164,17 @@ namespace SistemaPsicoaprende.Negocio
             return estudiante; // retornando el objeto
         }
 
+        public Alumnos ObtenerEstudiantePorId(int id)
+        {
+            // establecemos el acceso a la capa de abstraccion de las entidades
+            SistemaPsicoaprendeConnection ctx = new SistemaPsicoaprendeConnection();
+
+            Alumnos estudiante = ctx.Alumnos.FirstOrDefault(e => e.Id == id);
+
+            return estudiante;
+
+        }
+
         public List<Alumnos> Leer()
         {
             //Establecer el contexto de la conexion 

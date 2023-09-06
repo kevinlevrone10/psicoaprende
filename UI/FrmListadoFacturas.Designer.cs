@@ -34,12 +34,19 @@
             this.btnCerrar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fech = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.est = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlContenedor.SuspendLayout();
             this.pnlMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlContenedor
             // 
+            this.pnlContenedor.Controls.Add(this.dataGridView1);
             this.pnlContenedor.Controls.Add(this.pnlMenu);
             this.pnlContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContenedor.Location = new System.Drawing.Point(0, 0);
@@ -74,6 +81,7 @@
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // btnBuscar
             // 
@@ -91,6 +99,7 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscar
             // 
@@ -101,6 +110,43 @@
             this.txtBuscar.Size = new System.Drawing.Size(232, 38);
             this.txtBuscar.TabIndex = 62;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cod,
+            this.Fech,
+            this.cost,
+            this.est});
+            this.dataGridView1.Location = new System.Drawing.Point(163, 109);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(441, 244);
+            this.dataGridView1.TabIndex = 80;
+            // 
+            // cod
+            // 
+            this.cod.HeaderText = "Codigo";
+            this.cod.Name = "cod";
+            this.cod.ReadOnly = true;
+            // 
+            // Fech
+            // 
+            this.Fech.HeaderText = "Fecha";
+            this.Fech.Name = "Fech";
+            this.Fech.ReadOnly = true;
+            // 
+            // cost
+            // 
+            this.cost.HeaderText = "Total";
+            this.cost.Name = "cost";
+            this.cost.ReadOnly = true;
+            // 
+            // est
+            // 
+            this.est.HeaderText = "Estado";
+            this.est.Name = "est";
+            this.est.ReadOnly = true;
+            // 
             // FrmListadoFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -109,9 +155,11 @@
             this.Controls.Add(this.pnlContenedor);
             this.Name = "FrmListadoFacturas";
             this.Text = "FrmListadoFacturas";
+            this.Load += new System.EventHandler(this.FrmListadoFacturas_Load);
             this.pnlContenedor.ResumeLayout(false);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -123,5 +171,10 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fech;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn est;
     }
 }

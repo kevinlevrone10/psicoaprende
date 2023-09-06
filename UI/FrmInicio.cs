@@ -82,5 +82,20 @@ namespace SistemaPsicoaprende.UI
         {
             this.LoadForm(new FrmReportes());
         }
+
+        private void lblHora_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlMenuLateral_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

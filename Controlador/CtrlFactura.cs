@@ -29,6 +29,14 @@ namespace SistemaPsicoaprende.Controlador
 
         }
 
+        public static Facturas facturas(string cod)
+        {
+            Factura f = new Factura();
+
+            return f.ObtenerFacturas(cod);
+
+        }
+
         public static Facturas buscarfac(int id)
         {
             Factura f = new Factura();
@@ -51,6 +59,12 @@ namespace SistemaPsicoaprende.Controlador
 
             f.ActualizarEstadoFacturas();
 
+        }
+
+        public List<dynamic> Listado()
+        {
+            Factura fac = new Factura();
+            return fac.Leer();
         }
 
 

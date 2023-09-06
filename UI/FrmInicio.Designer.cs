@@ -79,14 +79,15 @@
             // 
             // lblHora
             // 
-            this.lblHora.AutoSize = true;
             this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHora.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lblHora.Location = new System.Drawing.Point(355, 3);
+            this.lblHora.Location = new System.Drawing.Point(364, 3);
             this.lblHora.Name = "lblHora";
-            this.lblHora.Size = new System.Drawing.Size(126, 46);
+            this.lblHora.Size = new System.Drawing.Size(117, 46);
             this.lblHora.TabIndex = 9;
             this.lblHora.Text = "label1";
+            this.lblHora.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblHora.Click += new System.EventHandler(this.lblHora_Click);
             // 
             // lblFecha
             // 
@@ -94,7 +95,7 @@
             this.lblFecha.BackColor = System.Drawing.Color.Transparent;
             this.lblFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFecha.ForeColor = System.Drawing.Color.White;
-            this.lblFecha.Location = new System.Drawing.Point(229, 61);
+            this.lblFecha.Location = new System.Drawing.Point(225, 44);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(86, 31);
             this.lblFecha.TabIndex = 8;
@@ -115,6 +116,7 @@
             this.pnlMenuLateral.Name = "pnlMenuLateral";
             this.pnlMenuLateral.Size = new System.Drawing.Size(225, 449);
             this.pnlMenuLateral.TabIndex = 10;
+            this.pnlMenuLateral.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMenuLateral_Paint);
             // 
             // btnReportes
             // 
@@ -236,6 +238,7 @@
             this.pnlSuperior.Size = new System.Drawing.Size(1024, 60);
             this.pnlSuperior.TabIndex = 11;
             this.pnlSuperior.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSuperior_Paint);
+            this.pnlSuperior.DoubleClick += new System.EventHandler(this.Tiempo_Tick);
             // 
             // btnCerrarSesion
             // 
@@ -267,6 +270,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(40, 40);
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btnSalir2
             // 

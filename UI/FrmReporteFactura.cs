@@ -25,7 +25,16 @@ namespace SistemaPsicoaprende.UI
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+      
+        private void textBoxAnio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cancelar el evento si no es un número
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
         {
             int anio = int.Parse(textBoxAnio.Text);
 
@@ -47,14 +56,6 @@ namespace SistemaPsicoaprende.UI
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("Ganancias", ganancias));
 
             reportViewer1.RefreshReport();
-        }
-
-        private void textBoxAnio_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true; // Cancelar el evento si no es un número
-            }
         }
     }
 }
